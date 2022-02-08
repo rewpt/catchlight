@@ -1,4 +1,4 @@
-export default function ShowMovie() {
+export default function ShowMedia() {
   return (
     <div>
       show movie
