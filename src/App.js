@@ -1,8 +1,9 @@
 // import './App.css';
-import Home from './components/Home'
+import Home from './components/Home/Home'
 import Nav from './components/Nav';
 import ShowMedia from './components/ShowMedia/ShowMedia'
 import Banner from './components/Banner'
+import Welcome from './components/Welcome/Welcome'
 import { Routes, Route, Link } from "react-router-dom";
 import React from 'react';
 import './index.css';
@@ -16,6 +17,7 @@ function App() {
         <Nav />
         <Banner />
         <Routes>
+          <Route path="/welcome" element={<Welcome />} />
           <Route path="/" element={<Home />} />
           <Route path="/showmedia" element={<ShowMedia />} />
         </Routes>
