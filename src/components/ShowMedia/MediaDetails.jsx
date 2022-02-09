@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
-import { Grid, Paper, Box, Rating} from '@mui/material';
-import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
-import SentimentSatisfiedIcon from '@mui/icons-material/SentimentSatisfied';
-import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
+import { Grid, Paper, Box} from '@mui/material';
+import RatingFaces from './RatingFaces'
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -20,7 +18,10 @@ export default function MediaDetails() {
           <Item>Lord of the Rings</Item>
         </Grid>
         <Grid item xs={6}>
-          <Item>Rating</Item>
+          <Item>
+          <RatingFaces />
+          </Item>
+          
         </Grid>
         <Grid item xs={6}>
           <Item>Watch on:</Item>
