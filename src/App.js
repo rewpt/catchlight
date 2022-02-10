@@ -22,7 +22,6 @@ function App() {
           <Route path="/showmedia" element={<ShowMedia />} />
         </Routes>
         <h1 className={styles}>
-          Hello world!
         </h1>
       </div>
     </React.Fragment>

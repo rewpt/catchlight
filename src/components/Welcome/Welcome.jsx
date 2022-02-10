@@ -1,7 +1,11 @@
+import React from 'react';
+import Login from './Login';
+
 export default function Welcome() {
+
   return (
-    <div>
-      Welcome
-    </div>
+    <main>
+      <Login />
+    </main>
   )
 }
