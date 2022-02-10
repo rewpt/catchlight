@@ -5,12 +5,11 @@ import MediaDetails from './MediaDetails'
 export default function ShowMedia() {
   return (
     <React.Fragment>
-    <div className='m-auto'>
-      <MediaBanner />
-      <MediaDetails />
-    </div>
-    <button className="btn">Watched!</button>
-    <button className="btn">Add to Watch List</button>
+      <div className='m-auto'>
+        <MediaBanner />
+        <MediaDetails />
+      </div>
+
     </React.Fragment>
   )
 }
