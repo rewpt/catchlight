@@ -18,7 +18,7 @@ export default function Nav() {
         </div>
         <Link to="/showmedia">Temp Showmedia Link</Link>
         <Link to="/welcome">Temp Welcome Link</Link>
-        <Link to="/home">Temp Home Link</Link>
+        <Link to="/">Temp Home Link</Link>
         <div onClick={()=>setOpen(!open)} className=''>
         <FontAwesomeIcon name={open ? 'close' : 'menu'} className={hamburger}icon={faBars} />
         </div>
