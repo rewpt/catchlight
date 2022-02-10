@@ -5,8 +5,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'margin-bg-pattern': "url('/src/images/bright-squares.png')",
-        'main-bg-pattern': "url('./src/images/tweed.png')"
+        'margin-pattern': "url('/src/images/bright-squares.png')",
       }
     },
   },
