@@ -1,7 +1,6 @@
 import React from 'react';
 import MediaBanner from './MediaBanner'
 import MediaDetails from './MediaDetails'
-import Button from './MediaButton'
 
 export default function ShowMedia() {
   return (
@@ -10,8 +9,8 @@ export default function ShowMedia() {
       <MediaBanner />
       <MediaDetails />
     </div>
-    <Button>Add to Watched</Button>
-    <Button className='m-y-10'>Add to Watch List</Button>
+    <button className="btn">Watched!</button>
+    <button className="btn">Add to Watch List</button>
     </React.Fragment>
   )
 }
