@@ -16,7 +16,7 @@ ReactDOM.render(
     <Routes>
       <Route path="welcome" element={<Welcome />} />
       <Route path="/" element={<App />}>
-        <Route path="home" element={<Home />} />
+        <Route index element={<Home />} />
         <Route path="showmedia" element={<ShowMedia />} />
       </Route>
     </Routes>
