@@ -6,6 +6,9 @@ module.exports = {
     extend: {
       backgroundImage: {
         'margin-pattern': "url('/src/images/bright-squares.png')",
+      },
+      height: {
+        '30%': "30%"
       }
     },
   },
