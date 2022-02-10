@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .btn{
-  @apply rounded-full py-2 px-3 uppercase text-xs font-bold cursor-pointer tracking-wider;
+  @apply rounded-full bg-green-500 py-2 px-3 uppercase text-xs font-bold cursor-pointer tracking-wider;
 }
