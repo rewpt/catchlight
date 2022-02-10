@@ -7,5 +7,6 @@ export default function RatingBar() {
       <div className='meh-bar w-1/3 h-full bg-yellow-500'>Meh</div>
       <div className='dislike-bar w-1/3 h-full bg-red-500'>Dislike</div>
      </div>
+     
   );
 }
