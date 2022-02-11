@@ -9,8 +9,8 @@ import './index.css';
 function App() {
   return (
     <React.Fragment>
-        <div className="flex h-screen bg-margin-pattern bg-white bg-scroll z-0">
-          <div className="container h-full mx-auto z-15 bg-white drop-shadow-2xl border-t-4 rounded-2xl border-rose-500">
+        <div className="absolute flex content-center h-screen w-screen bg-white ">
+          <div className="relative h-screen max-width-screen-md mx-auto bg-white drop-shadow-2xl border-t-4 border-rose-500">
             <Nav />
             <SearchBox />
             <Outlet />
