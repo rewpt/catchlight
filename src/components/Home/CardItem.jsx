@@ -1,13 +1,16 @@
 import React from 'react';
-import FriendAvatarContainer from './FriendAvatarContainer';
+import FriendAvatarContainer from './FriendAvatarContainer'
 
 
 export default function CardItem({imageSource}) {
   return (
-    <div className="flex mx-5 mb-5">
-      <FriendAvatarContainer />
-      <div className="grid-col rounded-xl">
-        <img src={imageSource} alt="movie name" className="grayscale drop-shadow-xl" />
+    <div className="mb-10 mx-5">
+      <img
+        src={imageSource}
+        alt=""
+      />
+      <div>
+        <FriendAvatarContainer />
       </div>
     </div>
   )
