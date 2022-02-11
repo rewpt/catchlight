@@ -10,7 +10,7 @@ function App() {
   return (
     <React.Fragment>
         <div className="absolute flex content-center h-screen w-screen bg-white ">
-          <div className="relative h-screen max-width-screen-md mx-auto bg-white drop-shadow-2xl border-t-4 border-rose-500">
+          <div className="relative h-screen max-w-[1000px] mx-auto bg-white drop-shadow-2xl border-t-4 border-rose-500">
             <Nav />
             <SearchBox />
             <Outlet />
