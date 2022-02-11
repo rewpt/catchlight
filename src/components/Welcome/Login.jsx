@@ -21,35 +21,30 @@ export default function Login() {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>Email:</label>
-        <input
+    <div className="border p-8 m-8">
+      <form className="flex flex-col" onSubmit={handleSubmit}>
+        <label className="text-2xl">Email:</label>
+        <input className="border p-2 m-2 text-xl"
           type="text"
           placeholder="Enter email..."
           name="email"
           value={email}
           onChange={(e) => {setEmail(e.target.value)}}
         />
-        <label>Password:</label>
-        <input 
+        <label className="text-2xl">Password:</label>
+        <input className="border p-2 m-2 text-xl"
           type="password"
           placeholder="Enter password..."
           name="password"
           value={password}
           onChange={(e) => {setPassword(e.target.value)}}
         />
-        <input type="submit" value="Login" />
+        <input 
+          className="border p-2 m-2 bg-sky-500 text-3xl hover:bg-blue-500" 
+          type="submit" 
+          value="Login"
+        />
       </form>
-
-      <br />
-      <br />
-      <p>Email: {email}</p>
-      <p>Password: {password}</p>
-      <br />
-      <br />
-      <br />
-      <br />
     </div>
   )
 }

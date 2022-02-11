@@ -30,11 +30,11 @@ export default function Register() {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="border p-8 m-8">
+      <form className="flex flex-col" onSubmit={handleSubmit}>
 
-      <label>Name</label>
-        <input
+      <label className="text-2xl">Name:</label>
+        <input className="border p-2 m-2 text-xl"
           type="text"
           placeholder="Enter name..."
           name="name"
@@ -42,8 +42,8 @@ export default function Register() {
           onChange={(e) => {setName(e.target.value)}}
         />
 
-        <label>Email:</label>
-        <input
+        <label className="text-2xl">Email:</label>
+        <input className="border p-2 m-2 text-xl"
           type="text"
           placeholder="Enter email..."
           name="email"
@@ -51,8 +51,8 @@ export default function Register() {
           onChange={(e) => {setEmail(e.target.value)}}
         />
 
-        <label>Password:</label>
-        <input 
+        <label className="text-2xl">Password:</label>
+        <input className="border p-2 m-2 text-xl"
           type="password"
           placeholder="Enter password..."
           name="password"
@@ -60,22 +60,20 @@ export default function Register() {
           onChange={(e) => {setPassword(e.target.value)}}
         />
 
-        <label>Confirm Password:</label>
-        <input 
+        <label className="text-2xl">Confirm Password:</label>
+        <input className="border p-2 m-2 text-xl"
           type="password"
           placeholder="Enter password..."
           name="password confirmation"
           value={passwordConfirmation}
           onChange={(e) => {setPasswordConfirmation(e.target.value)}}
         />
-        <input type="submit" value="Register" />
+        <input 
+          className="border p-2 m-2 bg-sky-500 text-3xl hover:bg-blue-500" 
+          type="submit" 
+          value="Register" 
+        />
       </form>
-
-      <br />
-      <br />
-      <p>Email: {email}</p>
-      <p>Password: {password}</p>
-      <p>Password: {passwordConfirmation}</p>
     </div>
   )
 }
