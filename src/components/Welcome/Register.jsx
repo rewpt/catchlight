@@ -1,4 +1,9 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
+
+
 const axios = require('axios');
 
 export default function Register() {
@@ -30,11 +35,16 @@ export default function Register() {
   }
 
   return (
+    <main className="flex h-screen">
+    <div className="container my-auto max-w-3xl m-8 p-8 mx-auto z-15 bg-white drop-shadow-2xl border rounded-2xl border-white">
+    <div className="flex justify-center">
+      <FontAwesomeIcon className="text-5xl" icon={faUserPlus}/>
+    </div>
     <div className="border p-8 m-8">
       <form className="flex flex-col" onSubmit={handleSubmit}>
 
       <label className="text-2xl">Name:</label>
-        <input className="border p-2 m-2 text-xl"
+        <input className="border p-2 my-2 text-xl"
           type="text"
           placeholder="Enter name..."
           name="name"
@@ -43,7 +53,7 @@ export default function Register() {
         />
 
         <label className="text-2xl">Email:</label>
-        <input className="border p-2 m-2 text-xl"
+        <input className="border p-2 my-2 text-xl"
           type="text"
           placeholder="Enter email..."
           name="email"
@@ -52,7 +62,7 @@ export default function Register() {
         />
 
         <label className="text-2xl">Password:</label>
-        <input className="border p-2 m-2 text-xl"
+        <input className="border p-2 my-2 text-xl"
           type="password"
           placeholder="Enter password..."
           name="password"
@@ -61,19 +71,26 @@ export default function Register() {
         />
 
         <label className="text-2xl">Confirm Password:</label>
-        <input className="border p-2 m-2 text-xl"
+        <input className="border p-2 my-2 text-xl"
           type="password"
           placeholder="Enter password..."
           name="password confirmation"
           value={passwordConfirmation}
           onChange={(e) => {setPasswordConfirmation(e.target.value)}}
         />
-        <input 
-          className="border p-2 m-2 bg-sky-500 text-3xl hover:bg-blue-500" 
-          type="submit" 
-          value="Register" 
-        />
+        <button 
+          className="border p-2 my-2 bg-sky-500 text-3xl"
+          onClick={() => {
+            handleSubmit();
+          }}
+        >Register
+        </button>
       </form>
+      <div className="flex flex-row-reverse">
+        <Link to="/login" className="flex flex-row-reverse p-2 py-2 text-blue-500">Back to login</Link>
+      </div>
     </div>
+    </div>
+    </main>
   )
 }
