@@ -26,14 +26,14 @@ export default function Login() {
 
   return (
     <main className="flex h-screen">
-    <div className="container my-auto max-w-3xl m-8 p-8 mx-auto z-15 bg-white drop-shadow-2xl border rounded-2xl border-white">
+    <div className="container my-auto max-w-3xl m-8 py-8 mx-auto z-15 bg-white drop-shadow-2xl border rounded-2xl">
     <div className="flex justify-center">
       <FontAwesomeIcon className="text-5xl" icon={faLock}/>
     </div>
-    <div className="border p-8 m-8">
+    <div className="p-8 m-8">
       <form className="flex flex-col" onSubmit={handleSubmit}>
         <label className="text-2xl">Email:</label>
-        <input className="border p-2 my-2 text-xl"
+        <input className="border p-2 my-2 text-xl rounded-xl"
           type="text"
           placeholder="Enter email..."
           name="email"
@@ -41,7 +41,7 @@ export default function Login() {
           onChange={(e) => {setEmail(e.target.value)}}
         />
         <label className="text-2xl">Password:</label>
-        <input className="border p-2 my-2 text-xl"
+        <input className="border p-2 my-2 text-xl rounded-xl"
           type="password"
           placeholder="Enter password..."
           name="password"
@@ -49,7 +49,7 @@ export default function Login() {
           onChange={(e) => {setPassword(e.target.value)}}
         />
         <button 
-          className="border p-2 my-2 bg-sky-500 text-3xl"
+          className="border p-2 my-2 bg-sky-500 text-3xl rounded-xl"
           onClick={() => {
             handleSubmit();
           }}
