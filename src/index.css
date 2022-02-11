@@ -3,13 +3,37 @@
 @tailwind utilities;
 
 .btn{
-  @apply rounded-full bg-green-500 py-2 px-3 uppercase text-xs font-bold cursor-pointer tracking-wider hover:scale-105 ease-in duration-100;
+  @apply min-h-[50px] max-h-[50px] rounded-full bg-green-500 px-3 uppercase text-base font-semibold cursor-pointer tracking-wider hover:scale-105 ease-in duration-100;
+}
+
+.btn-clicked{ 
+  @apply min-h-[50px] max-h-[50px] rounded-full bg-green-300 px-3 uppercase text-base font-semibold cursor-pointer tracking-wider hover:scale-105 ease-in duration-100;
 }
 
 .media-avatar{
   @apply inline-block h-20 w-20 rounded-full border-black border-double ring-2 ring-white hover:scale-125 ease-in duration-100;
 }
 
-body, html {
-  @apply h-screen
+.like-btn{
+  @apply text-7xl text-slate-400 hover:text-green-500 cursor-pointer
+}
+
+.like-btn-clicked{
+  @apply text-7xl text-slate-400 text-green-500 cursor-pointer
+}
+
+.meh-btn{
+  @apply text-7xl text-slate-400 hover:text-amber-500 cursor-pointer
+}
+
+.meh-btn-clicked{
+  @apply text-7xl text-slate-400 text-amber-500 cursor-pointer
+}
+
+.dislike-btn{
+  @apply text-7xl text-slate-400 hover:text-red-500 cursor-pointer
+}
+
+.dislike-btn-clicked{
+  @apply text-7xl text-slate-400 text-red-500 cursor-pointer
 }

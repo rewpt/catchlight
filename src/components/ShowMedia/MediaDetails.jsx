@@ -9,17 +9,18 @@ import StreamsOn from './StreamsOn'
 
 export default function MediaDetails() {
   return (
-   <div className="grid grid-cols-3 gap-y-3 mt-10 mx-10">
+   <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-3 mt-10 mx-10">
      <MediaPoster />
      <Title />
      <RatingBar />
      <FriendInteractions />
-     <RatingFaces />
      <StreamsOn />
-     <div>
-      <button className="btn">Watched!</button>
-      <button className="btn">Add to Watch List</button>
+     <div className=' flex'>
+      <button className="btn-clicked mr-1">Watched!</button>
+      <button className="btn ml-1">Add to Watch List</button>
     </div>
+     
+     
     
    </div>
   );
