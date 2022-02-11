@@ -4,7 +4,7 @@ import FriendAvatarItem from './FriendAvatarItem'
 
 export default function FriendAvatarContainer() {
   return (
-    <div className="-space-x-5 overflow-hidden relative ">
+    <div className="-space-x-5">
       <FriendAvatarItem />
       <FriendAvatarItem />
       <FriendAvatarItem />
