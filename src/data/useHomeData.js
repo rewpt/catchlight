@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function setHomePageData(){
+export default function useHomePageData(){
   const [state, setState] = useState();
 
   useEffect(() => {
@@ -11,7 +11,7 @@ function setHomePageData(){
       }
     }
 
-    const getUser = axios.get(`/api/users/`, axiosConfig)
+    const getUser = axios.get(`/api/users/user`, axiosConfig)
     const getFriends = axios.get(`/api/friends/`, axiosConfig)
   })
 }
