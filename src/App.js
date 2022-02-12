@@ -3,10 +3,15 @@ import Nav from './components/Nav';
 import SearchBox from './components/SearchBox'
 import { Outlet} from "react-router-dom";
 import React from 'react';
+import useHomeData from './data/useHomeData'
 import './index.css';
 
 
 function App() {
+
+  // const userData = useHomeData()
+  // example for calling userData
+
   return (
     <React.Fragment>
         <div className="absolute flex content-center h-screen w-screen bg-white ">
