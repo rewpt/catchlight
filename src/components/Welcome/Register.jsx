@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
@@ -12,6 +12,9 @@ export default function Register() {
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [name, setName] = useState('');
+
+  let navigate = useNavigate();
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,7 +31,7 @@ export default function Register() {
         password
       });
       localStorage.setItem('userToken', response.data.refreshToken);
-      console.log('User created successfully...');
+      navigate("/", { replace: true });
     } catch (err) {
       console.log (err);
     }
@@ -79,7 +82,7 @@ export default function Register() {
           onChange={(e) => {setPasswordConfirmation(e.target.value)}}
         />
         <button 
-          className="border p-2 my-2 bg-sky-500 text-3xl rounded-xl"
+          className="border p-2 my-2 bg-sky-500 text-3xl rounded-xl hover:bg-sky-600"
           onClick={() => {
             handleSubmit();
           }}
@@ -87,7 +90,7 @@ export default function Register() {
         </button>
       </form>
       <div className="flex flex-row-reverse">
-        <Link to="/login" className="flex flex-row-reverse p-2 py-2 text-blue-500">Back to login</Link>
+        <Link to="/login" className="flex flex-row-reverse p-2 py-2 text-blue-500 ">Back to login</Link>
       </div>
     </div>
     </div>

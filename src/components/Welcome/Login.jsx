@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 const axios = require('axios');
@@ -10,8 +10,11 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  let navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(`email === ${email}`, `password === ${password}`)
 
     try {
       const response = await axios.post('http://localhost:3001/api/auth/login', {
@@ -19,6 +22,8 @@ export default function Login() {
         password
       })
       localStorage.setItem('userToken', response.data.refreshToken);
+      console.log(response.status)
+        navigate("/", { replace: true });
     } catch (err) {
       console.log (err);
     }
@@ -49,7 +54,7 @@ export default function Login() {
           onChange={(e) => {setPassword(e.target.value)}}
         />
         <button 
-          className="border p-2 my-2 bg-sky-500 text-3xl rounded-xl"
+          className="border p-2 my-2 bg-sky-500 text-3xl rounded-xl hover:bg-sky-600"
           onClick={() => {
             handleSubmit();
           }}
