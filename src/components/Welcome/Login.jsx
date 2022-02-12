@@ -14,16 +14,18 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(`email === ${email}`, `password === ${password}`)
 
     try {
+      if (
+        password.length <= 0 || 
+        email.length <= 0
+        ) return console.log('error')
       const response = await axios.post('http://localhost:3001/api/auth/login', {
         email,
         password
       })
       localStorage.setItem('userToken', response.data.refreshToken);
-      console.log(response.status)
-        navigate("/", { replace: true });
+      navigate("/", { replace: true });
     } catch (err) {
       console.log (err);
     }

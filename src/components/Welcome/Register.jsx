@@ -20,7 +20,13 @@ export default function Register() {
     e.preventDefault();
 
     try {
-      if (password !== passwordConfirmation) return console.log('passwords do not match');
+      if (
+        password !== passwordConfirmation ||
+        passwordConfirmation.length <= 0 ||
+        password.length <= 0 || 
+        email.length <= 0 || 
+        name.length <= 0
+        ) return console.log('error');
       await axios.post('http://localhost:3001/api/users/register', {
         email,
         password,
