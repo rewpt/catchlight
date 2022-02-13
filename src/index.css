@@ -14,8 +14,23 @@
   @apply inline-block h-20 w-20 rounded-full border-black border-double ring-2 ring-white hover:scale-125 ease-in duration-100;
 }
 
+.media-avatar-popout{
+  @apply inline-block h-4 w-4 rounded-full border-black border-double ring-2 ring-slate-300 hover:scale-125 ease-in duration-100;
+}
+
+.add-to-watch-popout{
+  @apply inline-block h-4 w-4 rounded-full border-black text-rose-500 border-double ring-2 ring-slate-300 hover:scale-125 ease-in duration-100;
+}
+
+.rating-face-popout{
+  @apply inline-block h-4 w-4 rounded-full border-black border-double ring-2 ring-slate-300 hover:scale-125 ease-in duration-100;
+}
+
 .like-btn{
   @apply text-7xl text-slate-400 hover:text-green-500 cursor-pointer
+}
+.like-btn-sml{
+  @apply text-slate-400 hover:text-green-500 cursor-pointer
 }
 
 .like-btn-clicked{
@@ -24,6 +39,10 @@
 
 .meh-btn{
   @apply text-7xl text-slate-400 hover:text-amber-500 cursor-pointer
+}
+
+.meh-btn-sml{
+  @apply text-slate-400 hover:text-amber-500 cursor-pointer
 }
 
 .meh-btn-clicked{
@@ -36,4 +55,8 @@
 
 .dislike-btn-clicked{
   @apply text-7xl text-slate-400 text-red-500 cursor-pointer
+}
+
+.dislike-btn-sml{
+  @apply text-slate-400 hover:text-red-500 cursor-pointer
 }

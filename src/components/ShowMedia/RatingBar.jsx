@@ -4,7 +4,7 @@ import { faFaceGrin, faFaceFrown, faFaceMeh } from '@fortawesome/free-solid-svg-
 
 export default function RatingBar() {
   return (
-    <div className='ml-5 row-span-2 justify-items-center grid grid-cols-3'>
+    <div className='row-span-2 justify-items-center grid grid-cols-3'>
      <div className='like-container'>
        <div className='flex items-end h-full bg-gray-200 w-full rounded-full'>
         <div className='h-1/2 rounded-b-full bg-green-200 w-full'></div>

@@ -9,7 +9,7 @@ import StreamsOn from './StreamsOn'
 
 export default function MediaDetails() {
   return (
-   <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-3 mt-10 mx-10">
+   <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-6 mt-10 mx-10">
      <MediaPoster />
      <Title />
      <RatingBar />
