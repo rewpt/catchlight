@@ -24,7 +24,7 @@ export default function Login() {
         email,
         password
       })
-      localStorage.setItem('userToken', response.data.refreshToken);
+      localStorage.setItem('userToken', response.data.jwtToken);
       navigate("/", { replace: true });
     } catch (err) {
       console.log (err);
