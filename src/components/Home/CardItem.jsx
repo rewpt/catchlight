@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import BottomPop from "./BottomPop"
 
-export default function CardItem({ imageSource }) {
+export default function CardItem(props) {
   const [hidden, setHidden] = useState(true);
   
   return (
@@ -13,9 +13,9 @@ export default function CardItem({ imageSource }) {
     onMouseLeave={(e) => {
       setHidden(true);
     }}
-    className="flex flex-col mt-10 min-w-[150px] max-h-[220px] mx-4 hover:scale-110 ease-in duration-100 origin-bottom"
+    className="flex flex-col mt-10 min-w-[150px] max-h-[220px] mx-4 hover:scale-120 ease-in duration-100 origin-bottom"
     >
-      <img className='h-full w-full'  src={imageSource} alt="" />  
+      <img className='h-full w-full'  src={props.image} alt="" />  
       {!hidden && (<BottomPop />)}
     </div>
 
