@@ -12,6 +12,7 @@ export default function getUsers() {
           Authorization: `Bearer ${localStorage.getItem('userToken')}`
         }
       });
+      console.log({users});
     } catch (err) {
       console.log(err);
     };
