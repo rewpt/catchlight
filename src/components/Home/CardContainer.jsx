@@ -2,7 +2,10 @@ import React from "react";
 import CardItem from "./CardItem";
 
 export default function CardContainer(props) {
+
   const { results } = props;
+  console.log(props.mediaData);
+
   return (
     <div>
       <div className="mt-3 mx-6 text-2xl font-bold px-6 text-rose-500">

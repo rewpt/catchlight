@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from "react";
-// import getUsers from '../../hooks/getUsers';
+import CardContainer from "./CardContainer";
+
 const axios = require('axios');
 
-export default function Test() {
-  
+export default function FriendRecommendations(props) {
+
   const [mediaData, setMediaData] = useState([]);
   
   async function getMedia() {
@@ -25,13 +26,14 @@ export default function Test() {
       setMediaData(res);
     })
   }, []);
-  
-  // console.log(mediaData)
+
   return (
     <div>
-      {mediaData.map((i) => {
-        return <h1>{i.id}, {i.name}, {i.email}</h1>
-      })}    
+      <CardContainer
+        mediaData={mediaData}
+      >
+        {props.children}
+      </CardContainer>
     </div>
-  )
-}
+  );
+};
