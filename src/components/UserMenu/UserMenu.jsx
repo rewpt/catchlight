@@ -3,7 +3,7 @@ import { Menu, Transition } from '@headlessui/react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
 import UserAvatar from './UserAvatar'
-import NewAvatarBox from './NewAvatarBox'
+import { useNavigate } from 'react-router-dom'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -13,6 +13,19 @@ function classNames(...classes) {
 
 export default function UserMenu() {
   const navItemR = "md:my-0 my-7 md:ml-8 cursor-pointer text-2xl hover:text-gray-400 duration-300"
+  const navigate = useNavigate()
+
+  const handleLogout = async (e) => {
+    e.preventDefault();
+
+    try {
+      localStorage.clear();
+      navigate('/login')
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
 
   return (
     <Menu as="div" className="relative inline-block">
@@ -33,9 +46,8 @@ export default function UserMenu() {
       >
         <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
-            <Menu.Item>
-                <NewAvatarBox />
-                <UserAvatar />
+            <Menu.Item as="div">
+              <UserAvatar />
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
@@ -66,6 +78,7 @@ export default function UserMenu() {
                 {({ active }) => (
                   <button
                     type="submit"
+                    onClick={handleLogout}
                     className={classNames(
                       active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                       'block w-full text-left px-4 py-2 text-sm'
