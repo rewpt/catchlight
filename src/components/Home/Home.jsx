@@ -3,6 +3,8 @@ import axios from "axios";
 import CardContainer from "./CardContainer";
 import SearchBar from "./SearchBar";
 import FriendRecommendations from "./FriendRecommendations";
+import WatchList from "./WatchList";
+import Watched from "./Watched";
 
 export default function Home() {
   const [showSearch, setShowSearch] = useState(false);
@@ -27,8 +29,8 @@ export default function Home() {
       <SearchBar onSearch={(term) => setTerm(term)} />
       {showSearch && <CardContainer results={results}>Search</CardContainer>}
       <FriendRecommendations>Friend's Recommendation</FriendRecommendations>
-      <CardContainer>Watch List</CardContainer>
-      <CardContainer>Watched</CardContainer>
+      <WatchList>Watch List</WatchList>
+      <Watched>Watched</Watched>
     </React.Fragment>
   );
 }
