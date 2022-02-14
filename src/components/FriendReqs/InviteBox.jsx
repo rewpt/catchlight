@@ -21,7 +21,7 @@ export default function InviteBox() {
     }
   };
   return (
-    <div className="fixed text-lg backdrop-blur z-50 p-3 rounded-md overflow-hidden  min-w-[300px] absolute top-[65px] right-0">
+    <div className=" text-lg backdrop-blur z-50 p-3 rounded-md overflow-hidden  min-w-[300px] absolute top-[65px] right-0">
       <form onSubmit={submitFriendReq}>
         <label className="block">
           <span className="pl-2 after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
