@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBell,
@@ -7,12 +8,18 @@ import {
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import FriendNotification from "./FriendReqs/FriendNotification";
+import InviteBox from "./FriendReqs/InviteBox";
 
 export default function Nav() {
+  const [showFriendRequestBox, setShowFriendRequestBox] = useState(false);
+  const [showNotificationBox, setShowNotificationBox] = useState(true);
+  const [hasFriendRequest, setHasFriendRequest] = useState(true);
   const navItemR =
     "md:my-0 my-7 md:ml-8 cursor-pointer text-2xl hover:text-gray-400 duration-300";
   const hamburger = "text-2xl absolute right-8 top-6 cursor-pointer md:hidden";
   let [open, setOpen] = React.useState(false);
+
   return (
     <div className="shadow-md w-full sticky top-0 left-0 z-20">
       <div className="md:flex items-center justify-between bg-white py-4 md:px-10 px-7">
@@ -20,9 +27,9 @@ export default function Nav() {
           <span className="text-3xl text-indigo-600 mr-1 pt-2"></span>
           Catchlight
         </div>
-        <Link to="/showmedia">Temp Showmedia Link</Link>
+        {/* <Link to="/showmedia">Temp Showmedia Link</Link>
         <Link to="/welcome">Temp Welcome Link</Link>
-        <Link to="/">Temp Home Link</Link>
+        <Link to="/">Temp Home Link</Link> */}
         <div onClick={() => setOpen(!open)} className="">
           <FontAwesomeIcon
             name={open ? "close" : "menu"}
@@ -39,10 +46,15 @@ export default function Nav() {
         >
           <li>
             <FontAwesomeIcon className={navItemR} icon={faBell} />
+            {hasFriendRequest && (
+              <div className="absolute rounded full top-[20px] right-[160px] z-50 w-[10px] h-[10px] bg-rose-400"></div>
+            )}
+            {showNotificationBox && <FriendNotification />}
           </li>
 
           <li>
             <FontAwesomeIcon className={navItemR} icon={faUserPlus} />
+            {showFriendRequestBox && <InviteBox />}
           </li>
           <li>
             <FontAwesomeIcon className={navItemR} icon={faCircleUser} />
