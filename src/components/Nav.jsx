@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBell, faUserPlus, faCircleUser, faBars } from '@fortawesome/free-solid-svg-icons'
+import { faBell, faUserPlus, faBars } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
+import UserMenu from './UserMenu/UserMenu';
 
 export default function Nav() {
   const navItemR = "md:my-0 my-7 md:ml-8 cursor-pointer text-2xl hover:text-gray-400 duration-300"
   const hamburger = "text-2xl absolute right-8 top-6 cursor-pointer md:hidden"
   let [open, setOpen] = React.useState(false);
+
   return (
     <div className='shadow-md w-full sticky top-0 left-0 z-20'>
       <div className='md:flex items-center justify-between bg-white py-4 md:px-10 px-7'>
@@ -27,7 +29,7 @@ export default function Nav() {
         md:pl-0 pl-9 transition-all duration-400 ease-in ${open ? 'top-20 opacity-100' : 'top-[-490px]'} md:opacity-100 opacity-80`}>
           <li><FontAwesomeIcon className={navItemR} icon={faBell} /></li>
           <li><FontAwesomeIcon className={navItemR} icon={faUserPlus} /></li>
-          <li><FontAwesomeIcon className={navItemR} icon={faCircleUser} /></li>
+          <li><UserMenu /></li>
         </ul>
       </div>
     </div>
