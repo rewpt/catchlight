@@ -1,14 +1,14 @@
 const axios = require('axios');
 
-export default async function getUsers() {
+export default async function getUser() {
 
     try {
-      const users = await axios.get('/api/users', {
+      const user = await axios.get('/api/users/user', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('userToken')}`
         }
       })
-      return users;
+      return user;
     } catch (err) {
       console.log(err);
     };

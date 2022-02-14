@@ -6,7 +6,7 @@ import Register from "./components/Welcome/Register";
 import ShowMedia from './components/ShowMedia/ShowMedia';
 import Home from './components/Home/Home'
 import Test from "./components/TestPage/Test";
-
+import GetUserTest from "./components/TestPage/GetUserTest";
 
 import App from "./App";
 
@@ -20,6 +20,8 @@ ReactDOM.render(
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/test" element={<Test />} />
+      <Route path="/testuser" element={<GetUserTest />} />
+
 
       <Route path="/" element={<App />}>
         <Route index element={<Home />} />

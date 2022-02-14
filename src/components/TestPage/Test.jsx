@@ -1,16 +1,23 @@
 import React from 'react'
+import { useState, useEffect } from 'react'
 import getUsers from '../../hooks/getUsers';
+
 
 export default function Test() {
   
+  const [users, setUsers] = useState([]);
 
-  // userToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsI…3NjB9.aLaaQ4RVesaksRNtie1TjwlObq5ScLojzhyyQ2k1m7M
+  useEffect(() => {
+    getUsers().then((res) => {
+      setUsers(res.data.users);
+    });
+  }, []);
 
-  getUsers();
-  
   return (
     <div>
-      users
+      {users.map((user) => {
+        return <h1>{user.id}, {user.name}, {user.email}</h1>
+      })}
     </div>
   )
 }
