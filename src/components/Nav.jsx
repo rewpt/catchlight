@@ -16,9 +16,9 @@ export default function Nav() {
           </span>
           Catchlight
         </div>
-        <Link to="/showmedia">Temp Showmedia Link</Link>
-        <Link to="/welcome">Temp Welcome Link</Link>
-        <Link to="/">Temp Home Link</Link>
+        <Link to="/showmedia">Showmedia</Link>
+        <Link to="/login">Login</Link>
+        <Link to="/">Home</Link>
         <div onClick={()=>setOpen(!open)} className=''>
         <FontAwesomeIcon name={open ? 'close' : 'menu'} className={hamburger}icon={faBars} />
         </div>
