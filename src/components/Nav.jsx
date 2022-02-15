@@ -10,11 +10,27 @@ import {
 import { Link } from "react-router-dom";
 import FriendNotification from "./FriendReqs/FriendNotification";
 import InviteBox from "./FriendReqs/InviteBox";
+import axios from "axios";
 
 export default function Nav() {
   const [showFriendRequestBox, setShowFriendRequestBox] = useState(false);
   const [showNotificationBox, setShowNotificationBox] = useState(true);
   const [hasFriendRequest, setHasFriendRequest] = useState(true);
+
+  const getFriendReqs = async (e) => {
+    e.preventDefault();
+    try {
+      const token = localStorage.getItem("userToken");
+      const response = await axios.get(
+        "http://localhost:3001/api/friends/requests",
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      console.log(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const navItemR =
     "md:my-0 my-7 md:ml-8 cursor-pointer text-2xl hover:text-gray-400 duration-300";
   const hamburger = "text-2xl absolute right-8 top-6 cursor-pointer md:hidden";
@@ -49,7 +65,9 @@ export default function Nav() {
             {hasFriendRequest && (
               <div className="absolute rounded full top-[20px] right-[160px] z-50 w-[10px] h-[10px] bg-rose-400"></div>
             )}
-            {showNotificationBox && <FriendNotification />}
+            {showNotificationBox && (
+              <FriendNotification getFriendReqs={getFriendReqs} />
+            )}
           </li>
 
           <li>

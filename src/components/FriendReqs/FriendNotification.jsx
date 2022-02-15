@@ -1,21 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-export default function FriendNotification() {
-  const getFriendReqs = async (e) => {
-    e.preventDefault();
-    try {
-      const token = localStorage.getItem("userToken");
-      const response = await axios.get(
-        "http://localhost:3001/api/friends/requests",
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-      console.log(response.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  const token = localStorage.getItem("userToken");
+export default function FriendNotification(props) {
   return (
     <div className="text-lg bg-white border-black border-1 border-solid z-50 overflow-hidden  w-[400px] absolute top-[64px] right-0">
       <div className="grid auto-cols-max grid-cols-3">
@@ -27,8 +13,9 @@ export default function FriendNotification() {
         <span className="w-full h-full">
           Brett (brett@gmail.com) wants to be your friend
         </span>
-        <button onClick={getFriendReqs} className="btn">
-          Add Friend
+        <button className="btn">Add Friend</button>
+        <button onClick={props.getFriendReqs} className="btn">
+          Get Friend Reqs
         </button>
       </div>
     </div>
