@@ -9,7 +9,7 @@ export default function FriendRecommendations(props) {
   
   async function getMedia() {
     try {
-      const media = await axios.get('/api/media', {
+      const media = await axios.get('/api/mediaFriendsRecommendations', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('userToken')}`
         }
