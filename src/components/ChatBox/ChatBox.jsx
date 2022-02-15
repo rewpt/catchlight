@@ -1,19 +1,28 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import ChatContent from "./ChatContent";
+import classNames from "classnames";
+
 
 export default function ChatBox() {
 
+  const [selected, setSelected] = useState(false)
 
-  useEffect(() => {
+  function toggleChat() {
+    if(selected) {
+      return setSelected(false);
+    }
+    return setSelected(true);
+  };
 
-  }, []);
+  const toggleWidth = classNames("flex absolute h-full shadow-md bg-white drop-shadow-md ", {"w-1/4": selected, "": !selected});
 
   return (
-    <div className="fixed inset-y-0 right-0 w-16 border-black shadow-md bg-white drop-shadow-md">
-      <button className="fixed">
-        <FontAwesomeIcon className="w-10 h-10 -left-3" icon={faArrowCircleLeft} />
+    <div className={toggleWidth}>
+      <ChatContent />
+      <button onClick={()=> toggleChat()} className="flex items-center">
+        <FontAwesomeIcon className="w-10 h-10 -left-3 text-black" icon={faArrowRight} />
       </button>
     </div>
   );
