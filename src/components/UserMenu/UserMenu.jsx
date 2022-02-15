@@ -5,13 +5,14 @@ import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
 import UserAvatar from './UserAvatar'
 import { useNavigate } from 'react-router-dom'
 
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 
-
-export default function UserMenu() {
+export default function UserMenu(props) {
+  const {user} = props
   const navItemR = "md:my-0 my-7 md:ml-8 cursor-pointer text-2xl hover:text-gray-400 duration-300"
   const navigate = useNavigate()
 
@@ -24,9 +25,8 @@ export default function UserMenu() {
     } catch (err) {
       console.log(err);
     }
-  }
-
-
+  };
+  
   return (
     <Menu as="div" className="relative inline-block">
       <div>
@@ -47,7 +47,7 @@ export default function UserMenu() {
         <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
             <Menu.Item as="div">
-              <UserAvatar />
+              <UserAvatar imageUrl={user.profile_picture}/>
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
@@ -57,7 +57,7 @@ export default function UserMenu() {
                     'block px-4 py-2 text-sm pointer-events-none'
                   )}
                 >
-                  Welcome Brett!
+                  Welcome {user.name}!
                 </div>
               )}
             </Menu.Item>
@@ -69,7 +69,7 @@ export default function UserMenu() {
                     'block px-4 py-2 text-sm pointer-events-none'
                   )}
                 >
-                  brettbilyk@gmail.com
+                  {user.email}
                 </div>
               )}
             </Menu.Item>
