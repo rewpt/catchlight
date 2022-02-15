@@ -1,7 +1,8 @@
 // import './App.css';
 import Nav from './components/Nav';
+import ChatBox from './components/ChatBox/ChatBox';
 import SearchBox from './components/SearchBox'
-import { Outlet} from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import React from 'react';
 import './index.css';
 
@@ -9,7 +10,8 @@ import './index.css';
 function App() {
   return (
     <React.Fragment>
-        <div className="absolute flex content-center h-screen w-screen bg-white ">
+        <div className="absolute flex content-center h-screen w-screen bg-gray-200 ">
+          <ChatBox />
           <div className="relative h-screen max-w-[1000px] mx-auto bg-white drop-shadow-2xl border-t-4 border-rose-500">
             <Nav />
             <SearchBox />
