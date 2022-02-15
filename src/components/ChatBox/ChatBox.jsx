@@ -16,13 +16,14 @@ export default function ChatBox() {
     return setSelected(true);
   };
 
-  const toggleWidth = classNames("flex absolute h-full shadow-md bg-white drop-shadow-md ", {"w-1/4": selected, "": !selected});
+  const toggleWidth = classNames("flex absolute right-0 h-full shadow-md bg-white drop-shadow-md", {"w-1/4": selected, "": !selected});
+  const rotateArrow = classNames("w-10 h-10 -left-3 text-black", {"": selected, "rotate-180": !selected});
 
   return (
     <div className={toggleWidth}>
       <ChatContent />
       <button onClick={()=> toggleChat()} className="flex items-center">
-        <FontAwesomeIcon className="w-10 h-10 -left-3 text-black" icon={faArrowRight} />
+        <FontAwesomeIcon className={rotateArrow} icon={faArrowRight} />
       </button>
     </div>
   );
