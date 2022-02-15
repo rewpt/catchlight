@@ -2,8 +2,6 @@ const axios = require('axios');
 
 export default function getUsers() {
 
-  const userToken = localStorage.getItem('userToken');
-
   const axiosUsers = async () => {
 
     try {
