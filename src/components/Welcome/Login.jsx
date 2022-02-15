@@ -57,9 +57,7 @@ export default function Login() {
         />
         <button 
           className="border p-2 my-2 bg-sky-500 text-3xl rounded-xl hover:bg-sky-600"
-          onClick={() => {
-            handleSubmit();
-          }}
+          type="submit"
         >Login
         </button>
       </form>
