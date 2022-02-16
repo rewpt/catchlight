@@ -1,59 +1,54 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBell,
   faUserPlus,
-  faCircleUser,
   faBars,
+  faEye,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import FriendNotificationBox from "./FriendReqs/FriendNotificationBox";
-import InviteBox from "./FriendReqs/InviteBox";
-import axios from "axios";
+import UserMenu from "./UserMenu/UserMenu";
 
 export default function Nav() {
-  const [incomingFriendReqs, setIncomingFriendReqs] = useState([]);
-  const [showFriendRequestBox, setShowFriendRequestBox] = useState(false);
-  const [showNotificationBox, setShowNotificationBox] = useState(true);
-  const [hasFriendRequest, setHasFriendRequest] = useState(true);
-
-  const getFriendReqs = async (e) => {
-    e.preventDefault();
-    try {
-      const token = localStorage.getItem("userToken");
-      const response = await axios.get(
-        "http://localhost:3001/api/friends/requests",
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-      setIncomingFriendReqs([...response.data]);
-      console.log(incomingFriendReqs);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   const navItemR =
     "md:my-0 my-7 md:ml-8 cursor-pointer text-2xl hover:text-gray-400 duration-300";
-  const hamburger = "text-2xl absolute right-8 top-6 cursor-pointer md:hidden";
+  const hamburger =
+    "text-2xl absolute text-black right-8 top-4 z-20 cursor-pointer md:hidden";
   let [open, setOpen] = React.useState(false);
+  const [user, setUser] = useState({
+    name: null,
+    email: null,
+    profile_picture: null,
+  });
+
+  useEffect(() => {
+    async function getUser() {
+      try {
+        const axiosUser = await axios.get("/api/users/user", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+          },
+        });
+        setUser(axiosUser.data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    return getUser();
+  }, []);
 
   return (
     <div className="shadow-md w-full sticky top-0 left-0 z-20">
       <div className="md:flex items-center justify-between bg-white py-4 md:px-10 px-7">
         <div className="font-bold text-2xl cursor-pointer flex items-center text-gray-800">
-          <span className="text-3xl text-indigo-600 mr-1 pt-2"></span>
-          Catchlight
+          <FontAwesomeIcon className="text-logo" icon={faEye} />
+          <Link to="/">Catchlight</Link>
         </div>
-        {/* <Link to="/showmedia">Temp Showmedia Link</Link>
-        <Link to="/welcome">Temp Welcome Link</Link>
-        <Link to="/">Temp Home Link</Link> */}
-        <div onClick={() => setOpen(!open)} className="">
-          <FontAwesomeIcon
-            name={open ? "close" : "menu"}
-            className={hamburger}
-            icon={faBars}
-          />
+        <div onClick={() => setOpen(!open)} className={hamburger}>
+          <FontAwesomeIcon name={open ? "close" : "menu"} icon={faBars} />
         </div>
         <ul
           className={`md:flex md:items-center md:pb-0 pb-12 absolute 
@@ -64,23 +59,12 @@ export default function Nav() {
         >
           <li>
             <FontAwesomeIcon className={navItemR} icon={faBell} />
-            {hasFriendRequest && (
-              <div className="absolute rounded full top-[20px] right-[160px] z-50 w-[10px] h-[10px] bg-rose-400"></div>
-            )}
-            {showNotificationBox && (
-              <FriendNotificationBox
-                incomingFriendReqs={incomingFriendReqs}
-                getFriendReqs={getFriendReqs}
-              />
-            )}
           </li>
-
           <li>
             <FontAwesomeIcon className={navItemR} icon={faUserPlus} />
-            {showFriendRequestBox && <InviteBox />}
           </li>
           <li>
-            <FontAwesomeIcon className={navItemR} icon={faCircleUser} />
+            <UserMenu user={user} />
           </li>
         </ul>
       </div>

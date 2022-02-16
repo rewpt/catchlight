@@ -1,9 +1,6 @@
 const axios = require('axios');
 
-export default function getUsers() {
-
-  const axiosUsers = async () => {
-
+export default async function getUsers() {
     try {
       const users = await axios.get('/api/users', {
         headers: {
@@ -11,10 +8,9 @@ export default function getUsers() {
         }
       });
       console.log({users});
+      return users;
     } catch (err) {
       console.log(err);
     };
-  }
 
-  return axiosUsers();
 }
