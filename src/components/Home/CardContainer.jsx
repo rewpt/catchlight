@@ -3,7 +3,7 @@ import CardItem from "./CardItem";
 
 export default function CardContainer(props) {
   const { results } = props;
-
+  
   return (
     <div>
       <div className="mt-3 mx-6 text-2xl font-bold px-6 text-rose-500">
@@ -19,7 +19,7 @@ export default function CardContainer(props) {
 
         {props.mediaData &&
           props.mediaData.map((media) => {
-            return <CardItem image={media.image} />;
+            return <CardItem key={media.id} image={media.image} id={media.id} />;
           })}
       </div>
     </div>
