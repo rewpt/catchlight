@@ -15,9 +15,8 @@ export default function MediaDetails() {
     image: null,
     title: null,
     description: null
-  }
-  )
-  console.log(mediaDetails)
+  });
+
   useEffect(() => {
     async function getSingleMedia() {
 
