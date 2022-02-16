@@ -55,9 +55,8 @@ export default function Login() {
           value={password}
           onChange={(e) => {setPassword(e.target.value)}}
         />
-        <button 
+        <button type="submit"
           className="border p-2 my-2 bg-sky-500 text-3xl rounded-xl hover:bg-sky-600"
-          type="submit"
         >Login
         </button>
       </form>
