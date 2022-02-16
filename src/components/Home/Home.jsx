@@ -29,8 +29,8 @@ export default function Home() {
       <SearchBar onSearch={(term) => setTerm(term)} />
       {showSearch && <CardContainer results={results}>Search</CardContainer>}
       <FriendRecommendations>Friend's Recommendation</FriendRecommendations>
-      <WatchList>Watch List</WatchList>
-      <Watched>Watched</Watched>
+      <WatchList>My To-Watchlist</WatchList>
+      <Watched>Previously Enjoyed</Watched>
     </React.Fragment>
   );
 }
