@@ -1,6 +1,7 @@
 import FriendTab from "./FriendTab";
 
-export default function FriendTabGroup() {
+export default function FriendTabGroup(props) {
+
 
   return (
   <div className="relative flex-col bg-white py-2 w-14 h-full overflow-hidden">
