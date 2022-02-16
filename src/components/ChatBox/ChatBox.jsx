@@ -7,18 +7,18 @@ import classNames from "classnames";
 
 export default function ChatBox() {
 
-  const [selected, setSelected] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
 
   function toggleChat() {
-    setSelected(!selected)
+    setIsOpen(!isOpen)
   };
 
-  const toggleWidth = classNames("flex absolute right-0 h-full shadow-md bg-white drop-shadow-md z-50", {"w-1/4": selected, "": !selected});
-  const rotateArrow = classNames("w-10 h-10 -left-3 text-black", {"": selected, "rotate-180": !selected});
+  const toggleWidth = classNames("flex absolute right-0 h-full shadow-md bg-white drop-shadow-md z-50", {"w-1/4": isOpen, "": !isOpen});
+  const rotateArrow = classNames("w-10 h-10 -left-3 text-black", {"": isOpen, "rotate-180": !isOpen});
 
   return (
     <div className={toggleWidth}>
-      <ChatContent selected={selected}/>
+      <ChatContent isOpen={isOpen}/>
       <button onClick={()=> toggleChat()} className="flex items-center bg-gray-200">
         <FontAwesomeIcon className={rotateArrow} icon={faArrowRight} />
       </button>
