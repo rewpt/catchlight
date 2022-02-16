@@ -1,5 +1,6 @@
 // import './App.css';
 import Nav from './components/Nav';
+import ChatBox from './components/ChatBox/ChatBox'
 import SearchBox from './components/SearchBox'
 import { Outlet } from "react-router-dom";
 import React from 'react';
@@ -15,6 +16,7 @@ function App() {
             <SearchBox />
             <Outlet />
           </div>
+            <ChatBox />
         </div>
     </React.Fragment>
   );
