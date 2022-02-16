@@ -36,7 +36,6 @@ export default function WatchList (props) {
           if (mediaIDs.includes(mediaData.id)) {
             mediaArray.push(mediaData)
           }
-          console.log(mediaArray);
         }
 
         return mediaArray
