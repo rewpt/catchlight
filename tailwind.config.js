@@ -21,6 +21,9 @@ module.exports = {
       },
       scale: {
         '120': '1.2',
+      },
+      colors: {
+        logo: '#75424A'
       }
     },
   },

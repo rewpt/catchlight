@@ -13,8 +13,8 @@ export default function SearchBar(props) {
     onSearch(term);
   }, [term, onSearch]);
   return (
-    <div className=" bg-gray-200">
-      <div className="container h-[100px] flex justify-center items-center ">
+    <div className=" bg-gray-200 w-full">
+      <div className="h-[100px] w-full flex justify-center items-center ">
         <div className="relative">
           <form
             className="search__form"
@@ -26,7 +26,7 @@ export default function SearchBar(props) {
               placeholder="Search Any Movie"
               name="search"
               value={value}
-              onChange={event => setValue(event.target.value)}
+              onChange={(event) => setValue(event.target.value)}
             />
           </form>
           <div className="absolute top-4 right-3">
