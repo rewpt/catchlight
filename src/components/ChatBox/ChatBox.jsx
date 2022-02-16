@@ -10,10 +10,7 @@ export default function ChatBox() {
   const [selected, setSelected] = useState(false)
 
   function toggleChat() {
-    if(selected) {
-      return setSelected(false);
-    }
-    return setSelected(true);
+    setSelected(!selected)
   };
 
   const toggleWidth = classNames("flex absolute right-0 h-full shadow-md bg-white drop-shadow-md z-50", {"w-1/4": selected, "": !selected});
@@ -21,7 +18,7 @@ export default function ChatBox() {
 
   return (
     <div className={toggleWidth}>
-      <ChatContent />
+      <ChatContent selected={selected}/>
       <button onClick={()=> toggleChat()} className="flex items-center bg-gray-200">
         <FontAwesomeIcon className={rotateArrow} icon={faArrowRight} />
       </button>
