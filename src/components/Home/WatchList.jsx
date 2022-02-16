@@ -53,12 +53,10 @@ export default function WatchList (props) {
   }, []);
   
   return (
-    <div>
       <CardContainer
         mediaData={mediaData}
       >
         {props.children}
       </CardContainer>
-    </div>
   );
 };

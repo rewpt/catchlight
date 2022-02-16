@@ -56,12 +56,10 @@ export default function FriendRecommendations(props) {
   }, []);
   
   return (
-    <div>
       <CardContainer
         mediaData={mediaData}
       >
         {props.children}
       </CardContainer>
-    </div>
   );
 };
