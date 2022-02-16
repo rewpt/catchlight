@@ -8,11 +8,12 @@ import {
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import FriendNotification from "./FriendReqs/FriendNotification";
+import FriendNotificationBox from "./FriendReqs/FriendNotificationBox";
 import InviteBox from "./FriendReqs/InviteBox";
 import axios from "axios";
 
 export default function Nav() {
+  const [incomingFriendReqs, setIncomingFriendReqs] = useState([]);
   const [showFriendRequestBox, setShowFriendRequestBox] = useState(false);
   const [showNotificationBox, setShowNotificationBox] = useState(true);
   const [hasFriendRequest, setHasFriendRequest] = useState(true);
@@ -25,7 +26,8 @@ export default function Nav() {
         "http://localhost:3001/api/friends/requests",
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      console.log(response.data);
+      setIncomingFriendReqs([...response.data]);
+      console.log(incomingFriendReqs);
     } catch (err) {
       console.log(err);
     }
@@ -66,7 +68,10 @@ export default function Nav() {
               <div className="absolute rounded full top-[20px] right-[160px] z-50 w-[10px] h-[10px] bg-rose-400"></div>
             )}
             {showNotificationBox && (
-              <FriendNotification getFriendReqs={getFriendReqs} />
+              <FriendNotificationBox
+                incomingFriendReqs={incomingFriendReqs}
+                getFriendReqs={getFriendReqs}
+              />
             )}
           </li>
 
