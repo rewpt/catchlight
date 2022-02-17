@@ -11,29 +11,24 @@ import axios from 'axios';
 
 export default function MediaDetails() {
   const { id } = useParams()
-  const [mediaDetails, setMediaDetails] = useState({
-    image: null,
-    title: null,
-    description: null
-  });
+  const [ mediaInteraction, setMediaInteraction] = useState(false)
+  const [ mediaDetails, setMediaDetails] = useState({});
 
   useEffect(() => {
-    async function getSingleMedia() {
-
-      try {
-        const singleMedia = await axios.get(`/api/media/${id}`, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('userToken')}`
-          }
-        });
-        return setMediaDetails(singleMedia.data)
-
-      } catch(err) {
-        console.error(err)
+    const jwt = {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('userToken')}`
       }
     }
+    
+    const singleMedia = axios.get(`/api/media/${id}`, jwt);
+    const userInteraction = axios.get(`/api/media/${id}/interactions/`, jwt);
 
-    return getSingleMedia()
+    Promise.all([singleMedia, userInteraction])
+    .then(([media, interactions]) => {
+    setMediaDetails(media.data)
+    setMediaInteraction(interactions.data)
+    })
   }, [id]);
 
   return (
