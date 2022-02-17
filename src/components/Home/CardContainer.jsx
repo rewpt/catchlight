@@ -9,17 +9,18 @@ export default function CardContainer(props) {
       <div className="mt-3 mx-6 text-2xl font-bold px-6 text-rose-500">
         {props.children}
       </div>
-      <div className="flex overflow-x-scroll whitespace-nowrap w-full min-w-[200px] h-[305px] rounded-xl px-7">
+      <div className="flex overflow-x-scroll whitespace-nowrap w-full min-w-[200px] h-[320px] rounded-xl px-7">
         {results && console.log("CONSOLE.LOG", results)}
 
         {results &&
           results.map((media) => {
-            return <CardItem key={media.id} {...media} />;
+            return <CardItem key={media.id} mediaID={media.id}{...media} />;
           })}
 
         {props.mediaData &&
           props.mediaData.map((media) => {
             return <CardItem 
+              key={media.id}
               image={media.image} 
               mediaID={media.id}
               />;

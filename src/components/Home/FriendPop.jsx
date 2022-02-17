@@ -63,8 +63,10 @@ export default function FriendPop(props) {
 
   return (
     <div className="ml-2 xs:justify-center sm:justify-center lg:justify-start -space-x-2">
-      {friends.map(image => {
+      {friends.map((image, index) => {
+        
         return <img
+          key={index}
           className="media-avatar-popout"
           src={image.profile_picture}
           alt=""
