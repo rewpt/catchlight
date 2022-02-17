@@ -12,7 +12,6 @@ export default function MediaDetails() {
   const { id } = useParams()
   const [ mediaInteraction, setMediaInteraction] = useState({})
   const [ mediaDetails, setMediaDetails] = useState({});
-  const [ buttonText, setButtonText ] = useState("")
 
   useEffect(() => {
     const jwt = {
@@ -28,15 +27,6 @@ export default function MediaDetails() {
       .then(([media, interaction]) => {
         setMediaDetails(media.data)
         setMediaInteraction(interaction.data)
-
-        if(interaction.data.rating === "interest") {
-          setButtonText("Remove from Watch List")
-        } else if(interaction.data.rating === undefined) {
-          setButtonText("Add to Watch List")
-        } else {
-          // i'm tired and don't know how to indicate to the user that a rating can be removed so i'm leaving this here for now
-          setButtonText("Remove your Rating")
-        }
       })
   }, [id]);
 
@@ -48,7 +38,8 @@ export default function MediaDetails() {
      <FriendInteractions />
      <StreamsOn />
      <div className=' flex'>
-     <MediaWatchedButton>{buttonText}</MediaWatchedButton>
+     {mediaInteraction.rating === "interest" && <MediaWatchedButton>Remove from Watch List</MediaWatchedButton>}
+     {mediaInteraction.rating === undefined && <MediaWatchedButton>Add to Watch List</MediaWatchedButton>}
     </div>
    </div>
   );
