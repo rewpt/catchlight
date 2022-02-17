@@ -3,11 +3,9 @@ import * as ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./components/Welcome/Login";
 import Register from "./components/Welcome/Register";
-import ShowMedia from './components/ShowMedia/ShowMedia';
 import Home from './components/Home/Home'
 import Test from "./components/TestPage/Test";
-
-
+import MediaDetails from "./components/ShowMedia/MediaDetails";
 import App from "./App";
 
 const axios = require('axios');
@@ -23,7 +21,7 @@ ReactDOM.render(
 
       <Route path="/" element={<App />}>
         <Route index element={<Home />} />
-        <Route path="showmedia" element={<ShowMedia />} />
+        <Route path="media/:id" element={<MediaDetails />} />
       </Route>
     </Routes>
   </BrowserRouter>,
