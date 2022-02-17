@@ -3,7 +3,7 @@ import useForm from "../../hooks/useForm";
 import axios from "axios";
 
 export default function InviteBox() {
-  const [email, updateEmail] = useForm("");
+  const [email, updateEmail, resetEmail] = useForm("");
   const submitFriendReq = async (e) => {
     e.preventDefault();
     try {
@@ -15,13 +15,14 @@ export default function InviteBox() {
         },
         { headers: { Authorization: `Bearer ${token}` } }
       );
+      resetEmail();
       console.log(response.data);
     } catch (err) {
       console.log(err);
     }
   };
   return (
-    <div className=" text-lg backdrop-blur z-50 p-3 rounded-md overflow-hidden  min-w-[300px] absolute top-[65px] right-0">
+    <div className=" text-lg bg-white drop-shadow-xl border-black border-1 border-solid z-50 overflow-hidden  w-[330px] absolute top-[64px] right-0">
       <form onSubmit={submitFriendReq}>
         <label className="block">
           <span className="pl-2 after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">

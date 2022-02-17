@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faX } from "@fortawesome/free-solid-svg-icons";
 
 export default function FriendNotification(props) {
+  const { setIncomingFriendReqs } = props;
   const respondFriendReq = async (friendResponse) => {
     try {
       const token = localStorage.getItem("userToken");
@@ -10,6 +11,11 @@ export default function FriendNotification(props) {
         "http://localhost:3001/api/friends/requests",
         { id: props.id, friendResponse: friendResponse },
         { headers: { Authorization: `Bearer ${token}` } }
+      );
+      setIncomingFriendReqs(
+        props.incomingFriendReqs.filter((req) => {
+          return req.id !== props.id;
+        })
       );
       console.log(response);
     } catch (err) {
@@ -35,13 +41,14 @@ export default function FriendNotification(props) {
       >
         <FontAwesomeIcon icon={faCheck} />
       </button>
-      <button className=" btn-friend-decline self-center justify-self-center col-span-2 mr-2">
-        <FontAwesomeIcon
-          onClick={() => {
-            respondFriendReq(false);
-          }}
-          icon={faX}
-        />
+      <button
+        onClick={() => {
+          console.log("Request rejected");
+          respondFriendReq(false);
+        }}
+        className=" btn-friend-decline self-center justify-self-center col-span-2 mr-2"
+      >
+        <FontAwesomeIcon icon={faX} />
       </button>
     </div>
   );
