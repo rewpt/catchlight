@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function SearchBar(props) {
   const [value, setValue] = useState("");
   const term = useDebounce(value, 400);
-
   const onSearch = useCallback(props.onSearch, [term]);
 
   useEffect(() => {
