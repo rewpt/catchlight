@@ -15,7 +15,7 @@ export default function CardItem(props) {
       className="flex flex-col mt-10 min-w-[150px] min-h-[220px] max-w-[150px] max-h-[220px] mx-4 hover:scale-120 ease-in duration-100 origin-bottom"
     >
       <img className="h-full w-full" src={props.image} alt="" />
-      {!hidden && <BottomPop />}
+      {!hidden && <BottomPop mediaID={props.mediaID} />}
     </div>
   );
 }

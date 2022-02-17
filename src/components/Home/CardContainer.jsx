@@ -19,7 +19,10 @@ export default function CardContainer(props) {
 
         {props.mediaData &&
           props.mediaData.map((media) => {
-            return <CardItem image={media.image} />;
+            return <CardItem 
+              image={media.image} 
+              mediaID={media.id}
+              />;
           })}
       </div>
     </div>
