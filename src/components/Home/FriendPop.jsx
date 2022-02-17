@@ -31,9 +31,11 @@ export default function FriendPop(props) {
           }
         });
 
-        console.log('mediaFriendsInteractions ===', mediaFriendsInteractions.data)
+        // console.log('mediaFriendsInteractions ===', mediaFriendsInteractions.data)
 
         const results = [];
+
+        console.log('props.mediaID', props.mediaID);
 
         for (const friend of friendsPictures.data) {
           console.log(`friend id:${friend.friend_id}`)
@@ -42,7 +44,8 @@ export default function FriendPop(props) {
             console.log(mediaFriend)
             if (friend.friend_id === mediaFriend.id) {
               for (const interactionMedia of mediaFriend.interactions) {
-                if (interactionMedia.id === props.mediaID) {
+                console.log(interactionMedia)
+                if (interactionMedia.media_id === props.mediaID) {
                   results.push({profile_picture: friend.profile_picture});
                 }
               }
@@ -69,7 +72,7 @@ export default function FriendPop(props) {
     // console.log('props',props)
   }, [])
   
-  console.log('booooooooo', friends.map(image => image.profile_picture))
+  // console.log('booooooooo', friends.map(image => image.profile_picture))
 
   return (
     <div className="ml-2 xs:justify-center sm:justify-center lg:justify-start -space-x-2">
