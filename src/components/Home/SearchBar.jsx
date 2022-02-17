@@ -6,15 +6,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function SearchBar(props) {
   const [value, setValue] = useState("");
   const term = useDebounce(value, 400);
-
   const onSearch = useCallback(props.onSearch, [term]);
 
   useEffect(() => {
     onSearch(term);
   }, [term, onSearch]);
   return (
-    <div className=" bg-gray-200">
-      <div className="container h-[100px] flex justify-center items-center ">
+    <div className=" bg-gray-200 w-full">
+      <div className="h-[100px] w-full flex justify-center items-center ">
         <div className="relative">
           <form
             className="search__form"
@@ -26,7 +25,7 @@ export default function SearchBar(props) {
               placeholder="Search Any Movie"
               name="search"
               value={value}
-              onChange={event => setValue(event.target.value)}
+              onChange={(event) => setValue(event.target.value)}
             />
           </form>
           <div className="absolute top-4 right-3">

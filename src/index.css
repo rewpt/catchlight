@@ -2,61 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-.btn{
+.btn {
   @apply min-h-[50px] max-h-[50px] rounded-full bg-green-500 px-3 uppercase text-base font-semibold cursor-pointer tracking-wider hover:scale-105 ease-in duration-100;
 }
 
-.btn-clicked{ 
+.btn-friend-accept {
+  @apply h-[50px] rounded-full bg-green-500 px-3 uppercase text-sm font-semibold cursor-pointer hover:scale-105 ease-in duration-100;
+}
+
+.btn-friend-decline {
+  @apply h-[50px] rounded-full bg-red-500 px-3 uppercase text-sm font-semibold cursor-pointer hover:scale-105 ease-in duration-100;
+}
+
+.btn-clicked {
   @apply min-h-[50px] max-h-[50px] rounded-full bg-green-300 px-3 uppercase text-base font-semibold cursor-pointer tracking-wider hover:scale-105 ease-in duration-100;
 }
 
-.media-avatar{
+.media-avatar {
   @apply inline-block h-20 w-20 rounded-full border-black border-double ring-2 ring-white hover:scale-125 ease-in duration-100;
 }
 
-.media-avatar-popout{
+.media-avatar-popout {
   @apply inline-block h-4 w-4 rounded-full border-black border-double ring-2 ring-slate-300 hover:scale-125 ease-in duration-100;
 }
 
-.add-to-watch-popout{
+.add-to-watch-popout {
   @apply inline-block h-4 w-4 rounded-full border-black text-rose-500 border-double ring-2 ring-slate-300 hover:scale-125 ease-in duration-100;
 }
 
-.rating-face-popout{
+.rating-face-popout {
   @apply inline-block h-4 w-4 rounded-full border-black border-double ring-2 ring-slate-300 hover:scale-125 ease-in duration-100;
 }
 
-.like-btn{
-  @apply text-7xl text-slate-400 hover:text-green-500 cursor-pointer
+.like-btn {
+  @apply text-7xl text-slate-400 hover:text-green-500 cursor-pointer;
 }
-.like-btn-sml{
-  @apply text-slate-400 hover:text-green-500 cursor-pointer
-}
-
-.like-btn-clicked{
-  @apply text-7xl text-slate-400 text-green-500 cursor-pointer
+.like-btn-sml {
+  @apply text-slate-400 hover:text-green-500 cursor-pointer;
 }
 
-.meh-btn{
-  @apply text-7xl text-slate-400 hover:text-amber-500 cursor-pointer
+.like-btn-clicked {
+  @apply text-7xl  text-green-500 cursor-pointer;
 }
 
-.meh-btn-sml{
-  @apply text-slate-400 hover:text-amber-500 cursor-pointer
+.meh-btn {
+  @apply text-7xl text-slate-400 hover:text-amber-500 cursor-pointer;
 }
 
-.meh-btn-clicked{
-  @apply text-7xl text-slate-400 text-amber-500 cursor-pointer
+.meh-btn-sml {
+  @apply text-slate-400 hover:text-amber-500 cursor-pointer;
 }
 
-.dislike-btn{
-  @apply text-7xl text-slate-400 hover:text-red-500 cursor-pointer
+.meh-btn-clicked {
+  @apply text-7xl  text-amber-500 cursor-pointer;
 }
 
-.dislike-btn-clicked{
-  @apply text-7xl text-slate-400 text-red-500 cursor-pointer
+.dislike-btn {
+  @apply text-7xl text-slate-400 hover:text-red-500 cursor-pointer;
 }
 
-.dislike-btn-sml{
-  @apply text-slate-400 hover:text-red-500 cursor-pointer
+.dislike-btn-clicked {
+  @apply text-7xl  text-red-500 cursor-pointer;
+}
+
+.dislike-btn-sml {
+  @apply text-slate-400 hover:text-red-500 cursor-pointer;
 }
