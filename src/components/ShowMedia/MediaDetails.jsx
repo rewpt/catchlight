@@ -6,6 +6,7 @@ import Title from './MediaTitle';
 import MediaPoster from './MediaPoster'
 import FriendInteractions from './FriendInteractions';
 import MediaDescription from './MediaDescription';
+import MediaWatchedButton from './MediaWatchedButton';
 import StreamsOn from './StreamsOn';
 import axios from 'axios';
 
@@ -13,6 +14,7 @@ export default function MediaDetails() {
   const { id } = useParams()
   const [ mediaInteraction, setMediaInteraction] = useState({})
   const [ mediaDetails, setMediaDetails] = useState({});
+  const [ buttonText, setButtonText ] = useState("")
 
   useEffect(() => {
     const jwt = {
@@ -25,10 +27,19 @@ export default function MediaDetails() {
     const userInteraction = axios.get(`/api/media/${id}/interactions/`, jwt);
 
     Promise.all([singleMedia, userInteraction])
-    .then(([media, interactions]) => {
-    setMediaDetails(media.data)
-    setMediaInteraction(interactions.data)
-    })
+      .then(([media, interaction]) => {
+        setMediaDetails(media.data)
+        setMediaInteraction(interaction.data)
+
+        if(interaction.data.rating === "interest") {
+          setButtonText("Remove from Watch List")
+        } else if(interaction.data.rating === undefined) {
+          setButtonText("Add to Watch List")
+        } else {
+          // i'm tired and don't know how to indicate to the user that a rating can be removed so i'm leaving this here for now
+          setButtonText("Remove your Rating")
+        }
+      })
   }, [id]);
 
   return (
@@ -39,8 +50,7 @@ export default function MediaDetails() {
      <FriendInteractions />
      <StreamsOn />
      <div className=' flex'>
-      <button className="btn-clicked mr-1">Watched!</button>
-      <button className="btn ml-1">Add to Watch List</button>
+     <MediaWatchedButton>{buttonText}</MediaWatchedButton>
     </div>
    </div>
   );
