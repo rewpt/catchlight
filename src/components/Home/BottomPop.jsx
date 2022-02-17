@@ -3,10 +3,10 @@ import FriendPop from './FriendPop'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFaceGrin, faFaceFrown, faFaceMeh, faCirclePlus } from '@fortawesome/free-solid-svg-icons'
 
-export default function BottomPop() {
+export default function BottomPop(props) {
   return(
     <div className='flex justify-between content-center bg-black h-[25px]'>
-      <FriendPop />
+      <FriendPop mediaID={props.mediaID}/>
 
         <button><FontAwesomeIcon title='Add to watch list' className='add-to-watch-popout' icon={faCirclePlus} /></button>
 

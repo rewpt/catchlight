@@ -1,7 +1,9 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import FriendNotificationBox from "./FriendReqs/FriendNotificationBox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import InviteBox from "./FriendReqs/InviteBox";
 import {
   faBell,
   faUserPlus,
@@ -12,6 +14,51 @@ import { Link } from "react-router-dom";
 import UserMenu from "./UserMenu/UserMenu";
 
 export default function Nav() {
+  const [incomingFriendReqs, setIncomingFriendReqs] = useState([]);
+  const [hasNewNotification, setHasNewNotification] = useState(false);
+  const [showFriendRequestBox, setShowFriendRequestBox] = useState(false);
+  const [showNotificationBox, setShowNotificationBox] = useState(false);
+  const [showProfile, setShowProfile] = useState(false);
+  const [bellClicked, setBellClicked] = useState(false);
+
+  const toggleIcons = (clickedIcon) => {
+    if (clickedIcon === "userProfile") {
+      setShowFriendRequestBox(false);
+      setShowNotificationBox(false);
+      setShowProfile(true);
+    } else if (clickedIcon === "friendRequestBox") {
+      setShowFriendRequestBox(!showFriendRequestBox);
+      setShowNotificationBox(false);
+      setShowProfile(false);
+    } else if (clickedIcon === "NotificationBox") {
+      setShowFriendRequestBox(false);
+      setShowNotificationBox(!showNotificationBox);
+      setShowProfile(false);
+      setHasNewNotification(false);
+    }
+  };
+
+  useEffect(() => {
+    const getFriendReqs = async () => {
+      try {
+        const token = localStorage.getItem("userToken");
+        const response = await axios.get(
+          "http://localhost:3001/api/friends/requests",
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+        setIncomingFriendReqs([...response.data]);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    const reqInterval = setInterval(() => {
+      getFriendReqs();
+    }, 5000);
+
+    return () => {
+      clearInterval(reqInterval);
+    };
+  });
   const navItemR =
     "md:my-0 my-7 md:ml-8 cursor-pointer text-2xl hover:text-gray-400 duration-300";
   const hamburger =
@@ -59,13 +106,43 @@ export default function Nav() {
         } md:opacity-100 opacity-80`}
         >
           <li>
-            <FontAwesomeIcon className={navItemR} icon={faBell} />
+            <FontAwesomeIcon
+              className={navItemR}
+              icon={faBell}
+              onClick={() => {
+                toggleIcons("NotificationBox");
+                setBellClicked(!bellClicked);
+              }}
+            />
+            {incomingFriendReqs.length > 0 && !bellClicked && (
+              <div className="absolute rounded full top-[20px] right-[160px] z-50 w-[10px] h-[10px] bg-rose-400"></div>
+            )}
+            {showNotificationBox && (
+              <FriendNotificationBox
+                hasNewNotification={hasNewNotification}
+                incomingFriendReqs={incomingFriendReqs}
+                // getFriendReqs={getFriendReqs}
+                setIncomingFriendReqs={setIncomingFriendReqs}
+              />
+            )}
           </li>
           <li>
-            <FontAwesomeIcon className={navItemR} icon={faUserPlus} />
+            <FontAwesomeIcon
+              className={navItemR}
+              icon={faUserPlus}
+              onClick={() => {
+                toggleIcons("friendRequestBox");
+              }}
+            />
+            {showFriendRequestBox && <InviteBox />}
           </li>
           <li>
-            <UserMenu user={user} />
+            <UserMenu
+              onClick={() => {
+                toggleIcons("userProfile");
+              }}
+              user={user}
+            />
           </li>
         </ul>
       </div>

@@ -1,12 +1,11 @@
-// import './App.css';
 import Nav from './components/Nav';
 import SearchBox from './components/SearchBox'
 import { Outlet } from "react-router-dom";
 import React from 'react';
 import './index.css';
 
-
 function App() {
+
   return (
     <React.Fragment>
         <div className="absolute flex content-center w-screen bg-gray-200 ">
