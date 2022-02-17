@@ -11,7 +11,7 @@ import axios from 'axios';
 
 export default function MediaDetails() {
   const { id } = useParams()
-  const [ mediaInteraction, setMediaInteraction] = useState(false)
+  const [ mediaInteraction, setMediaInteraction] = useState({})
   const [ mediaDetails, setMediaDetails] = useState({});
 
   useEffect(() => {
@@ -35,7 +35,7 @@ export default function MediaDetails() {
    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-6 mt-10 mx-10">
      <MediaPoster image={mediaDetails.image}/>
      <Title title={mediaDetails.title} description={mediaDetails.description}/>
-     <RatingBar />
+     <RatingBar mediaInteraction={mediaInteraction}/>
      <FriendInteractions />
      <StreamsOn />
      <div className=' flex'>
