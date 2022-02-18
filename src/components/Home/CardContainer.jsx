@@ -23,6 +23,8 @@ export default function CardContainer(props) {
               key={media.id}
               image={media.image} 
               mediaID={media.id}
+              refresh={props.refresh}
+              setRefresh={props.setRefresh}
               />;
           })}
       </div>

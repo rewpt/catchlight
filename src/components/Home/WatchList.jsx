@@ -50,7 +50,7 @@ export default function WatchList (props) {
     getMedia().then((res) => {
       setMediaData(res);
     });
-  }, []);
+  }, [props.refresh]);
   
   return (
       <CardContainer

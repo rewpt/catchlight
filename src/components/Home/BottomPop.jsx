@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import FriendPop from './FriendPop';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFaceGrin, faFaceFrown, faFaceMeh, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
@@ -10,11 +10,13 @@ export default function BottomPop(props) {
   // addToWatchList
   async function addToWatchList() {
     try {
-      const interaction = await axios.get(`/api/addToWatchList/${props.mediaID}`, {
+      await axios.get(`/api/addToWatchList/${props.mediaID}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('userToken')}`
         }
       });
+
+      props.setRefresh(!props.refresh);
     } catch (e) {
       console.log(e)
     }
