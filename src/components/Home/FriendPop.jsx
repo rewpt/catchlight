@@ -7,14 +7,6 @@ export default function FriendPop(props) {
 
   const [friends, setFriends] = useState([]);
 
-  // GET all friend's profile picture who'v interacted with a media
-  // user.profile_picture
-  //
-
-  // results
-  // const friendsPictures = [pic1, pic2, pic3, ect]
-
-
   useEffect(() => {
 
     async function getMediaFriends() {
@@ -55,21 +47,16 @@ export default function FriendPop(props) {
 
         // console.log('results', results)
         
-
         return results;
       } catch (e) {
         console.log(e)
       }
     }
 
-    
-    
-
     getMediaFriends().then((res) => {
       setFriends(res);
     });
 
-    // console.log('props',props)
   }, [])
   
   // console.log('booooooooo', friends.map(image => image.profile_picture))

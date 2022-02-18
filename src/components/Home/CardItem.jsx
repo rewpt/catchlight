@@ -18,7 +18,11 @@ export default function CardItem(props) {
       <Link to={`/media/${props.mediaID}`} key={props.mediaID}>
         <img className="h-full w-full no-underline decoration-0" src={props.image} alt="" />
       </Link>
-      {!hidden && <BottomPop mediaID={props.mediaID} />}
+      {!hidden && <BottomPop 
+      mediaID={props.mediaID} 
+      refresh={props.refresh}
+      setRefresh={props.setRefresh}
+      />}
     </div>
   );
 }
