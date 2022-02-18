@@ -28,7 +28,12 @@ export default function Home() {
   return (
     <React.Fragment>
       <SearchBar onSearch={(term) => setTerm(term)} />
-      {showSearch && <CardContainer results={results}>Search</CardContainer>}
+      {showSearch && <CardContainer 
+        refresh={refresh}
+        setRefresh={setRefresh}
+        results={results}>Search
+      </CardContainer>}
+
       <FriendRecommendations
         refresh={refresh}
         setRefresh={setRefresh}

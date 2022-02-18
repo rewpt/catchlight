@@ -14,7 +14,7 @@ export default function CardContainer(props) {
 
         {results &&
           results.map((media) => {
-            return <CardItem key={media.id} mediaID={media.id}{...media} />;
+            return <CardItem key={media.id} mediaID={media.id}refresh={props.refresh}setRefresh={props.setRefresh}{...media} />;
           })}
 
         {props.mediaData &&
