@@ -20,6 +20,8 @@ export default function BottomPop(props) {
       });
 
       props.setRefresh(!props.refresh);
+      setWatchListButton(!watchListButton);
+
     } catch (e) {
       console.log(e)
     }
@@ -35,6 +37,7 @@ export default function BottomPop(props) {
       });
 
       props.setRefresh(!props.refresh);
+      setWatchListButton(!watchListButton);
     } catch (e) {
       console.log(e)
     }
@@ -53,7 +56,7 @@ export default function BottomPop(props) {
             }
           });
           
-          props.setRefresh(!props.refresh);
+          // props.setRefresh(!props.refresh);
           
           // setWatchListButton(true);
           // console.log(isInWatchListData.data)
@@ -63,33 +66,52 @@ export default function BottomPop(props) {
         }
       }
 
+      
       isInWatchList().then((res) => {
         // timeout to prevent double click
-        setTimeout(setWatchListButton(res), 100)
+        setWatchListButton(res)
       })
 
-    }, [refresh])
-    
-    
+    }, [watchListButton])
+
+    console.log(props)
+      
   return(
     <div className='flex justify-between content-center bg-black h-[25px]'>
       <FriendPop mediaID={props.mediaID}/>
 
-        {watchListButton === 1 ? <button>
-          <FontAwesomeIcon 
-          title='Remove to watch list' 
-          className='remove-from-watch-popout' 
-          icon={faCircleMinus}
-          onClick={removeFromWatchList}
-          />
-        </button> : <button>
-          <FontAwesomeIcon 
-          title='Add to watch list' 
-          className='add-to-watch-popout' 
-          icon={faCirclePlus}
-          onClick={addToWatchList}
-          />
-        </button>}
+        {(() => {
+          switch (watchListButton) {
+            case 0:
+              return <button>
+              <FontAwesomeIcon 
+              title='Add to watch list' 
+              className='add-to-watch-popout' 
+              icon={faCirclePlus}
+              onClick={() => {
+                // timeout to fix double click bug
+                  setTimeout(addToWatchList, 100)
+                }
+              }
+              />
+            </button>
+            case 1:
+              return <button>
+              <FontAwesomeIcon 
+              title='Remove to watch list' 
+              className='remove-from-watch-popout' 
+              icon={faCircleMinus}
+              onClick={() => {
+                // timeout to fix double click bug
+                  setTimeout(removeFromWatchList, 100)
+                }
+              }
+              />
+            </button>
+            default:
+              return <button>E</button>
+          }
+        })()}
 
       <div className='mr-2'>
       <button><FontAwesomeIcon className='like-btn-sml rating-face-popout' icon={faFaceGrin} /> </button>
