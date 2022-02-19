@@ -10,13 +10,10 @@ import axios from 'axios';
 
 export default function MediaDetails() {
   const { id } = useParams()
-  const [ mediaInteraction, setMediaInteraction] = useState({})
+  const [ mediaInteraction, setMediaInteraction ] = useState({})
   const [ mediaDetails, setMediaDetails] = useState({});
-  const [ dislikePercent, setDislikePercent ] = useState({});
-  const [ likePercent, setLikePercent ] = useState({});
-  const [ mehPercent, setMehPercent ] = useState({});
   const [ friendsAvatars, setFriendsAvatars ] = useState([]);
-  
+  const [ interactionStats, setInteractionStats ] = useState({})
   
   useEffect(() => {
     const jwt = {
@@ -32,13 +29,11 @@ export default function MediaDetails() {
     const mediaFriendsInteractions = axios.get('/api/mediaFriendsRecommendations', jwt);
     
     Promise.all([singleMedia, userInteraction, totalUsersInteractions, friendsPictures, mediaFriendsInteractions])
-    .then(([media, interaction, percent, friendsPictures, mediaFriendsInteractions]) => {
+    .then(([media, userRating, interactionStats, friendsPictures, mediaFriendsInteractions]) => {
       setMediaDetails(media.data);
-      setMediaInteraction(interaction.data);
-      setLikePercent((percent.data[0].like_count / percent.data[0].total_count) * 100);
-      setDislikePercent((percent.data[0].dislike_count / percent.data[0].total_count) * 100);
-      setMehPercent((percent.data[0].meh_count / percent.data[0].total_count) * 100);
-
+      setMediaInteraction(userRating.data);
+      setInteractionStats(interactionStats.data[0]);
+    
       const results = []
 
       for (const friend of friendsPictures.data) {
@@ -63,12 +58,12 @@ export default function MediaDetails() {
    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-6 mt-10 mx-10">
      <MediaPoster image={mediaDetails.image}/>
      <Title title={mediaDetails.title} description={mediaDetails.description}/>
-     <RatingBar dislikePercent={dislikePercent} likePercent={likePercent} mehPercent={mehPercent} mediaInteraction={mediaInteraction}/>
+     <RatingBar interactionStats={interactionStats} setInteractionStats={setInteractionStats} mediaInteraction={mediaInteraction} setMediaInteraction={setMediaInteraction} mediaId={id}/>
      <FriendInteractions friendsAvatarArray={friendsAvatars}/>
      <StreamsOn />
      <div className=' flex'>
      {mediaInteraction.rating === "interest" && <MediaWatchedButton>Remove from Watch List</MediaWatchedButton>}
-     {mediaInteraction.rating === undefined && <MediaWatchedButton>Add to Watch List</MediaWatchedButton>}
+     {mediaInteraction.rating === null && <MediaWatchedButton>Add to Watch List</MediaWatchedButton>}
     </div>
    </div>
   );
