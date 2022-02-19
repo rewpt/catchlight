@@ -78,7 +78,7 @@ export default function Nav() {
             Authorization: `Bearer ${localStorage.getItem("userToken")}`,
           },
         });
-        setUser(axiosUser.data);
+        return setUser(axiosUser.data);
       } catch (err) {
         console.log(err);
       }

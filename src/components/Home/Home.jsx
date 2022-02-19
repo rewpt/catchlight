@@ -10,6 +10,7 @@ export default function Home() {
   const [showSearch, setShowSearch] = useState(false);
   const [term, setTerm] = useState("");
   const [results, setResults] = useState([]);
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     const searchURL = `/api/media/search/${term}`;
@@ -28,9 +29,17 @@ export default function Home() {
     <React.Fragment>
       <SearchBar onSearch={(term) => setTerm(term)} />
       {showSearch && <CardContainer results={results}>Search</CardContainer>}
-      <FriendRecommendations>Friend's Recommendation</FriendRecommendations>
-      <WatchList>Watch List</WatchList>
-      <Watched>Watched</Watched>
+      <FriendRecommendations
+        refresh={refresh}
+        setRefresh={setRefresh}
+      >Friend's Recommendation</FriendRecommendations>
+      <WatchList
+        refresh={refresh}
+      >Watch List</WatchList>
+      <Watched
+        refresh={refresh}
+        setRefresh={setRefresh}
+      >Watched</Watched>
     </React.Fragment>
   );
 }

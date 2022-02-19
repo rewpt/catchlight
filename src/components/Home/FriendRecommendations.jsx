@@ -53,11 +53,13 @@ export default function FriendRecommendations(props) {
     getMedia().then((res) => {
       setMediaData(res);
     });
-  }, []);
+  }, [props.refresh]);
   
   return (
       <CardContainer
         mediaData={mediaData}
+        refresh={props.refresh}
+        setRefresh={props.setRefresh}
       >
         {props.children}
       </CardContainer>
