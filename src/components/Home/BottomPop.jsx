@@ -8,7 +8,6 @@ const axios = require('axios');
 export default function BottomPop(props) {
 
   const [watchListButton, setWatchListButton] = useState(2);
-  const { refresh } = props
 
   // addToWatchList
   async function addToWatchList() {
