@@ -25,7 +25,6 @@ export default function CardContainer(props) {
               mediaID={media.id}
               refresh={props.refresh}
               setRefresh={props.setRefresh}
-              removeFromWatchList={props.removeFromWatchList}
               />;
           })}
       </div>

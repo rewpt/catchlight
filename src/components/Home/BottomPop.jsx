@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import FriendPop from './FriendPop';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFaceGrin, faFaceFrown, faFaceMeh, faCirclePlus, faCircleMinus } from '@fortawesome/free-solid-svg-icons';
@@ -6,6 +6,8 @@ import { faFaceGrin, faFaceFrown, faFaceMeh, faCirclePlus, faCircleMinus } from 
 const axios = require('axios');
 
 export default function BottomPop(props) {
+
+  const [watchListButton, setWatchListButton] = useState(2);
 
   // addToWatchList
   async function addToWatchList() {
@@ -36,12 +38,40 @@ export default function BottomPop(props) {
       console.log(e)
     }
   }
+
+    // isInWatchList
+
+    async function isInWatchList() {
+      try {
+        const isInWatchListData = await axios.get(`/api/isInWatchList/${props.mediaID}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('userToken')}`
+          }
+        });
+        
+        props.setRefresh(!props.refresh);
+        
+        // setWatchListButton(true);
+        // console.log(isInWatchListData.data)
+        return isInWatchListData.data.length
+      } catch (e) {
+        console.log(e)
+      }
+    }
+    
+    useEffect(() => {
+      isInWatchList().then((res) => {
+        setWatchListButton(res);
+      })
+    }, [watchListButton])
+    
+    console.log('watchlist===', watchListButton)
     
   return(
     <div className='flex justify-between content-center bg-black h-[25px]'>
       <FriendPop mediaID={props.mediaID}/>
 
-        {props.removeFromWatchList ? <button>
+        {watchListButton === 1 ? <button>
           <FontAwesomeIcon 
           title='Remove to watch list' 
           className='remove-from-watch-popout' 
