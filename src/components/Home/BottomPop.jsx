@@ -8,6 +8,7 @@ const axios = require('axios');
 export default function BottomPop(props) {
 
   const [watchListButton, setWatchListButton] = useState(2);
+  const { refresh } = props
 
   // addToWatchList
   async function addToWatchList() {
@@ -41,31 +42,34 @@ export default function BottomPop(props) {
 
     // isInWatchList
 
-    async function isInWatchList() {
-      try {
-        const isInWatchListData = await axios.get(`/api/isInWatchList/${props.mediaID}`, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('userToken')}`
-          }
-        });
-        
-        props.setRefresh(!props.refresh);
-        
-        // setWatchListButton(true);
-        // console.log(isInWatchListData.data)
-        return isInWatchListData.data.length
-      } catch (e) {
-        console.log(e)
-      }
-    }
     
     useEffect(() => {
+
+      async function isInWatchList() {
+        try {
+          const isInWatchListData = await axios.get(`/api/isInWatchList/${props.mediaID}`, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('userToken')}`
+            }
+          });
+          
+          props.setRefresh(!props.refresh);
+          
+          // setWatchListButton(true);
+          // console.log(isInWatchListData.data)
+          return isInWatchListData.data.length
+        } catch (e) {
+          console.log(e)
+        }
+      }
+
       isInWatchList().then((res) => {
-        setWatchListButton(res);
+        // timeout to prevent double click
+        setTimeout(setWatchListButton(res), 100)
       })
-    }, [watchListButton])
+
+    }, [refresh])
     
-    console.log('watchlist===', watchListButton)
     
   return(
     <div className='flex justify-between content-center bg-black h-[25px]'>
