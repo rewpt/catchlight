@@ -2,7 +2,6 @@ import React from 'react'
 
 export default function FriendInteractions(props) {
   const { friendsAvatarArray } = props;
-  console.log("🚀 ~ file: FriendInteractions.jsx ~ line 5 ~ FriendInteractions ~ friendsAvatarArray", friendsAvatarArray)
 
 
   return (
