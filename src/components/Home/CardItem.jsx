@@ -22,6 +22,7 @@ export default function CardItem(props) {
       mediaID={props.mediaID} 
       refresh={props.refresh}
       setRefresh={props.setRefresh}
+      removeFromWatchList={props.removeFromWatchList}
       />}
     </div>
   );
