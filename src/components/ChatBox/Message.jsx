@@ -1,7 +1,21 @@
-import React from "react";
+import { React, useState } from "react";
+import classNames from "classnames";
 
 export default function Message(props) {
+  const { messageuserid, conversationid, currentUserId } = props;
+
+  const messageClass = classNames("", {
+    "text-sender": messageuserid === currentUserId,
+    "text-rose-400": messageuserid !== currentUserId,
+  });
+
   return (
-    <div className="odd:text-sender even:text-rose-400">{props.children}</div>
+    <div
+      userid={messageuserid}
+      conversationid={conversationid}
+      className={messageClass}
+    >
+      {props.children}
+    </div>
   );
 }
