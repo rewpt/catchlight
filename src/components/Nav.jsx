@@ -91,8 +91,10 @@ export default function Nav() {
     <div className="shadow-md w-full sticky top-0 left-0 z-20">
       <div className="md:flex items-center justify-between bg-white py-4 md:px-10 px-7">
         <div className="font-bold text-2xl cursor-pointer flex items-center text-gray-800">
-          <FontAwesomeIcon className="text-logo" icon={faEye} />
-          <Link to="/">Catchlight</Link>
+          <Link to="/">
+            <FontAwesomeIcon className="text-logo" icon={faEye} />
+            Catchlight
+          </Link>
         </div>
         <div onClick={() => setOpen(!open)} className={hamburger}>
           <FontAwesomeIcon name={open ? "close" : "menu"} icon={faBars} />

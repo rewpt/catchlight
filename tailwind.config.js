@@ -23,7 +23,14 @@ module.exports = {
         '120': '1.2',
       },
       colors: {
-        logo: '#75424A'
+        logo: '#75424A',
+        sender: '#3FF4D5',
+        receiver: '#ff7d94',
+        chatbg1: '#0F2027',
+        chatbg2: '#203A43',
+        chatbg3: '#2C5364',
+        'chat-topic': '#2f77ad',
+        'send-btn': "#3ea1ed"
       }
     },
   },
