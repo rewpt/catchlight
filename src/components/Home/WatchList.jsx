@@ -55,6 +55,10 @@ export default function WatchList (props) {
   return (
       <CardContainer
         mediaData={mediaData}
+        removeFromWatchList={true}
+        refresh={props.refresh}
+        setRefresh={props.setRefresh}
+
       >
         {props.children}
       </CardContainer>

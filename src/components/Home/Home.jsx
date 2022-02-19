@@ -40,6 +40,7 @@ export default function Home() {
       >Friend's Recommendation</FriendRecommendations>
       <WatchList
         refresh={refresh}
+        setRefresh={setRefresh}
       >Watch List</WatchList>
       <Watched
         refresh={refresh}
