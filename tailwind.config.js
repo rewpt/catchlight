@@ -13,6 +13,9 @@ module.exports = {
         '6': '6px',
         '8': '8px',
       },
+      brightness: {
+        135: '1.35',
+      },
       backgroundImage: {
         'margin-pattern': "url('/src/images/bright-squares.png')",
       },
@@ -29,7 +32,7 @@ module.exports = {
         chatbg1: '#0F2027',
         chatbg2: '#203A43',
         chatbg3: '#2C5364',
-        'chat-topic': '#2f77ad',
+        'chat-topic': '#33c0c4',
         'send-btn': "#3ea1ed"
       }
     },

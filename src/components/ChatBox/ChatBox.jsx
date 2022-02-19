@@ -6,7 +6,6 @@ import classNames from "classnames";
 
 export default function ChatBox() {
   const [isOpen, setIsOpen] = useState(false);
-  const [topicSelected, setTopicSelected] = useState(true);
   function toggleChat() {
     setIsOpen(!isOpen);
   }
@@ -22,7 +21,7 @@ export default function ChatBox() {
 
   return (
     <div className={toggleWidth}>
-      <ChatContent topicSelected={topicSelected} isOpen={isOpen} />
+      <ChatContent isOpen={isOpen} />
       <button
         onClick={() => toggleChat()}
         className="flex items-center bg-gray-200"
