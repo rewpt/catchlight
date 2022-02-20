@@ -13,7 +13,7 @@ export default function CardItem(props) {
       onMouseLeave={(e) => {
         setHidden(true);
       }}
-      className="flex flex-col mt-10 min-w-[150px] min-h-[220px] max-w-[150px] max-h-[220px] mx-4 hover:scale-120 ease-in duration-100 origin-bottom"
+      className="flex flex-col snap-center mt-10 min-w-[150px] min-h-[220px] max-w-[150px] max-h-[220px] mx-4 hover:scale-120 ease-in duration-100 origin-bottom"
     >
       <Link to={`/media/${props.mediaID}`} key={props.mediaID}>
         <img className="h-full w-full no-underline decoration-0" src={props.image} alt="" />

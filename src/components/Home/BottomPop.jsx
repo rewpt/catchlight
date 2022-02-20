@@ -73,7 +73,7 @@ export default function BottomPop(props) {
 
     }, [watchListButton])
 
-    console.log(props)
+    // console.log(props)
       
   return(
     <div className='flex justify-between content-center bg-black h-[25px]'>
