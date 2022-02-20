@@ -4,13 +4,16 @@ import { useParams } from "react-router-dom";
 
 
 export function useApplicationData() {
-  const { id } = useParams(); // media id
+  const { mediaID } = useParams(); // media id
   const [ mediaInteraction, setMediaInteraction ] = useState({}); // set user interaction with media
   const [ mediaDetails, setMediaDetails] = useState({});
   const [ friendsAvatars, setFriendsAvatars ] = useState([]);
   const [ interactionStats, setInteractionStats ] = useState({});
   const [ streamingServices, setStreamingServices ] = useState([]);
   const [ buttonState, setButtonState ] = useState('');
+  const [ isLoading, setIsLoading ] = useState(false)
+
+
   const jwt = {
     headers: {
       Authorization: `Bearer ${localStorage.getItem('userToken')}`
@@ -20,7 +23,7 @@ export function useApplicationData() {
   // --------------------Post Requests-------------------------------
 
   const postMediaButtonClick = rating => {
-    axios.post('/api/interactions', {rating, id}, jwt)
+    axios.post('/api/interactions', {rating, mediaID}, jwt)
     .catch((err) => console.log(err));
   };
 
@@ -75,13 +78,13 @@ export function useApplicationData() {
   
   useEffect(() => {    
 
-    const singleMedia = axios.get(`/api/media/${id}`, jwt);
-    const userInteraction = axios.get(`/api/media/${id}/interactions/`, jwt);
-    const totalUsersInteractions = axios.get(`/api/interactions/count/${id}`, jwt);
+    const singleMedia = axios.get(`/api/media/${mediaID}`, jwt);
+    const userInteraction = axios.get(`/api/media/${mediaID}/interactions/`, jwt);
+    const totalUsersInteractions = axios.get(`/api/interactions/count/${mediaID}`, jwt);
     const friendsPictures = axios.get('/api/friendsPictures', jwt);
     const mediaFriendsInteractions = axios.get('/api/mediaFriendsRecommendations', jwt);
-    const getStreamingServices = axios.get(`/api/streamingServices/${id}`, jwt);
-    
+    const getStreamingServices = axios.get(`/api/streamingServices/${mediaID}`, jwt);
+    setIsLoading(true);
     Promise.all([singleMedia, userInteraction, totalUsersInteractions, friendsPictures, mediaFriendsInteractions, getStreamingServices])
     .then(([media, userRating, interactionStats, friendsPictures, mediaFriendsInteractions, getStreamingServices]) => {
       setMediaDetails(media.data);
@@ -89,6 +92,7 @@ export function useApplicationData() {
       setInteractionStats(interactionStats.data[0]);
       setButtonState(userRating.data.rating);
       setStreamingServices(getStreamingServices.data.rows);
+      setIsLoading(false);
       
     
       const results = [];
@@ -97,7 +101,7 @@ export function useApplicationData() {
         for (const mediaFriend of mediaFriendsInteractions.data) {
           if (friend.friend_id === mediaFriend.id) {
             for (const interactionMedia of mediaFriend.interactions) {
-              if (interactionMedia.media_id === parseInt(id)) {
+              if (interactionMedia.media_id === parseInt(mediaID)) {
                 results.push({
                   profile_picture: friend.profile_picture,
                   rating: interactionMedia.rating
@@ -115,7 +119,7 @@ export function useApplicationData() {
   }, []);
 
   return { 
-    id, 
+    mediaID, 
     jwt,
     mediaInteraction, 
     mediaDetails, 
@@ -125,6 +129,7 @@ export function useApplicationData() {
     buttonState, 
     setButtonState,
     postMediaButtonClick,
-    handleRatingClick
+    handleRatingClick,
+    isLoading
   }
 };
