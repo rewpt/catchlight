@@ -10,11 +10,10 @@ export default function CardContainer(props) {
         {props.children}
       </div>
       <div className="flex overflow-x-scroll whitespace-nowrap w-full min-w-[200px] h-[320px] rounded-xl px-7">
-        {results && console.log("CONSOLE.LOG", results)}
 
         {results &&
           results.map((media) => {
-            return <CardItem key={media.id} mediaID={media.id}refresh={props.refresh}setRefresh={props.setRefresh}{...media} />;
+            return <CardItem key={media.id} mediaID={media.id} refresh={props.refresh} setRefresh={props.setRefresh}{...media} />;
           })}
 
         {props.mediaData &&
