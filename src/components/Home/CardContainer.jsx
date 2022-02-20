@@ -1,5 +1,7 @@
 import React, { useRef, useState } from "react";
 import CardItem from "./CardItem";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 export default function CardContainer(props) {
   const { results } = props;
@@ -25,11 +27,18 @@ export default function CardContainer(props) {
 
       
 
-      <div className="flex flex-row">
+      <div className="flex flex-row justify-center px-2">
 
-        <button onClick={() => scroll(-180)}>LEFT</button>
+      <button>
+          <FontAwesomeIcon 
+              title='Add to watch list' 
+              className='text-4xl text-zinc-400 p-2' 
+              icon={faChevronLeft}
+              onClick={() => {scroll(-170)}}>
+          </FontAwesomeIcon>
+        </button>
 
-        <div ref={scrollbar} className="flex scrollbar-hide snap-mandatory snap-x overflow-x-scroll whitespace-nowrap w-full min-w-[200px] h-[320px] rounded-xl px-7">
+        <div ref={scrollbar} className="flex scrollbar-hide snap-mandatory snap-x overflow-x-scroll whitespace-nowrap w-full min-w-[200px] h-[290px] mx-0">
           {results && console.log("CONSOLE.LOG", results)}
 
           {results &&
@@ -39,7 +48,7 @@ export default function CardContainer(props) {
 
           {props.mediaData &&
             props.mediaData.map((media) => {
-              return <CardItem 
+              return <CardItem
                 key={media.id}
                 image={media.image} 
                 mediaID={media.id}
@@ -49,7 +58,14 @@ export default function CardContainer(props) {
             })}
         </div>
 
-        <button onClick={() => {scroll(180)}}>RIGHT</button>
+        <button>
+          <FontAwesomeIcon 
+              title='Add to watch list' 
+              className='text-4xl text-zinc-400 p-2' 
+              icon={faChevronRight}
+              onClick={() => {scroll(170)}}>
+          </FontAwesomeIcon>
+        </button>
 
 
       </div>

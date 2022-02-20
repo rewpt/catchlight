@@ -76,7 +76,7 @@ export default function BottomPop(props) {
     // console.log(props)
       
   return(
-    <div className='flex justify-between content-center bg-black h-[25px]'>
+    <div className='flex justify-between content-center bg-black min-w-[150px] min-h-[px] max-w-[150px] max-h-[25px]'>
       <FriendPop mediaID={props.mediaID}/>
 
         {(() => {
