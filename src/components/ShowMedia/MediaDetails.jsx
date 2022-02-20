@@ -59,20 +59,13 @@ export default function MediaDetails() {
     let currentRating = mediaInteraction.rating;
     let newInteractionStats = {...interactionStats};
 
-    if(ratingType === 'interest') {
-      decrementRating(newInteractionStats, currentRating);
-      setMediaInteraction({...mediaInteraction, rating: null})
-      setInteractionStats(newInteractionStats);
-      postNewMediaInteraction(null, id, jwt);
-      return setButtonState('interest');
-    }
-    if(currentRating) {
+    if(currentRating && currentRating !== 'interest') {
       // this conditional decreases the rating of the stat previously selected stat by one
       decrementRating(newInteractionStats, currentRating);
       setButtonState(null);
     }
 
-    if(currentRating !== ratingType) {
+    if(currentRating !== ratingType && ratingType !== 'interest') {
       // when a user selects a different rating for media, it changes the stats related to the media
       incrementRating(newInteractionStats, ratingType);
       setButtonState(ratingType);
