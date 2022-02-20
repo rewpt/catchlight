@@ -41,8 +41,13 @@
 .like-btn {
   @apply text-7xl text-slate-400 hover:text-green-500 cursor-pointer;
 }
+
 .like-btn-sml {
-  @apply text-slate-400 hover:text-green-500 cursor-pointer;
+  @apply text-slate-400 hover:text-slate-500 cursor-pointer;
+}
+
+.like-btn-sml-clicked {
+  @apply text-green-500 cursor-pointer;
 }
 
 .like-btn-clicked {
@@ -54,7 +59,11 @@
 }
 
 .meh-btn-sml {
-  @apply text-slate-400 hover:text-amber-500 cursor-pointer;
+  @apply text-slate-400 hover:text-slate-500 cursor-pointer;
+}
+
+.meh-btn-sml-clicked {
+  @apply text-amber-500 cursor-pointer;
 }
 
 .meh-btn-clicked {
@@ -70,5 +79,10 @@
 }
 
 .dislike-btn-sml {
-  @apply text-slate-400 hover:text-red-500 cursor-pointer;
+  @apply text-slate-400 hover:text-slate-500 cursor-pointer;
 }
+
+.dislike-btn-sml-clicked {
+  @apply text-slate-400 text-red-500 cursor-pointer;
+}
+
