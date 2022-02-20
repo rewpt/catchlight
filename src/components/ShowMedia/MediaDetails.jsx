@@ -99,8 +99,11 @@ export default function MediaDetails() {
         for (const mediaFriend of mediaFriendsInteractions.data) {
           if (friend.friend_id === mediaFriend.id) {
             for (const interactionMedia of mediaFriend.interactions) {
-              if (interactionMedia.media_id === ~~id) {
-                results.push({profile_picture: friend.profile_picture});
+              if (interactionMedia.media_id === parseInt(id)) {
+                results.push({
+                  profile_picture: friend.profile_picture,
+                  rating: interactionMedia.rating
+                });
               }
             }
           }
