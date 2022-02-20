@@ -9,19 +9,19 @@ import StreamsOn from './StreamsOn';
 import axios from 'axios';
 
 
-
+// route used several times, put in function
 export const postNewMediaInteraction = (rating, id, jwt) => {
   axios.post('/api/interactions', {rating, id}, jwt)
   .catch((err) => console.log(err))
 };
 
 export default function MediaDetails() {
-  const { id } = useParams() // id of media set by react router
-  const [ mediaInteraction, setMediaInteraction ] = useState({}) // set user interaction with media
+  const { id } = useParams(); // id of media set by react router
+  const [ mediaInteraction, setMediaInteraction ] = useState({}); // set user interaction with media
   const [ mediaDetails, setMediaDetails] = useState({});
   const [ friendsAvatars, setFriendsAvatars ] = useState([]);
-  const [ interactionStats, setInteractionStats ] = useState({})
-
+  const [ interactionStats, setInteractionStats ] = useState({});
+  const [ streamingServices, setStreamingServices ] = useState([])
   const [ buttonState, setButtonState ] = useState('')
 
   const jwt = {
@@ -71,7 +71,7 @@ export default function MediaDetails() {
       setButtonState(ratingType);
     }
 
-
+    // sets state object with new rating value, newRating changes depending which is selected
     const newRating = currentRating !== ratingType ? ratingType : null
     setMediaInteraction({...mediaInteraction, rating: newRating});
     setInteractionStats(newInteractionStats);
@@ -85,13 +85,17 @@ export default function MediaDetails() {
     const totalUsersInteractions = axios.get(`/api/interactions/count/${id}`, jwt);
     const friendsPictures = axios.get('/api/friendsPictures', jwt);
     const mediaFriendsInteractions = axios.get('/api/mediaFriendsRecommendations', jwt);
+    const getStreamingServices = axios.get(`/api/streamingServices/${id}`, jwt);
     
-    Promise.all([singleMedia, userInteraction, totalUsersInteractions, friendsPictures, mediaFriendsInteractions])
-    .then(([media, userRating, interactionStats, friendsPictures, mediaFriendsInteractions]) => {
+    Promise.all([singleMedia, userInteraction, totalUsersInteractions, friendsPictures, mediaFriendsInteractions, getStreamingServices])
+    .then(([media, userRating, interactionStats, friendsPictures, mediaFriendsInteractions, getStreamingServices]) => {
+      console.log("🚀 ~ file: MediaDetails.jsx ~ line 93 ~ .then ~ getStreamingServices", getStreamingServices)
       setMediaDetails(media.data);
       setMediaInteraction(userRating.data);
       setInteractionStats(interactionStats.data[0]);
       setButtonState(userRating.data.rating)
+      setStreamingServices(getStreamingServices.data.rows)
+      
     
       const results = [];
 
@@ -114,7 +118,7 @@ export default function MediaDetails() {
     .catch((error) =>  {
       console.error(error)
     });
-  }, [id]);
+  }, []);
   
   return (
    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-6 mt-10 mx-10">
@@ -122,7 +126,7 @@ export default function MediaDetails() {
      <Title title={mediaDetails.title} description={mediaDetails.description}/>
      <RatingBar handleRatingClick={handleRatingClick} interactionStats={interactionStats} mediaInteraction={mediaInteraction} />
      <FriendInteractions friendsAvatarArray={friendsAvatars}/>
-     <StreamsOn />
+     <StreamsOn streamingServices={streamingServices}/>
      <div className=' flex'>
      <MediaWatchedButton mediaButtonClick={mediaButtonClick} buttonState={buttonState} setButtonState={setButtonState} handleRatingClick={handleRatingClick}></MediaWatchedButton>
     </div>
