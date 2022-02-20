@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import BottomPop from "./BottomPop";
-import { Link, Router } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default function CardItem(props) {
   const [hidden, setHidden] = useState(true);
