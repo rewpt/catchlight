@@ -1,14 +1,14 @@
 import * as React from 'react';
 
 export default function MediaWatchedButton(props) {
-  const { buttonState, setButtonState, mediaButtonClick, handleRatingClick } = props;
+  const { buttonState, setButtonState, postMediaButtonClick, handleRatingClick } = props;
   let buttonElement;
 
   if(buttonState === 'interest') {
     buttonElement = (
       <button className="btn-clicked mr-1" onClick={() => {
         setButtonState(null);
-        mediaButtonClick(null)
+        postMediaButtonClick(null)
 
       }}>Remove from Watch List</button>
     )
@@ -16,7 +16,7 @@ export default function MediaWatchedButton(props) {
     buttonElement = (
       <button className="btn-clicked mr-1" onClick={() => {
         setButtonState('interest');
-        mediaButtonClick("interest")
+        postMediaButtonClick("interest")
 
       }}>Add to Watch List</button>
     )
@@ -25,7 +25,7 @@ export default function MediaWatchedButton(props) {
       <button className="btn-clicked mr-1" onClick={() => {
         handleRatingClick('interest')
         setButtonState('interest');
-        mediaButtonClick("interest");
+        postMediaButtonClick("interest");
 
       }}>Watch it Again!</button>
     )
