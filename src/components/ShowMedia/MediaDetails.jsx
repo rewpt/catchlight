@@ -12,7 +12,6 @@ import axios from 'axios';
 
 export const postNewMediaInteraction = (rating, id, jwt) => {
   axios.post('/api/interactions', {rating, id}, jwt)
-  .then((res) => {console.log(res)})
   .catch((err) => console.log(err))
 };
 
@@ -22,6 +21,7 @@ export default function MediaDetails() {
   const [ mediaDetails, setMediaDetails] = useState({});
   const [ friendsAvatars, setFriendsAvatars ] = useState([]);
   const [ interactionStats, setInteractionStats ] = useState({})
+
   const [ buttonState, setButtonState ] = useState('')
 
   const jwt = {
@@ -45,22 +45,39 @@ export default function MediaDetails() {
   // when adding face, setCurrentRating = "like dislike meh"
   // when removing face, setCurrentRating = null
 
+  function decrementRating(newInteractionStats, currentRating) {
+    newInteractionStats[`${currentRating}_count`] = parseInt(newInteractionStats[`${currentRating}_count`]) - 1;
+    newInteractionStats[`total_count`] = parseInt(newInteractionStats[`total_count`]) - 1;
+  }
+
+  function incrementRating(newInteractionStats, ratingType) {
+    newInteractionStats[`${ratingType}_count`] = parseInt(newInteractionStats[`${ratingType}_count`]) + 1;
+    newInteractionStats[`total_count`] = parseInt(newInteractionStats[`total_count`]) + 1;
+  }
 
   function handleRatingClick(ratingType) {
     let currentRating = mediaInteraction.rating;
     let newInteractionStats = {...interactionStats};
 
+    if(ratingType === 'interest') {
+      decrementRating(newInteractionStats, currentRating);
+      setMediaInteraction({...mediaInteraction, rating: null})
+      setInteractionStats(newInteractionStats);
+      postNewMediaInteraction(null, id, jwt);
+      return setButtonState('interest');
+    }
     if(currentRating) {
       // this conditional decreases the rating of the stat previously selected stat by one
-      newInteractionStats[`${currentRating}_count`] = parseInt(newInteractionStats[`${currentRating}_count`]) - 1;
-      setButtonState(null)
+      decrementRating(newInteractionStats, currentRating);
+      setButtonState(null);
     }
 
     if(currentRating !== ratingType) {
       // when a user selects a different rating for media, it changes the stats related to the media
-      newInteractionStats[`${ratingType}_count`] = parseInt(newInteractionStats[`${ratingType}_count`]) + 1;
-      setButtonState(ratingType)
+      incrementRating(newInteractionStats, ratingType);
+      setButtonState(ratingType);
     }
+
 
     const newRating = currentRating !== ratingType ? ratingType : null
     setMediaInteraction({...mediaInteraction, rating: newRating});
@@ -111,7 +128,7 @@ export default function MediaDetails() {
      <FriendInteractions friendsAvatarArray={friendsAvatars}/>
      <StreamsOn />
      <div className=' flex'>
-     <MediaWatchedButton setInteractionStats={setInteractionStats} mediaButtonClick={mediaButtonClick} buttonState={buttonState} setButtonState={setButtonState} ></MediaWatchedButton>
+     <MediaWatchedButton mediaButtonClick={mediaButtonClick} buttonState={buttonState} setButtonState={setButtonState} handleRatingClick={handleRatingClick}></MediaWatchedButton>
     </div>
    </div>
   );
