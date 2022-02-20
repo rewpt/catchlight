@@ -8,25 +8,25 @@ export default function MediaWatchedButton(props) {
     buttonElement = (
       <button className="btn-clicked mr-1" onClick={() => {
         setButtonState(null);
-
         mediaButtonClick(null)
+
       }}>Remove from Watch List</button>
     )
   } else if (!buttonState){
     buttonElement = (
       <button className="btn-clicked mr-1" onClick={() => {
-
         setButtonState('interest');
         mediaButtonClick("interest")
+
       }}>Add to Watch List</button>
     )
   } else {
     buttonElement = (
       <button className="btn-clicked mr-1" onClick={() => {
         handleRatingClick('interest')
-
         setButtonState('interest');
-        mediaButtonClick("interest")
+        mediaButtonClick("interest");
+
       }}>Watch it Again!</button>
     )
   }
