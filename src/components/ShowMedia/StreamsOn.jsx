@@ -1,9 +1,17 @@
 import React from 'react';
 
-export default function StreamsOn(){
+export default function StreamsOn(props){
+  const { streamingServices } = props;
+  
   return(
     <div className='flex sm:justify-center md:justify-start'>
-      <h3 className='font-semibold text-xl text-slate-800 mt-2'>Watch on: Netflix, HBO</h3>
+      <div className='font-semibold text-xl text-slate-800 mt-2'>
+        <h3>Streaming on:</h3>
+        {streamingServices.forEach(service => {
+
+          return <p>{`${service.title}`}</p>
+        })}
+      </div>
     </div>
   )
 }
