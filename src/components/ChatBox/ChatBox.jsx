@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import ChatContent from "./ChatContent";
 import classNames from "classnames";
-
 export default function ChatBox() {
   const [isOpen, setIsOpen] = useState(false);
   function toggleChat() {

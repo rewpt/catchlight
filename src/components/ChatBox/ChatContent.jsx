@@ -1,11 +1,18 @@
 import FriendTabGroup from "./FriendTabGroup";
 import FriendConversations from "./FriendConversations";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { io } from "socket.io-client";
 
 export default function ChatContent(props) {
+  const [socket, setSocket] = useState();
   const [activeFriend, setActiveFriend] = useState("");
   const { isOpen } = props;
   const [topicSelected, setTopicSelected] = useState(0);
+
+  useEffect(() => {
+    setSocket(io("http://localhost:3001"));
+  }, []);
+
   const topicOnClick = (topicIndex) => {
     setTopicSelected(topicIndex);
   };
@@ -17,10 +24,12 @@ export default function ChatContent(props) {
   return (
     <div className="flex bg-black w-full">
       <FriendTabGroup
+        socket={socket}
         activeFriend={activeFriend}
         activeFriendClick={activeFriendClick}
       />
       <FriendConversations
+        socket={socket}
         activeFriend={activeFriend}
         isOpen={isOpen}
         topicOnClick={topicOnClick}

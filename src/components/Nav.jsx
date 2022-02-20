@@ -53,7 +53,7 @@ export default function Nav() {
     };
     const reqInterval = setInterval(() => {
       getFriendReqs();
-    }, 5000);
+    }, 5000000);
 
     return () => {
       clearInterval(reqInterval);
