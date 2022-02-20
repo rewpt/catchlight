@@ -19,7 +19,7 @@
 }
 
 .media-avatar {
-  @apply inline-block h-20 w-20 rounded-full border-black border-double ring-2 ring-white;
+  @apply relative flex overflow-hidden mx-2 justify-center h-[90px] w-[60px]  hover:scale-125 ease-in duration-100 rounded-full border-double ring-2 ring-slate-600;
 }
 
 .media-avatar-popout {

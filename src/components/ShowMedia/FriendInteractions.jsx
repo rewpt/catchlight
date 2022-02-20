@@ -12,24 +12,20 @@ export default function FriendInteractions(props) {
   const { friendsAvatarArray } = props;
 
   return (
-    <div className="flex xs:justify-center sm:justify-center lg:justify-start -space-x-3">
+    <div className="flex xs:justify-center sm:justify-center xl:justify-start ">
       {friendsAvatarArray.map((image, index) => {
         return (
-          <div
-            className={
-              "relative overflow-hidden hover:scale-125 ease-in duration-100"
-            }
-          >
+          <div className={`media-avatar`}>
             <img
               key={index}
-              className={`media-avatar w-full`}
+              className={`h-[90px] max-w-none`}
               src={image.profile_picture}
               alt=""
             />
             {image.rating === "like" && (
               <FontAwesomeIcon
                 className={
-                  "h-17 absolute top-0 left-0 text-green-600 bg-white rounded-full"
+                  "h-17 absolute bottom-0 left-[21px] text-green-600 bg-white rounded-full"
                 }
                 icon={faFaceGrin}
               />
@@ -37,7 +33,7 @@ export default function FriendInteractions(props) {
             {image.rating === "meh" && (
               <FontAwesomeIcon
                 className={
-                  "h-17 absolute top-0 left-0 text-yellow-600 bg-white rounded-full"
+                  "h-17 absolute bottom-0 left-[21px] text-yellow-600 bg-white rounded-full"
                 }
                 icon={faFaceMeh}
               />
@@ -45,7 +41,7 @@ export default function FriendInteractions(props) {
             {image.rating === "dislike" && (
               <FontAwesomeIcon
                 className={
-                  "h-17 absolute top-0 left-0 text-red-600 bg-white rounded-full"
+                  "h-17 absolute bottom-0 left-[21px] text-red-600 bg-white rounded-full"
                 }
                 icon={faFaceFrown}
               />
@@ -53,7 +49,7 @@ export default function FriendInteractions(props) {
             {image.rating === "interest" && (
               <FontAwesomeIcon
                 className={
-                  "h-17 absolute top-0 left-0 text-blue-500	0 rounded-full bg-white"
+                  "h-17 absolute bottom-0 left-[21px] text-blue-500 rounded-full bg-white"
                 }
                 icon={faEye}
               />
