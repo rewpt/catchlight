@@ -4,12 +4,12 @@ export default function StreamsOn(props){
   const { streamingServices } = props;
   
   return(
-    <div className='flex sm:justify-center md:justify-start'>
-      <div className='font-semibold text-xl text-slate-800 mt-2'>
-        <h3>Streaming on:</h3>
-        {streamingServices.forEach(service => {
+    <div className='flex-col sm:justify-center md:justify-start'>
+      <h3>Streaming on:</h3>
+      <div className='flex font-semibold text-xl text-slate-800 mt-2'>
+        {streamingServices.map(service => {
 
-          return <p>{`${service.title}`}</p>
+          return <p className='mr-2'>{`${service.title}`}</p>
         })}
       </div>
     </div>
