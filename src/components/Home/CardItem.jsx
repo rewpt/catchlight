@@ -5,21 +5,6 @@ import axios from 'axios'
 
 export default function CardItem(props) {
   const [hidden, setHidden] = useState(true);
-  const [ buttonState, setButtonState ] = useState('');
-  const { mediaID } = props
-
-  useEffect(() => {
-
-    const jwt = {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('userToken')}`
-      }
-    };
-
-    axios.get(`/api/media/${mediaID}/interactions/`, jwt)
-    .then((res) => setButtonState(res.data.rating))
-    .catch(e => console.log(e))
-  }, []);
 
   return (
     <div
@@ -38,8 +23,6 @@ export default function CardItem(props) {
       mediaID={props.mediaID} 
       refresh={props.refresh}
       setRefresh={props.setRefresh}
-      buttonState={buttonState}
-      setButtonState={setButtonState}
       />}
     </div>
   );

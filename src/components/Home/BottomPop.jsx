@@ -7,24 +7,31 @@ import classNames from "classnames";
 const axios = require('axios');
 
 export default function BottomPop(props) {
-  const { mediaID, buttonState, setButtonState } = props
+
+  const { mediaID } = props
   const [watchListButton, setWatchListButton] = useState(2);
+  const [ interactionButton, setInteractionButton ] = useState('');
+
+  const toggleLike = classNames({"like-btn-sml-clicked rating-face-popout": interactionButton === "like", "like-btn-sml": interactionButton !== "like"});
+  const toggleMeh = classNames({"meh-btn-sml-clicked rating-face-popout": interactionButton === "meh", "meh-btn-sml": interactionButton !== "meh"});
+  const toggleDislike = classNames({"dislike-btn-sml-clicked rating-face-popout": interactionButton === "dislike", "dislike-btn-sml": interactionButton !== "dislike"});
+
   const jwt = {
     headers: {
       Authorization: `Bearer ${localStorage.getItem('userToken')}`
     }
   }
 
-  const toggleLike = classNames({"like-btn-sml-clicked rating-face-popout": buttonState === "like", "like-btn-sml": buttonState !== "like"});
-  const toggleMeh = classNames({"meh-btn-sml-clicked rating-face-popout": buttonState === "meh", "meh-btn-sml": buttonState !== "meh"});
-  const toggleDislike = classNames({"dislike-btn-sml-clicked rating-face-popout": buttonState === "dislike", "dislike-btn-sml": buttonState !== "dislike"});
 
+
+
+  // Rating button
   const postMediaButtonClick = rating => {
     axios.post('/api/interactions', {rating, mediaID}, jwt)
-    .then(() => setButtonState(rating))
+    .then(() => setInteractionButton(rating))
     .catch((err) => console.log(err));
   };
-
+  
   // addToWatchList
   async function addToWatchList() {
     try {
@@ -51,33 +58,31 @@ export default function BottomPop(props) {
   }
 
     // isInWatchList
-
-    
     useEffect(() => {
 
       async function isInWatchList() {
         try {
           const isInWatchListData = await axios.get(`/api/isInWatchList/${mediaID}`, jwt);
-          
-          // props.setRefresh(!props.refresh);
-          
-          // setWatchListButton(true);
-          // console.log(isInWatchListData.data)
+
           return isInWatchListData.data.length
         } catch (e) {
           console.log(e)
         }
       }
-
       
       isInWatchList().then((res) => {
-        // timeout to prevent double click
         setWatchListButton(res)
       })
+      
+      // GET interaction button data
+      axios.get(`/api/media/${mediaID}/interactions/`, jwt)
+      .then((res) => {
+        setInteractionButton(res.data.rating);
+        props.setRefresh(!props.refresh);
+      })
+      .catch(e => console.log(e))
 
-    }, [watchListButton])
-
-    console.log(props)
+    }, [watchListButton, interactionButton])
       
   return(
     <div className='flex justify-between content-center bg-black h-[25px]'>
