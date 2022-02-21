@@ -15,7 +15,6 @@ export default function SearchBox() {
     const searchURL = `/api/media/search/${term}`;
     if (term !== "") {
       axios.get(searchURL).then((response) => {
-        console.log("AXIOS GET ", response.data);
         setResults([...response.data]);
         setShowSearch(true);
       });

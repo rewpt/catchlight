@@ -12,7 +12,7 @@ export default function SearchBar(props) {
     onSearch(term);
   }, [term, onSearch]);
   return (
-    <div className="w-full">
+    <div className="w-full mt-6">
       <div className="h-[100px] w-full flex justify-center items-center ">
         <div className="relative">
           <form
