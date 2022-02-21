@@ -7,14 +7,14 @@ import FriendInteractions from './FriendInteractions';
 import MediaWatchedButton from './MediaWatchedButton';
 import StreamsOn from './StreamsOn';
 import SearchBox from '../SearchBox';
-
-
-// route used several times, put in function
+const axios = require('axios');
 
 
 export default function MediaDetails() {
 
   const {
+    jwt,
+    mediaID,
     mediaInteraction, 
     mediaDetails, 
     friendsAvatars, 
@@ -24,10 +24,31 @@ export default function MediaDetails() {
     setButtonState,
     postMediaButtonClick,
     handleRatingClick,
-    isLoading
+    isLoading,
+    setInteractionStats
   } = useApplicationData()
   
   const [refresh, setRefresh] = useState(false);
+
+  useEffect(() => {
+    const getTotalCount = async () => {
+      try {
+        const response = await axios.get(
+          `/api/interactions/count/${mediaID}`, jwt)
+
+        setInteractionStats(response.data[0]);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    const reqInterval = setInterval(() => {
+      getTotalCount();
+    }, 5000);
+
+    return () => {
+      clearInterval(reqInterval);
+    };
+  });
 
   return (
     <React.Fragment>
