@@ -21,7 +21,7 @@ ReactDOM.render(
 
       <Route path="/" element={<App />}>
         <Route index element={<Home />} />
-        <Route path="media/:id" element={<MediaDetails />} />
+        <Route path="media/:mediaID" element={<MediaDetails />} />
       </Route>
     </Routes>
   </BrowserRouter>,

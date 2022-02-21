@@ -12,6 +12,7 @@ export default function Home() {
   const [results, setResults] = useState([]);
   const [refresh, setRefresh] = useState(false);
 
+
   useEffect(() => {
     const searchURL = `/api/media/search/${term}`;
     if (term !== "") {

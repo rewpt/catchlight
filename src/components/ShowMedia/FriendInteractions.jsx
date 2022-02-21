@@ -1,20 +1,62 @@
-import React from 'react'
+import {
+  faFaceGrin,
+  faFaceFrown,
+  faFaceMeh,
+  faGlasses,
+  faEye,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
 
 export default function FriendInteractions(props) {
   const { friendsAvatarArray } = props;
 
-
   return (
-    <div className="flex xs:justify-center sm:justify-center lg:justify-start -space-x-3">
-    {friendsAvatarArray.map((image, index) => {
-        
-        return <img
-          key={index}
-          className="media-avatar"
-          src={image.profile_picture}
-          alt=""
-        />
+    <div className="flex xs:justify-center sm:justify-center xl:justify-start ">
+      {friendsAvatarArray.map((image, index) => {
+        return (
+          <div className={`media-avatar`}>
+            <img
+              key={index}
+              className={`h-[105px] max-w-none`}
+              src={image.profile_picture}
+              alt=""
+            />
+            {image.rating === "like" && (
+              <FontAwesomeIcon
+                className={
+                  "h-17 absolute top-0 right-[13px] text-green-600 bg-white rounded-full"
+                }
+                icon={faFaceGrin}
+              />
+            )}
+            {image.rating === "meh" && (
+              <FontAwesomeIcon
+                className={
+                  "h-17 absolute top-0 right-[13px] text-yellow-600 bg-white rounded-full"
+                }
+                icon={faFaceMeh}
+              />
+            )}
+            {image.rating === "dislike" && (
+              <FontAwesomeIcon
+                className={
+                  "h-17 absolute top-0 right-[13px] text-red-600 bg-white rounded-full"
+                }
+                icon={faFaceFrown}
+              />
+            )}
+            {image.rating === "interest" && (
+              <FontAwesomeIcon
+                className={
+                  "h-17 absolute top-0 right-[13px] text-blue-500 rounded-full bg-white"
+                }
+                icon={faEye}
+              />
+            )}
+          </div>
+        );
       })}
-  </div>
+    </div>
   );
 }
