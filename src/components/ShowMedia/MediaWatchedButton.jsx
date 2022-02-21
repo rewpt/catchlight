@@ -1,10 +1,10 @@
-import * as React from 'react';
+import * as React from "react";
 
 export default function MediaWatchedButton(props) {
   const { buttonState, setButtonState, postMediaButtonClick, handleRatingClick } = props;
   let buttonElement;
 
-  if(buttonState === 'interest') {
+  if (buttonState === "interest") {
     buttonElement = (
       <button className="btn-clicked mr-1" onClick={() => {
         setButtonState(null);
@@ -31,9 +31,5 @@ export default function MediaWatchedButton(props) {
     )
   }
 
-  return (
-    <div>
-      { buttonElement }
-    </div>
-  );
+  return <div>{buttonElement}</div>;
 }

@@ -88,18 +88,20 @@ export default function Nav() {
   }, []);
 
   return (
-    <div className="shadow-md w-full sticky top-0 left-0 z-20">
-      <div className="md:flex items-center justify-between bg-white py-4 md:px-10 px-7">
-        <div className="font-bold text-2xl cursor-pointer flex items-center text-gray-800">
-          <FontAwesomeIcon className="text-logo" icon={faEye} />
-          <Link to="/">Catchlight</Link>
-        </div>
+    <div className="shadow-md w-full sticky top-0 left-0 z-20 ">
+      <div className="md:flex items-center justify-between bg-navbar py-4 md:px-10 px-7">
+        <Link to="/">
+          <div className="font-bold text-2xl cursor-pointer flex items-center text-gray-800">
+            <FontAwesomeIcon className="text-logo mr-1" icon={faEye} />
+            <span className="text-logotxt">Catchlight</span>
+          </div>
+        </Link>
         <div onClick={() => setOpen(!open)} className={hamburger}>
           <FontAwesomeIcon name={open ? "close" : "menu"} icon={faBars} />
         </div>
         <ul
           className={`md:flex md:items-center md:pb-0 pb-12 absolute 
-        md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto
+        md:static bg-navbar md:z-auto z-[-1] left-0 w-full md:w-auto
         md:pl-0 pl-9 transition-all duration-400 ease-in ${
           open ? "top-20 opacity-100" : "top-[-490px]"
         } md:opacity-100 opacity-80`}
@@ -114,7 +116,7 @@ export default function Nav() {
               }}
             />
             {incomingFriendReqs.length > 0 && !bellClicked && (
-              <div className="absolute rounded full top-[20px] right-[160px] z-50 w-[10px] h-[10px] bg-rose-400"></div>
+              <div className="absolute rounded full top-[20px] right-[160px] z-50 w-[10px] h-[10px] bg-notificationcolor"></div>
             )}
             {showNotificationBox && (
               <FriendNotificationBox
