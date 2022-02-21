@@ -25,7 +25,7 @@ module.exports = {
       },
       colors: {
         logo: '#191B1E',
-        searchmain: '#282c30',
+        searchmain: '#31363b',
         pagebackground: '#191B1E',
         navbar: '#FCC201',
         pagetxt: '#FCC201',
