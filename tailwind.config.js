@@ -15,6 +15,7 @@ module.exports = {
       },
       backgroundImage: {
         'margin-pattern': "url('/src/images/bright-squares.png')",
+        'movies': "url('/src/images/backgroundImage1.jpg')"
       },
       height: {
         '30%': "30%"
@@ -24,7 +25,7 @@ module.exports = {
       },
       colors: {
         logo: '#191B1E',
-        searchmain: '#282c30',
+        searchmain: '#31363b',
         pagebackground: '#191B1E',
         navbar: '#FCC201',
         pagetxt: '#FCC201',
