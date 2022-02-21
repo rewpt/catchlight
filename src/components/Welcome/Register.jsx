@@ -44,16 +44,16 @@ export default function Register() {
   }
 
   return (
-    <main className="flex h-screen">
-    <div className="container my-auto max-w-3xl m-8 p-8 mx-auto z-15 bg-white drop-shadow-2xl border rounded-2xl">
+    <main className="flex h-screen bg-pagebackground">
+    <div className="container bg-searchmain my-auto max-w-3xl m-8 p-8 mx-auto z-15 drop-shadow-2xl border border-black rounded-2xl">
     <div className="flex justify-center">
-      <FontAwesomeIcon className="text-5xl" icon={faUserPlus}/>
+      <FontAwesomeIcon className="text-5xl text-pagetxt" icon={faUserPlus}/>
     </div>
     <div className="p-8 m-8">
       <form className="flex flex-col" onSubmit={handleSubmit}>
 
-      <label className="text-2xl">Name:</label>
-        <input className="border p-2 my-2 text-xl rounded-xl"
+      <label className="text-2xl text-pagetxt mb-3">Name:</label>
+        <input className="h-14 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none bg-inputbg text-inputtext"
           type="text"
           placeholder="Enter name..."
           name="name"
@@ -61,8 +61,8 @@ export default function Register() {
           onChange={(e) => {setName(e.target.value)}}
         />
 
-        <label className="text-2xl">Email:</label>
-        <input className="border p-2 my-2 text-xl rounded-xl"
+        <label className="text-2xl text-pagetxt my-3">Email:</label>
+        <input className="h-14 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none bg-inputbg text-inputtext"
           type="text"
           placeholder="Enter email..."
           name="email"
@@ -70,8 +70,8 @@ export default function Register() {
           onChange={(e) => {setEmail(e.target.value)}}
         />
 
-        <label className="text-2xl">Password:</label>
-        <input className="border p-2 my-2 text-xl rounded-xl"
+        <label className="text-2xl text-pagetxt my-3">Password:</label>
+        <input className="h-14 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none bg-inputbg text-inputtext"
           type="password"
           placeholder="Enter password..."
           name="password"
@@ -79,8 +79,8 @@ export default function Register() {
           onChange={(e) => {setPassword(e.target.value)}}
         />
 
-        <label className="text-2xl">Confirm Password:</label>
-        <input className="border p-2 my-2 text-xl rounded-xl"
+        <label className="text-2xl text-pagetxt my-3">Confirm Password:</label>
+        <input className="h-14 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none bg-inputbg text-inputtext"
           type="password"
           placeholder="Enter password..."
           name="password confirmation"
@@ -88,13 +88,13 @@ export default function Register() {
           onChange={(e) => {setPasswordConfirmation(e.target.value)}}
         />
         <button 
-          className="border p-2 my-2 bg-sky-500 text-3xl rounded-xl hover:bg-sky-600"
+          className="border border-black p-2 my-2 bg-pagetxt text-3xl rounded-l hover:bg-amber-500 mt-6"
           type="submit"
         >Register
         </button>
       </form>
       <div className="flex flex-row-reverse">
-        <Link to="/login" className="flex flex-row-reverse p-2 py-2 text-blue-500 ">Back to login</Link>
+        <Link to="/login" className="flex flex-row-reverse p-2 py-2 text-pagetxt ">Back to login</Link>
       </div>
     </div>
     </div>

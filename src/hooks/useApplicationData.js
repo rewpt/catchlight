@@ -121,6 +121,7 @@ export function useApplicationData() {
   return { 
     mediaID, 
     jwt,
+    setInteractionStats,
     mediaInteraction, 
     mediaDetails, 
     friendsAvatars, 

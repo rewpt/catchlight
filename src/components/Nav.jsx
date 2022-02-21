@@ -89,7 +89,7 @@ export default function Nav() {
 
   return (
     <div className="shadow-md w-full sticky top-0 left-0 z-20 ">
-      <div className="md:flex items-center justify-between bg-navbar py-4 md:px-10 px-7">
+      <div className="md:flex items-center justify-between bg-navbar py-4 md:px-10 px-7 rounded-t-lg">
         <Link to="/">
           <div className="font-bold text-2xl cursor-pointer flex items-center text-gray-800">
             <FontAwesomeIcon className="text-logo mr-1" icon={faEye} />

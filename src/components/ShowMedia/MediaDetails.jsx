@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { useApplicationData } from '../../hooks/useApplicationData';
 import RatingBar from './RatingBar';
 import Title from './MediaTitle';
@@ -6,13 +6,15 @@ import MediaPoster from './MediaPoster'
 import FriendInteractions from './FriendInteractions';
 import MediaWatchedButton from './MediaWatchedButton';
 import StreamsOn from './StreamsOn';
-
-
-// route used several times, put in function
+import SearchBox from '../SearchBox';
+const axios = require('axios');
 
 
 export default function MediaDetails() {
+
   const {
+    jwt,
+    mediaID,
     mediaInteraction, 
     mediaDetails, 
     friendsAvatars, 
@@ -22,11 +24,38 @@ export default function MediaDetails() {
     setButtonState,
     postMediaButtonClick,
     handleRatingClick,
-    isLoading
+    isLoading,
+    setInteractionStats
   } = useApplicationData()
+  
+  const [refresh, setRefresh] = useState(false);
+
+  useEffect(() => {
+    const getTotalCount = async () => {
+      try {
+        const response = await axios.get(
+          `/api/interactions/count/${mediaID}`, jwt)
+
+        setInteractionStats(response.data[0]);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    const reqInterval = setInterval(() => {
+      getTotalCount();
+    }, 5000);
+
+    return () => {
+      clearInterval(reqInterval);
+    };
+  });
 
   return (
     <React.Fragment>
+        <SearchBox 
+          refresh={refresh}
+          setRefresh={setRefresh}
+        />
       { !isLoading && (
      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-6 mt-10 mx-10">
        <MediaPoster image={mediaDetails.image}/>
@@ -39,6 +68,7 @@ export default function MediaDetails() {
       </div>
      </div>
     )}
+    
     {isLoading && (
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-6 mt-10 mx-10">
       Loading...

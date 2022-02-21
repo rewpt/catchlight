@@ -35,7 +35,11 @@
 }
 
 .media-avatar {
-  @apply relative flex overflow-hidden mx-1 justify-center h-[70px] w-[70px]  hover:scale-125 ease-in duration-100 rounded-full border-double ring-2 ring-slate-600;
+  @apply relative flex overflow-hidden justify-center h-[70px] w-[70px] rounded-full border-double;
+}
+
+.media-avatar-outer {
+  @apply relative flex overflow-hidden justify-center items-center h-[90px] w-[80px] hover:scale-125 ease-in duration-100 rounded-full border-double;
 }
 
 .media-avatar-chat {

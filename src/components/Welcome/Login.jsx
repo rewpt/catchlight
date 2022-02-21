@@ -31,16 +31,16 @@ export default function Login() {
   };
 
   return (
-    <main className="flex h-screen">
-      <div className="container my-auto max-w-3xl m-8 py-8 mx-auto z-15 bg-white drop-shadow-2xl border rounded-2xl">
+    <main className="flex h-screen bg-pagebackground">
+      <div className="container my-auto max-w-3xl m-8 py-8 mx-auto z-15 bg-searchmain drop-shadow-2xl border border-black rounded-2xl">
         <div className="flex justify-center">
-          <FontAwesomeIcon className="text-5xl" icon={faLock} />
+          <FontAwesomeIcon className="text-5xl text-pagetxt" icon={faLock} />
         </div>
         <div className="p-8 m-8">
           <form className="flex flex-col" onSubmit={handleSubmit}>
-            <label className="text-2xl">Email:</label>
+            <label className="text-2xl text-pagetxt mb-3">Email:</label>
             <input
-              className="border p-2 my-2 text-xl rounded-xl"
+              className="h-14 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none bg-inputbg text-inputtext"
               type="text"
               placeholder="Enter email..."
               name="email"
@@ -49,9 +49,9 @@ export default function Login() {
                 setEmail(e.target.value);
               }}
             />
-            <label className="text-2xl">Password:</label>
+            <label className="text-2xl text-pagetxt my-3">Password:</label>
             <input
-              className="border p-2 my-2 text-xl rounded-xl"
+              className="h-14 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none bg-inputbg text-inputtext"
               type="password"
               placeholder="Enter password..."
               name="password"
@@ -62,13 +62,13 @@ export default function Login() {
             />
             <button
               type="submit"
-              className="border p-2 my-2 bg-sky-500 text-3xl rounded-xl hover:bg-sky-600"
+              className="border border-black p-2 my-2 bg-pagetxt text-3xl rounded-l hover:bg-amber-500 mt-6"
             >
               Login
             </button>
           </form>
           <div className="flex flex-row-reverse">
-            <Link to="/register" className="p-2 py-2 text-blue-500">
+            <Link to="/register" className="p-2 py-2 text-pagetxt">
               Don't have an account? Register
             </Link>
           </div>
