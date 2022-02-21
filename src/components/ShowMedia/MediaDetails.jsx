@@ -1,4 +1,5 @@
-import React from 'react';
+import { useEffect, Fragment } from 'react';
+import axios from 'axios';
 import { useApplicationData } from '../../hooks/useApplicationData';
 import RatingBar from './RatingBar';
 import Title from './MediaTitle';
@@ -8,11 +9,10 @@ import MediaWatchedButton from './MediaWatchedButton';
 import StreamsOn from './StreamsOn';
 
 
-// route used several times, put in function
-
-
 export default function MediaDetails() {
   const {
+    jwt,
+    mediaID,
     mediaInteraction, 
     mediaDetails, 
     friendsAvatars, 
@@ -22,11 +22,32 @@ export default function MediaDetails() {
     setButtonState,
     postMediaButtonClick,
     handleRatingClick,
-    isLoading
+    isLoading,
+    setInteractionStats
   } = useApplicationData()
 
+  useEffect(() => {
+    const getTotalCount = async () => {
+      try {
+        const response = await axios.get(
+          `/api/interactions/count/${mediaID}`, jwt)
+
+        setInteractionStats(response.data[0]);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    const reqInterval = setInterval(() => {
+      getTotalCount();
+    }, 5000);
+
+    return () => {
+      clearInterval(reqInterval);
+    };
+  });
+
   return (
-    <React.Fragment>
+    <Fragment>
       { !isLoading && (
      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-6 mt-10 mx-10">
        <MediaPoster image={mediaDetails.image}/>
@@ -45,6 +66,6 @@ export default function MediaDetails() {
       </div>
     )}
 
-    </React.Fragment>
+    </Fragment>
   );
 }
