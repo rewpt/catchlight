@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
 .btn {
   @apply min-h-[50px] max-h-[50px] rounded-full bg-green-500 px-3 uppercase text-base font-semibold cursor-pointer tracking-wider hover:scale-105 ease-in duration-100;
 }
@@ -15,11 +27,11 @@
 }
 
 .btn-clicked {
-  @apply min-h-[50px] max-h-[50px] rounded-full bg-green-300 px-3 uppercase text-base font-semibold cursor-pointer tracking-wider hover:scale-105 ease-in duration-100;
+  @apply min-h-[50px] max-h-[50px] rounded-full bg-navbar px-3 uppercase text-base font-semibold cursor-pointer tracking-wider hover:scale-105 ease-in duration-100;
 }
 
 .media-avatar {
-  @apply relative flex overflow-hidden mx-2 justify-center h-[90px] w-[60px]  hover:scale-125 ease-in duration-100 rounded-full border-double ring-2 ring-slate-600;
+  @apply relative flex overflow-hidden mx-1 justify-center h-[70px] w-[70px]  hover:scale-125 ease-in duration-100 rounded-full border-double ring-2 ring-slate-600;
 }
 
 .media-avatar-popout {
@@ -39,7 +51,7 @@
 }
 
 .like-btn {
-  @apply text-7xl text-slate-400 hover:text-green-500 cursor-pointer;
+  @apply text-7xl text-inputtext hover:text-green-500 cursor-pointer;
 }
 .like-btn-sml {
   @apply text-slate-400 hover:text-green-500 cursor-pointer;
@@ -50,7 +62,7 @@
 }
 
 .meh-btn {
-  @apply text-7xl text-slate-400 hover:text-amber-500 cursor-pointer;
+  @apply text-7xl text-inputtext hover:text-amber-500 cursor-pointer;
 }
 
 .meh-btn-sml {
@@ -62,7 +74,7 @@
 }
 
 .dislike-btn {
-  @apply text-7xl text-slate-400 hover:text-red-500 cursor-pointer;
+  @apply text-7xl text-inputtext hover:text-red-500 cursor-pointer;
 }
 
 .dislike-btn-clicked {

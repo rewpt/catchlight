@@ -12,7 +12,7 @@ export default function SearchBar(props) {
     onSearch(term);
   }, [term, onSearch]);
   return (
-    <div className=" bg-gray-200 w-full">
+    <div className=" bg-searchmain w-full">
       <div className="h-[100px] w-full flex justify-center items-center ">
         <div className="relative">
           <form
@@ -21,7 +21,7 @@ export default function SearchBar(props) {
           >
             <input
               type="text"
-              className="h-14 w-96 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none"
+              className="h-14 w-96 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none bg-inputbg text-inputtext"
               placeholder="Search Any Movie"
               name="search"
               value={value}

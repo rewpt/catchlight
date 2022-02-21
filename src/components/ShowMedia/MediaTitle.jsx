@@ -6,7 +6,9 @@ export default function MediaTitle(props) {
 
   return (
     <div className="">
-      <h1 className="media-title text-5xl font-extrabold">{title}</h1>
+      <h1 className="media-title text-navbar text-5xl font-extrabold">
+        {title}
+      </h1>
       <MediaDescription description={description} />
     </div>
   );

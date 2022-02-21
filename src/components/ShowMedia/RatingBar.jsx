@@ -18,15 +18,15 @@ export default function RatingBar(props) {
     return { height: `${(parseInt(count) / parseInt(total_count)) * 100}%` };
   }
 
-  const toggleLike = classNames({
+  const toggleLike = classNames("mt-2", {
     "like-btn-clicked": mediaInteraction.rating === "like",
     "like-btn": mediaInteraction.rating !== "like",
   });
-  const toggleMeh = classNames({
+  const toggleMeh = classNames("mt-2", {
     "meh-btn-clicked": mediaInteraction.rating === "meh",
     "meh-btn": mediaInteraction.rating !== "meh",
   });
-  const toggleDislike = classNames({
+  const toggleDislike = classNames("mt-2", {
     "dislike-btn-clicked": mediaInteraction.rating === "dislike",
     "dislike-btn": mediaInteraction.rating !== "dislike",
   });
@@ -40,9 +40,9 @@ export default function RatingBar(props) {
   return (
     <div className="row-span-2 justify-items-center grid grid-cols-3">
       <div className="like-container">
-        <div className="flex items-end h-full bg-gray-200 w-full rounded-full">
+        <div className="flex items-end h-full bg-searchmain w-full rounded-full">
           <div
-            className="rounded-b-full rounded-t-full bg-green-200 w-full"
+            className="rounded-b-full rounded-t-full bg-green-300 w-full"
             style={getPercentages(like_count)}
           ></div>
         </div>
@@ -58,9 +58,9 @@ export default function RatingBar(props) {
       </div>
 
       <div className="meh-container">
-        <div className="flex items-end h-full mr-2 bg-gray-200 rounded-full w-full">
+        <div className="flex items-end h-full mr-2 bg-searchmain rounded-full w-full">
           <div
-            className={`rounded-b-full rounded-t-full bg-yellow-200 w-full`}
+            className={`rounded-b-full rounded-t-full bg-amber-300 w-full`}
             style={getPercentages(meh_count)}
           ></div>
         </div>
@@ -75,9 +75,9 @@ export default function RatingBar(props) {
         </button>
       </div>
       <div className="dislike-container">
-        <div className="flex items-end h-full bg-gray-200 rounded-full w-full">
+        <div className="flex items-end h-full bg-searchmain rounded-full w-full">
           <div
-            className={"rounded-b-full rounded-t-full bg-red-200 w-full"}
+            className={"rounded-b-full rounded-t-full bg-red-400 w-full"}
             style={getPercentages(dislike_count)}
           ></div>
         </div>
