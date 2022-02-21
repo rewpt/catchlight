@@ -37,7 +37,7 @@ export default function FriendTabGroup(props) {
   ];
 
   return (
-    <div className="flex-col bg-black w-[90px] h-full overflow-hidden">
+    <div className="flex-col bg-black w-[90px] h-full no-scrollbar overflow-hidden">
       <div className="w-full h-full overflow-auto">
         {friendInfoArr.map((friend) => {
           return (
