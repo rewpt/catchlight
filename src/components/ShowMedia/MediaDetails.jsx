@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { useApplicationData } from '../../hooks/useApplicationData';
 import RatingBar from './RatingBar';
 import Title from './MediaTitle';
@@ -13,6 +13,7 @@ import SearchBox from '../SearchBox';
 
 
 export default function MediaDetails() {
+
   const {
     mediaInteraction, 
     mediaDetails, 
@@ -25,7 +26,7 @@ export default function MediaDetails() {
     handleRatingClick,
     isLoading
   } = useApplicationData()
-
+  
   const [refresh, setRefresh] = useState(false);
 
   return (
@@ -46,6 +47,7 @@ export default function MediaDetails() {
       </div>
      </div>
     )}
+    
     {isLoading && (
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-6 mt-10 mx-10">
       Loading...
