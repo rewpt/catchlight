@@ -44,7 +44,7 @@ export default function UserMenu(props) {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-pagebackground ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
             <Menu.Item as="div">
               <UserAvatar imageUrl={user.profile_picture}/>
@@ -53,7 +53,7 @@ export default function UserMenu(props) {
               {({ active }) => (
                 <div
                   className={classNames(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    active ? 'bg-gray-100 text-pagetxt' : 'text-pagetxt',
                     'block px-4 py-2 text-sm pointer-events-none'
                   )}
                 >
@@ -65,7 +65,7 @@ export default function UserMenu(props) {
               {({ active }) => (
                 <div
                   className={classNames(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    active ? 'bg-gray-100 text-pagetxt' : 'text-pagetxt',
                     'block px-4 py-2 text-sm pointer-events-none'
                   )}
                 >
@@ -80,7 +80,7 @@ export default function UserMenu(props) {
                     type="submit"
                     onClick={handleLogout}
                     className={classNames(
-                      active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                      active ? 'bg-searchmain text-pagetxt' : 'text-pagetxt',
                       'block w-full text-left px-4 py-2 text-sm'
                     )}
                   >
