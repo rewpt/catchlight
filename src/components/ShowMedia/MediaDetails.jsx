@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useApplicationData } from '../../hooks/useApplicationData';
 import RatingBar from './RatingBar';
 import Title from './MediaTitle';
@@ -6,6 +6,7 @@ import MediaPoster from './MediaPoster'
 import FriendInteractions from './FriendInteractions';
 import MediaWatchedButton from './MediaWatchedButton';
 import StreamsOn from './StreamsOn';
+import SearchBox from '../SearchBox';
 
 
 // route used several times, put in function
@@ -25,8 +26,14 @@ export default function MediaDetails() {
     isLoading
   } = useApplicationData()
 
+  const [refresh, setRefresh] = useState(false);
+
   return (
     <React.Fragment>
+        <SearchBox 
+          refresh={refresh}
+          setRefresh={setRefresh}
+        />
       { !isLoading && (
      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-6 mt-10 mx-10">
        <MediaPoster image={mediaDetails.image}/>

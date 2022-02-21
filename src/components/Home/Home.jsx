@@ -5,32 +5,23 @@ import SearchBar from "./SearchBar";
 import FriendRecommendations from "./FriendRecommendations";
 import WatchList from "./WatchList";
 import Watched from "./Watched";
+import SearchBox from "../SearchBox";
 
 export default function Home() {
-  const [showSearch, setShowSearch] = useState(false);
-  const [term, setTerm] = useState("");
-  const [results, setResults] = useState([]);
+
   const [refresh, setRefresh] = useState(false);
-
-
-  useEffect(() => {
-    const searchURL = `/api/media/search/${term}`;
-    if (term !== "") {
-      axios.get(searchURL).then((response) => {
-        console.log("AXIOS GET ", response.data);
-        setResults([...response.data]);
-        setShowSearch(true);
-      });
-    } else {
-      setShowSearch(false);
-    }
-  }, [term]);
 
   return (
     <React.Fragment>
+        <SearchBox 
+          refresh={refresh}
+          setRefresh={setRefresh}
+        />
+
       <FriendRecommendations
         refresh={refresh}
         setRefresh={setRefresh}
+
       >Friend's Recommendation</FriendRecommendations>
       <WatchList
         refresh={refresh}
