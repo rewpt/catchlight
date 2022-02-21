@@ -32,7 +32,7 @@ export default function CardContainer(props) {
       <button>
           <FontAwesomeIcon 
               title='Add to watch list' 
-              className='text-4xl text-zinc-400 p-2' 
+              className='text-4xl text-stone-600 p-2' 
               icon={faChevronLeft}
               onClick={() => {scroll(-170)}}>
           </FontAwesomeIcon>
@@ -61,7 +61,7 @@ export default function CardContainer(props) {
         <button>
           <FontAwesomeIcon 
               title='Add to watch list' 
-              className='text-4xl text-zinc-400 p-2' 
+              className='text-4xl text-stone-600 p-2' 
               icon={faChevronRight}
               onClick={() => {scroll(170)}}>
           </FontAwesomeIcon>
