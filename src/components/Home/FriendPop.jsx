@@ -33,7 +33,6 @@ export default function FriendPop(props) {
           // console.log(`friend id:${friend.friend_id}`)
           // console.log(friend.profile_picture)
           for (const mediaFriend of mediaFriendsInteractions.data) {
-            // console.log(mediaFriend)
             if (friend.friend_id === mediaFriend.id) {
               for (const interactionMedia of mediaFriend.interactions) {
                 // console.log(interactionMedia)

@@ -23,7 +23,16 @@ module.exports = {
         '120': '1.2',
       },
       colors: {
-        logo: '#75424A'
+        logo: '#191B1E',
+        searchmain: '#282c30',
+        pagebackground: '#191B1E',
+        navbar: '#FCC201',
+        pagetxt: '#FCC201',
+        logotxt: '#191B1E',
+        notificationcolor: '#02ab07',
+        topborder: '#191B1E',
+        inputbg: '#191B1E',
+        inputtext: '#a2a2a3' 
       }
     },
   },

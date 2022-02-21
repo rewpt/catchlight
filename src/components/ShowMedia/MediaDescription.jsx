@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 export default function MediaDescription(props) {
   const { description } = props;
-  
-  return(
+
+  return (
     <React.Fragment>
-      <p className='font-semibold text-lg text-slate-800 mt-3'>{description}</p>
+      <p className="font-semibold text-lg text-inputtext mt-3">{description}</p>
     </React.Fragment>
-  )
-};
+  );
+}

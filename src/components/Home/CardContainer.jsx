@@ -21,7 +21,7 @@ export default function CardContainer(props) {
 
   return (
     <div>
-      <div className="mt-3 mx-6 text-2xl font-bold px-6 text-rose-500">
+      <div className="mt-3 mx-6 text-2xl font-bold px-6 text-pagetxt">
         {props.children}
       </div>
 
