@@ -15,6 +15,7 @@ module.exports = {
       },
       backgroundImage: {
         'margin-pattern': "url('/src/images/bright-squares.png')",
+        'movies': "url('/src/images/backgroundImage1.jpg')"
       },
       height: {
         '30%': "30%"
