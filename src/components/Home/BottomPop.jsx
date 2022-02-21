@@ -9,7 +9,7 @@ const axios = require('axios');
 export default function BottomPop(props) {
 
   const { mediaID } = props
-  const [watchListButton, setWatchListButton] = useState(2);
+  const [ watchListButton, setWatchListButton ] = useState(2);
   const [ interactionButton, setInteractionButton ] = useState('');
 
   const toggleLike = classNames({"like-btn-sml-clicked rating-face-popout": interactionButton === "like", "like-btn-sml": interactionButton !== "like"});

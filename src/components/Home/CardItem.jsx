@@ -4,6 +4,13 @@ import { Link } from 'react-router-dom'
 
 export default function CardItem(props) {
   const [hidden, setHidden] = useState(true);
+  const [ path, setPath ] = useState('')
+
+
+  useEffect(() => {
+    const path = window.location.pathname.substr(1, 5)
+    setPath(path)
+  });
 
   return (
     <div
@@ -18,7 +25,7 @@ export default function CardItem(props) {
       <Link to={`/media/${props.mediaID}`} key={props.mediaID}>
         <img className="h-full w-full no-underline decoration-0 min-w-[150px] min-h-[220px] max-w-[150px] max-h-[220px]" src={props.image} alt="" />
       </Link>
-      {!hidden && <BottomPop 
+      {!hidden && path !== "media" && <BottomPop 
       mediaID={props.mediaID} 
       refresh={props.refresh}
       setRefresh={props.setRefresh}

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect } from 'react';
 import { useApplicationData } from '../../hooks/useApplicationData';
 import RatingBar from './RatingBar';
 import Title from './MediaTitle';
@@ -27,9 +27,7 @@ export default function MediaDetails() {
     isLoading,
     setInteractionStats
   } = useApplicationData()
-  
-  const [refresh, setRefresh] = useState(false);
-
+    
   useEffect(() => {
     const getTotalCount = async () => {
       try {
@@ -48,14 +46,11 @@ export default function MediaDetails() {
     return () => {
       clearInterval(reqInterval);
     };
-  });
+  },);
 
   return (
     <React.Fragment>
-        <SearchBox 
-          refresh={refresh}
-          setRefresh={setRefresh}
-        />
+        <SearchBox />
       { !isLoading && (
      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-6 mt-10 mx-10">
        <MediaPoster image={mediaDetails.image}/>
@@ -64,7 +59,7 @@ export default function MediaDetails() {
        <FriendInteractions friendsAvatarArray={friendsAvatars}/>
        <StreamsOn streamingServices={streamingServices}/>
        <div className=' flex'>
-       <MediaWatchedButton postMediaButtonClick={postMediaButtonClick} buttonState={buttonState} setButtonState={setButtonState} handleRatingClick={handleRatingClick}></MediaWatchedButton>
+        <MediaWatchedButton postMediaButtonClick={postMediaButtonClick} buttonState={buttonState} setButtonState={setButtonState} handleRatingClick={handleRatingClick}></MediaWatchedButton>
       </div>
      </div>
     )}
