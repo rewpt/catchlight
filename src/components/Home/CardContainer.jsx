@@ -54,7 +54,7 @@ export default function CardContainer(props) {
                 mediaID={media.id}
                 refresh={props.refresh}
                 setRefresh={props.setRefresh}
-                />;
+                />
             })}
         </div>
 
