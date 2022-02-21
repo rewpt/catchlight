@@ -1,5 +1,4 @@
-import { useEffect, Fragment } from 'react';
-import axios from 'axios';
+import React, {useEffect, useState} from 'react';
 import { useApplicationData } from '../../hooks/useApplicationData';
 import RatingBar from './RatingBar';
 import Title from './MediaTitle';
@@ -7,9 +6,12 @@ import MediaPoster from './MediaPoster'
 import FriendInteractions from './FriendInteractions';
 import MediaWatchedButton from './MediaWatchedButton';
 import StreamsOn from './StreamsOn';
+import SearchBox from '../SearchBox';
+const axios = require('axios');
 
 
 export default function MediaDetails() {
+
   const {
     jwt,
     mediaID,
@@ -25,6 +27,8 @@ export default function MediaDetails() {
     isLoading,
     setInteractionStats
   } = useApplicationData()
+  
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     const getTotalCount = async () => {
@@ -47,7 +51,11 @@ export default function MediaDetails() {
   });
 
   return (
-    <Fragment>
+    <React.Fragment>
+        <SearchBox 
+          refresh={refresh}
+          setRefresh={setRefresh}
+        />
       { !isLoading && (
      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-6 mt-10 mx-10">
        <MediaPoster image={mediaDetails.image}/>
@@ -60,12 +68,13 @@ export default function MediaDetails() {
       </div>
      </div>
     )}
+    
     {isLoading && (
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-6 mt-10 mx-10">
       Loading...
       </div>
     )}
 
-    </Fragment>
+    </React.Fragment>
   );
 }
