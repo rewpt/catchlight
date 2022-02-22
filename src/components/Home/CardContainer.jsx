@@ -39,7 +39,6 @@ export default function CardContainer(props) {
         </button>
 
         <div ref={scrollbar} className="flex scrollbar-hide snap-mandatory snap-x overflow-x-scroll whitespace-nowrap w-full min-w-[200px] h-[290px] mx-0">
-          {results && console.log("CONSOLE.LOG", results)}
 
           {results &&
             results.map((media) => {
