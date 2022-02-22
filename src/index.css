@@ -19,11 +19,11 @@
 }
 
 .btn-friend-accept {
-  @apply h-[50px] rounded-full bg-green-500 px-3 uppercase text-sm font-semibold cursor-pointer hover:scale-105 ease-in duration-100;
+  @apply h-[35px] w-[35px] rounded-full bg-green-500 px-2 uppercase text-sm font-semibold cursor-pointer hover:scale-105 ease-in duration-100;
 }
 
 .btn-friend-decline {
-  @apply h-[50px] rounded-full bg-red-500 px-3 uppercase text-sm font-semibold cursor-pointer hover:scale-105 ease-in duration-100;
+  @apply h-[35px] w-[35px] rounded-full bg-red-500 px-2 uppercase text-sm font-semibold cursor-pointer hover:scale-105 ease-in duration-100;
 }
 
 .btn-clicked {
