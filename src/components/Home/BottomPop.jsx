@@ -85,13 +85,14 @@ export default function BottomPop(props) {
     }, [watchListButton, interactionButton])
       
   return(
-    <div className='flex justify-between content-center bg-black min-w-[150px] min-h-[px] max-w-[150px] max-h-[25px]'>
+
+    <div className='flex justify-evenly bg-black min-w-[150px] min-h-[22px] max-w-[150px] max-h-[22px] overflow-visible'>
       <FriendPop mediaID={props.mediaID}/>
 
         {(() => {
           switch (watchListButton) {
             case 0:
-              return <button>
+              return <button className="flex items-center">
               <FontAwesomeIcon 
               title='Add to watch list' 
               className='add-to-watch-popout' 
@@ -104,7 +105,7 @@ export default function BottomPop(props) {
               />
             </button>
             case 1:
-              return <button>
+              return <button className="flex items-center">
               <FontAwesomeIcon 
               title='Remove to watch list' 
               className='remove-from-watch-popout' 
@@ -121,11 +122,16 @@ export default function BottomPop(props) {
           }
         })()}
 
-      <div className='mr-2'>
-      <button><FontAwesomeIcon className={toggleLike} icon={faFaceGrin} onClick={() => postMediaButtonClick('like')} /> </button>
-      <button><FontAwesomeIcon className={toggleMeh} icon={faFaceMeh} onClick={() => postMediaButtonClick('meh')} /> </button>
-      <button><FontAwesomeIcon className={toggleDislike} icon={faFaceFrown} onClick={() => postMediaButtonClick('dislike')} /> </button>
+
+      <div className='flex justify-end min-w-[60px] min-h-[22px] max-w-[60px] max-h-[22px] overflow-visible items-center'>
+
+        <button className="flex"><FontAwesomeIcon className={toggleLike} icon={faFaceGrin} onClick={() => postMediaButtonClick('like')} /> </button>
+        <button className="flex"><FontAwesomeIcon className={toggleMeh} icon={faFaceMeh} onClick={() => postMediaButtonClick('meh')} /> </button>
+        <button className="flex"><FontAwesomeIcon className={toggleDislike} icon={faFaceFrown} onClick={() => postMediaButtonClick('dislike')} /> </button>
+
       </div>
+
     </div>
+
   )
 }
