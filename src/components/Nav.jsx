@@ -122,7 +122,6 @@ export default function Nav() {
               <FriendNotificationBox
                 hasNewNotification={hasNewNotification}
                 incomingFriendReqs={incomingFriendReqs}
-                // getFriendReqs={getFriendReqs}
                 setIncomingFriendReqs={setIncomingFriendReqs}
               />
             )}

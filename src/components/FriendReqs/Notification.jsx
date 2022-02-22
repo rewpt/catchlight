@@ -17,7 +17,6 @@ export default function FriendNotification(props) {
           return req.id !== props.id;
         })
       );
-      console.log(response);
     } catch (err) {
       console.log(err);
     }

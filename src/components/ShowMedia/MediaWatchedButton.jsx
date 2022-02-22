@@ -4,8 +4,6 @@ export default function MediaWatchedButton(props) {
   const { buttonState, setButtonState, postMediaButtonClick, handleRatingClick } = props;
   let buttonElement;
 
-  const buttonClass = "flex justify-around mt-20 content-end sm:justify-around sm:mt-20 md:justify-start md:mt-0 lg:justify-start lg:mt-0 xl:justify-start lg:mt-0"
-
   if (buttonState === "interest") {
     buttonElement = (
       <button className="btn-clicked mr-1" onClick={() => {
