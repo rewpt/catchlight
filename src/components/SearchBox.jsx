@@ -3,13 +3,11 @@ import axios from "axios";
 import CardContainer from "./Home/CardContainer";
 import SearchBar from "./Home/SearchBar";
 
-
 export default function SearchBox(props) {
   const [showSearch, setShowSearch] = useState(false);
   const [term, setTerm] = useState("");
   const [results, setResults] = useState([]);
   // const [refresh, setRefresh] = useState(false);
-
 
   useEffect(() => {
     const searchURL = `/api/media/search/${term}`;
@@ -26,11 +24,16 @@ export default function SearchBox(props) {
   return (
     <React.Fragment>
       <SearchBar onSearch={(term) => setTerm(term)} />
-      {showSearch && <CardContainer 
-        refresh={props.refresh}
-        setRefresh={props.setRefresh}
-        results={results}>Search
-      </CardContainer>}
-      </React.Fragment>
-    )
+      {showSearch && (
+        <CardContainer
+          showSearch={showSearch}
+          refresh={props.refresh}
+          setRefresh={props.setRefresh}
+          results={results}
+        >
+          Search
+        </CardContainer>
+      )}
+    </React.Fragment>
+  );
 }
