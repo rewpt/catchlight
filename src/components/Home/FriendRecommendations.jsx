@@ -16,7 +16,6 @@ export default function FriendRecommendations(props) {
             Authorization: `Bearer ${localStorage.getItem('userToken')}`
           }
         });
-        // console.log(mediaFriendsInteractions.data);
         const media = await axios.get('/api/media', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('userToken')}`
@@ -39,7 +38,6 @@ export default function FriendRecommendations(props) {
           if (mediaIDs.includes(mediaData.id)) {
             mediaArray.push(mediaData)
           }
-          // console.log(mediaArray);
         }
 
         return mediaArray;

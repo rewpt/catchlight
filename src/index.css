@@ -14,6 +14,32 @@
   }
 }
 
+.fadeIn {
+  animation: fadeInAnimation 2.2s;
+}
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeOut {
+  animation: fadeOutAnimation 2.5s;
+}
+
+@keyframes fadeOutAnimation {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 .btn {
   @apply min-h-[50px] max-h-[50px] rounded-full bg-green-500 px-3 uppercase text-base font-semibold cursor-pointer tracking-wider hover:scale-105 ease-in duration-100;
 }
@@ -101,4 +127,3 @@
 .dislike-btn-sml-clicked {
   @apply min-w-[18px] min-h-[18px] max-w-[18px] max-h-[18px] text-slate-400 text-red-500 cursor-pointer;
 }
-

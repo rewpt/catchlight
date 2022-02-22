@@ -23,19 +23,16 @@ export default function FriendPop(props) {
           }
         });
 
-        // console.log('mediaFriendsInteractions ===', mediaFriendsInteractions.data)
 
         const results = [];
 
-        // console.log('props.mediaID', props.mediaID);
 
         for (const friend of friendsPictures.data) {
-          // console.log(`friend id:${friend.friend_id}`)
-          // console.log(friend.profile_picture)
+
           for (const mediaFriend of mediaFriendsInteractions.data) {
             if (friend.friend_id === mediaFriend.id) {
+
               for (const interactionMedia of mediaFriend.interactions) {
-                // console.log(interactionMedia)
                 if (interactionMedia.media_id === props.mediaID) {
                   results.push({profile_picture: friend.profile_picture});
                 }

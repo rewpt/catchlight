@@ -29,7 +29,7 @@ export default function FriendInteractions(props) {
         });
 
         return (
-          <div className="media-avatar-outer">
+          <div key={index} className="media-avatar-outer">
             {image.rating === "like" && (
               <FontAwesomeIcon
                 className={

@@ -7,8 +7,8 @@ export default function StreamsOn(props) {
     <div className="flex-col font-semibold sm:justify-center md:justify-start text-navbar">
       <h3>Streaming on:</h3>
       <div className="flex font-semibold text-xl text-inputtext mt-2">
-        {streamingServices.map((service) => {
-          return <p className="mr-2">{`${service.title}`}</p>;
+        {streamingServices.map((service, index) => {
+          return <p key={index} className="mr-2">{`${service.title}`}</p>;
         })}
       </div>
     </div>

@@ -16,27 +16,24 @@ export default function Watched (props) {
             Authorization: `Bearer ${localStorage.getItem('userToken')}`
           }
         });
-        // console.log(mediaFriendsInteractions.data);
+
         const media = await axios.get('/api/media', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('userToken')}`
           }
         });
-        // console.log(mediaWatched.data)
         
         const mediaIDs = [];
 
         for (const media of mediaWatched.data) {
           mediaIDs.push(media.media_id)
         }
-        // console.log(mediaIDs)
         const mediaArray = [];
 
         for (const mediaData of media.data) {
           if (mediaIDs.includes(mediaData.id)) {
             mediaArray.push(mediaData)
           }
-          // console.log(mediaArray);
         }
 
         return mediaArray
