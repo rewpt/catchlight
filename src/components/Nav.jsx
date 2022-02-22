@@ -104,7 +104,7 @@ export default function Nav() {
         md:static bg-navbar md:z-auto z-[-1] left-0 w-full md:w-auto
         md:pl-0 pl-9 transition-all duration-400 ease-in ${
           open ? "top-20 opacity-100" : "top-[-490px]"
-        } md:opacity-100 opacity-80`}
+        } md:opacity-100 opacity-100`}
         >
           <li>
             <FontAwesomeIcon
