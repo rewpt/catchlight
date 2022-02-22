@@ -1,5 +1,4 @@
 import Nav from './components/Nav';
-import SearchBox from './components/SearchBox'
 import { Outlet } from "react-router-dom";
 import React from 'react';
 import './index.css';

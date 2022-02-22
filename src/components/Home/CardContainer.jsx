@@ -13,9 +13,7 @@ export default function CardContainer(props) {
   const scrollbar = useRef(null);
 
   const scroll = (scrollOffset) => {
-    console.log(scrollbar.current.scrollLeft);
     scrollbar.current.scrollLeft += scrollOffset;
-    console.log(scrollbar.current.scrollLeft);
   };
 
   return (

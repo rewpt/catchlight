@@ -1,6 +1,5 @@
 import React from "react";
 import Notification from "./Notification";
-import axios from "axios";
 import EmptyNotification from "./EmptyNotification";
 
 export default function FriendNotification(props) {

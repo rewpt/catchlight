@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./components/Welcome/Login";
 import Register from "./components/Welcome/Register";
 import Home from './components/Home/Home'
-import Test from "./components/TestPage/Test";
 import MediaDetails from "./components/ShowMedia/MediaDetails";
 import App from "./App";
 
@@ -18,7 +17,6 @@ ReactDOM.render(
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/test" element={<Test />} />
 
       <Route path="/" element={<App />}>
         <Route index element={<Home />} />

@@ -7,7 +7,6 @@ export default function SearchBox(props) {
   const [showSearch, setShowSearch] = useState(false);
   const [term, setTerm] = useState("");
   const [results, setResults] = useState([]);
-  // const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     const searchURL = `/api/media/search/${term}`;
