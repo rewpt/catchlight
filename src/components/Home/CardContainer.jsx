@@ -18,10 +18,6 @@ export default function CardContainer(props) {
     console.log(scrollbar.current.scrollLeft);
   };
 
-  //scrollbar-hide
-  // const searchFade = classNames({
-  //   fadeIn: props.children === "Search",
-  // });
   return (
     <div className={props.children === "Search" ? "fadeIn" : undefined}>
       <div className="mt-3 mx-6 text-2xl font-bold px-6 text-pagetxt">
