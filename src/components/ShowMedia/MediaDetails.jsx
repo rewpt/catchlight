@@ -41,7 +41,7 @@ export default function MediaDetails() {
     };
     const reqInterval = setInterval(() => {
       getTotalCount();
-    }, 5000);
+    }, 2000);
 
     return () => {
       clearInterval(reqInterval);
