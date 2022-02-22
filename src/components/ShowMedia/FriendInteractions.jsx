@@ -13,7 +13,12 @@ export default function FriendInteractions(props) {
 
   
   return (
-    <div className="flex xs:justify-center sm:justify-center xl:justify-start ">
+    <div className="flex 
+    justify-around mt-20 content-end
+    sm:justify-around sm:mt-20
+    md:justify-start md:mt-0
+    lg:justify-start lg:mt-0
+    xl:justify-start lg:mt-0">
       {friendsAvatarArray.map((image, index) => {
         let borderColor = classNames('media-avatar', {'hover:ring-2 hover:ring-green-600': image.rating === "like", "hover:ring-2 hover:ring-yellow-600": image.rating === "meh", "hover:ring-2 hover:ring-red-600": image.rating === 'dislike', "hover:ring-2 hover:ring-blue-600": image.rating === 'interest'});
 
