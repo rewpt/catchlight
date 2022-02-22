@@ -10,7 +10,7 @@ export default function FriendNotification(props) {
     <div>
       <div
         className="text-lg bg-pagebackground drop-shadow-xl border-black border-1 border-solid z-50 
-                  overflow-hidden  w-[330px] absolute top-[64px] right-0"
+                  overflow-hidden  w-[380px] absolute top-[64px] right-0"
       >
         <div className="odd:bg-pagebackground even:bg-searchmain">
           {incomingFriendReqs &&
