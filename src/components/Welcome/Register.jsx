@@ -44,7 +44,7 @@ export default function Register() {
   }
 
   return (
-    <main className="flex h-screen bg-pagebackground">
+    <main className="flex h-screen pagebg bg-cover bg-center w-screen">
     <div className="container bg-searchmain my-auto max-w-3xl m-8 p-8 mx-auto z-15 drop-shadow-2xl border border-black rounded-2xl">
     <div className="flex justify-center">
       <FontAwesomeIcon className="text-5xl text-pagetxt" icon={faUserPlus}/>

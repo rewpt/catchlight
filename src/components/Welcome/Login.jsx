@@ -31,7 +31,7 @@ export default function Login() {
   };
 
   return (
-    <main className="flex h-screen bg-pagebackground">
+    <main className="flex h-screen pagebg bg-cover bg-center w-screen">
       <div className="container my-auto max-w-3xl m-8 py-8 mx-auto z-15 bg-searchmain drop-shadow-2xl border border-black rounded-2xl">
         <div className="flex justify-center">
           <FontAwesomeIcon className="text-5xl text-pagetxt" icon={faLock} />
