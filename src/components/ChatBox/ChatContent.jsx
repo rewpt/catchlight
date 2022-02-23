@@ -5,9 +5,9 @@ import { io } from "socket.io-client";
 
 export default function ChatContent(props) {
   const [socket, setSocket] = useState();
-  const [activeFriend, setActiveFriend] = useState("");
+  const [activeFriend, setActiveFriend] = useState(1);
   const { isOpen } = props;
-  const [topicSelected, setTopicSelected] = useState(0);
+  const [topicSelected, setTopicSelected] = useState(1);
 
   useEffect(() => {
     setSocket(io("http://localhost:3001"));

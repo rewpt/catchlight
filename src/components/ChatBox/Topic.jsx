@@ -2,19 +2,19 @@ import React from "react";
 import classNames from "classnames";
 
 function Topic(props) {
-  const { topicOnClick, topicSelected } = props;
+  const { topicOnClick, topicSelected, topicid } = props;
   const topicClass = classNames(
     "px-3 background-rose-500 cursor-pointer h-[25px] truncate",
     {
       "bg-white font-bold text-rose-500 rounded-full":
-        topicSelected === props.children,
+        topicSelected === topicid,
       "text-chat-topic": topicSelected !== props.children,
     }
   );
   return (
     <div
       onClick={() => {
-        topicOnClick(props.children);
+        topicOnClick(topicid);
         console.log("TOPIC SELECTED CHECKOUT", topicSelected);
       }}
       className={topicClass}
