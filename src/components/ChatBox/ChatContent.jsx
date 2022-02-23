@@ -19,6 +19,7 @@ export default function ChatContent(props) {
   const activeFriendClick = (friendId) => {
     setActiveFriend(friendId);
   };
+  
   // set the state of activeFriend to the userId on click, if the activeFriend userId === the friend tab userId.  Pass activeFriend down to friend conversations, and that's the conversation you show
 
   return (

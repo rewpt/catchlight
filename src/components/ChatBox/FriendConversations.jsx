@@ -2,7 +2,6 @@ import classNames from "classnames";
 import TopicContainer from "./TopicContainer";
 import MessageContainer from "./MessageContainer";
 import InputContainer from "./InputContainer";
-import { useState } from "react";
 export default function FriendConversations(props) {
   const { isOpen, topicSelected, topicOnClick, socket, activeFriend } = props;
 

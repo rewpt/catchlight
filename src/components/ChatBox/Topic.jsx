@@ -15,7 +15,6 @@ function Topic(props) {
     <div
       onClick={() => {
         topicOnClick(topicid);
-        console.log("TOPIC SELECTED CHECKOUT", topicSelected);
       }}
       className={topicClass}
     >

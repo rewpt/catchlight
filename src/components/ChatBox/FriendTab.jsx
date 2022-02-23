@@ -15,9 +15,6 @@ export default function FriendTab(props) {
       className="flex my-4 media-avatar-chat overflow-hidden justify-center h-24 mb-2 bg-black cursor-pointer"
       onClick={() => {
         activeFriendClick(id);
-        console.log("this is id", id);
-        console.log("and this is activeFriend", activeFriend);
-        console.log("bool", activeFriend === id);
       }}
     >
       <img

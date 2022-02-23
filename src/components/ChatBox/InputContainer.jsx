@@ -11,7 +11,6 @@ function InputContainer(props) {
       Authorization: `Bearer ${localStorage.getItem("userToken")}`,
     }
   };
-  // const { socket } = props;
 
   const [messageInput, updateMessageInput, resetMessage] = useForm("");
   const [conversationID, setConversationID] = useState('');
@@ -23,7 +22,7 @@ function InputContainer(props) {
       conversationID: conversationID,
       content: messageInput
     }, jwt);
-    // socket.emit("send-message", messageInput);
+
     resetMessage();
   };
 
@@ -35,9 +34,7 @@ function InputContainer(props) {
           { activeFriend: activeFriend, topicSelected: topicSelected },
           jwt
         );
-        console.log("RESPONSE DATA DATA ID", response.data[0].conversation_id);
         setConversationID(response.data[0].conversation_id);
-        console.log("CONVERSATION ID === ", conversationID);
       } catch (err) {
         console.log(err);
       }
