@@ -40,6 +40,25 @@
   }
 }
 
+.navbg {
+  background-color: #fcc201;
+}
+
+.pagebg {
+  background-image: url(images/asfalt-light.png);
+  background-color: #191b1e;
+}
+
+.searchbg {
+  background-image: url(images/txture.png);
+  background-color: #31363b;
+}
+
+.mainbg {
+  background-image: url(images/txture.png);
+  background-color: #31363b;
+}
+
 .btn {
   @apply min-h-[50px] max-h-[50px] rounded-full bg-green-500 px-3 uppercase text-base font-semibold cursor-pointer tracking-wider hover:scale-105 ease-in duration-100;
 }
