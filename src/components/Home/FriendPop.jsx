@@ -23,19 +23,16 @@ export default function FriendPop(props) {
           }
         });
 
-        // console.log('mediaFriendsInteractions ===', mediaFriendsInteractions.data)
 
         const results = [];
 
-        // console.log('props.mediaID', props.mediaID);
 
         for (const friend of friendsPictures.data) {
-          // console.log(`friend id:${friend.friend_id}`)
-          // console.log(friend.profile_picture)
+
           for (const mediaFriend of mediaFriendsInteractions.data) {
             if (friend.friend_id === mediaFriend.id) {
+
               for (const interactionMedia of mediaFriend.interactions) {
-                // console.log(interactionMedia)
                 if (interactionMedia.media_id === props.mediaID) {
                   results.push({profile_picture: friend.profile_picture});
                 }
@@ -53,7 +50,7 @@ export default function FriendPop(props) {
     }
 
     getMediaFriends().then((res) => {
-      setFriends(res);
+      setFriends(res.slice(0, 3));
     });
 
   }, [])
@@ -61,38 +58,20 @@ export default function FriendPop(props) {
   // console.log('booooooooo', friends.map(image => image.profile_picture))
 
   return (
-    <div className="ml-2 xs:justify-center sm:justify-center lg:justify-start -space-x-2">
-      {friends.map((image, index) => {
-        
-        return <img
-          key={index}
-          className="media-avatar-popout"
-          src={image.profile_picture}
-          alt=""
-        />
-      })}
+    <div className="flex min-w-[60px] min-h-[22px] max-w-[60px] max-h-[22px] overflow-visible items-center">
 
-      {/* <img
-        className="media-avatar-popout"
-        src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-        alt=""
-      />
-      <img
-        className="media-avatar-popout"
-        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-        alt=""
-      />
-      <img
-        className="media-avatar-popout"
-        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80"
-        alt=""
-      />
-      <img
-        className="media-avatar-popout"
-        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-        alt=""
-     /> */}
+      
+        {friends.map((image, index) => {
 
+          return <img
+            key={index}
+            className="media-avatar-popout"
+            src={image.profile_picture}
+            alt=""
+          />
+        })}
+      
+      
     </div>
   );
 }

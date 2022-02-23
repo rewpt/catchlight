@@ -53,7 +53,7 @@ export default function Nav() {
     };
     const reqInterval = setInterval(() => {
       getFriendReqs();
-    }, 5000000);
+    }, 2000);
 
     return () => {
       clearInterval(reqInterval);
@@ -88,8 +88,8 @@ export default function Nav() {
   }, []);
 
   return (
-    <div className="shadow-md w-full sticky top-0 left-0 z-20 ">
-      <div className="md:flex items-center justify-between bg-navbar py-4 md:px-10 px-7 rounded-t-lg">
+    <div className="shadow-md w-full sticky top-0 left-0 z-20  ">
+      <div className="md:flex items-center justify-between navbg py-4 md:px-10 px-7 rounded-t-lg">
         <Link to="/">
           <div className="font-bold text-2xl cursor-pointer flex items-center text-gray-800">
             <FontAwesomeIcon className="text-logo mr-1" icon={faEye} />
@@ -101,10 +101,10 @@ export default function Nav() {
         </div>
         <ul
           className={`md:flex md:items-center md:pb-0 pb-12 absolute 
-        md:static bg-navbar md:z-auto z-[-1] left-0 w-full md:w-auto
+        md:static navgbg md:z-auto z-[-1] left-0 w-full md:w-auto
         md:pl-0 pl-9 transition-all duration-400 ease-in ${
           open ? "top-20 opacity-100" : "top-[-490px]"
-        } md:opacity-100 opacity-80`}
+        } md:opacity-100 opacity-100`}
         >
           <li>
             <FontAwesomeIcon
@@ -122,7 +122,6 @@ export default function Nav() {
               <FriendNotificationBox
                 hasNewNotification={hasNewNotification}
                 incomingFriendReqs={incomingFriendReqs}
-                // getFriendReqs={getFriendReqs}
                 setIncomingFriendReqs={setIncomingFriendReqs}
               />
             )}

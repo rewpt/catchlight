@@ -116,11 +116,12 @@ export function useApplicationData() {
     .catch((error) =>  {
       console.error(error);
     });
-  }, []);
+  }, [mediaID]);
 
   return { 
     mediaID, 
     jwt,
+    setMediaDetails,
     setInteractionStats,
     mediaInteraction, 
     mediaDetails, 

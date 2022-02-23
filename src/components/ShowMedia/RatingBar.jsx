@@ -31,14 +31,8 @@ export default function RatingBar(props) {
     "dislike-btn": mediaInteraction.rating !== "dislike",
   });
 
-  const jwt = {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("userToken")}`,
-    },
-  };
-
   return (
-    <div className="row-span-2 justify-items-center grid grid-cols-3">
+    <div className="row-span-2 justify-items-center grid grid-cols-3 min-h-[300px]">
       <div className="like-container">
         <div className="flex items-end h-full bg-searchmain w-full rounded-full">
           <div

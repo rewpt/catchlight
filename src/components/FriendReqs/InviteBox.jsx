@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import useForm from "../../hooks/useForm";
 import axios from "axios";
 
@@ -22,10 +22,10 @@ export default function InviteBox() {
     }
   };
   return (
-    <div className=" text-lg bg-white drop-shadow-xl border-black border-1 border-solid z-50 overflow-hidden  w-[330px] absolute top-[64px] right-0">
+    <div className=" text-lg bg-pagebackground drop-shadow-xl border-black border-1 border-solid z-50 overflow-hidden  w-[330px] absolute top-[64px] right-0">
       <form onSubmit={submitFriendReq}>
         <label className="block">
-          <span className="pl-2 after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
+          <span className="pl-2 after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-pagetxt">
             Add Friend By Email
           </span>
           <input
@@ -33,7 +33,7 @@ export default function InviteBox() {
             name="email"
             value={email}
             onChange={updateEmail}
-            className="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-rose-500 focus:ring-rose-500 block w-full rounded-md sm:text-sm focus:ring-1"
+            className="mt-1 px-3 py-2 bg-pagebackground placeholder-inputtext text-inputtext focus:outline-none block w-full rounded-md sm:text-sm focus:ring-1"
             placeholder="friend@example.com"
           />
         </label>

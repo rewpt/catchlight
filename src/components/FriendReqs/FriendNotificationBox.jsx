@@ -1,18 +1,17 @@
 import React from "react";
 import Notification from "./Notification";
-import axios from "axios";
 import EmptyNotification from "./EmptyNotification";
 
 export default function FriendNotification(props) {
-  const { incomingFriendReqs, setIncomingFriendReqs, hasNewNotification } =
+  const { incomingFriendReqs, setIncomingFriendReqs } =
     props;
   return (
     <div>
       <div
-        className="text-lg bg-white drop-shadow-xl border-black border-1 border-solid z-50 
-                  overflow-hidden  w-[330px] absolute top-[64px] right-0"
+        className="text-lg bg-pagebackground drop-shadow-xl border-black border-1 border-solid z-50 
+                  overflow-hidden  w-[380px] absolute top-[64px] right-0"
       >
-        <div className="odd:bg-white even:bg-black">
+        <div className="odd:bg-pagebackground even:bg-searchmain">
           {incomingFriendReqs &&
             incomingFriendReqs.map((friendReq) => {
               return (

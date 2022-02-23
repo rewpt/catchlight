@@ -8,10 +8,11 @@ const axios = require('axios');
 
 export default function Register() {
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  const [name, setName] = useState('');
+  const [ email, setEmail ] = useState('');
+  const [ password, setPassword ] = useState('');
+  const [ passwordConfirmation, setPasswordConfirmation ] = useState('');
+  const [ name, setName ] = useState('');
+  const [ registerError, setRegisterError ] = useState(false);
 
   let navigate = useNavigate();
 
@@ -26,7 +27,10 @@ export default function Register() {
         password.length <= 0 || 
         email.length <= 0 || 
         name.length <= 0
-        ) return console.log('error');
+        ) {
+          setRegisterError(true);
+          return console.log('error');
+        } 
       await axios.post('http://localhost:3001/api/users/register', {
         email,
         password,
@@ -39,12 +43,13 @@ export default function Register() {
       localStorage.setItem('userToken', response.data.jwtToken);
       navigate("/", { replace: true });
     } catch (err) {
+      setRegisterError(true)
       console.log (err);
     }
   }
 
   return (
-    <main className="flex h-screen bg-pagebackground">
+    <main className="flex h-screen pagebg bg-cover bg-center w-screen">
     <div className="container bg-searchmain my-auto max-w-3xl m-8 p-8 mx-auto z-15 drop-shadow-2xl border border-black rounded-2xl">
     <div className="flex justify-center">
       <FontAwesomeIcon className="text-5xl text-pagetxt" icon={faUserPlus}/>
@@ -87,6 +92,7 @@ export default function Register() {
           value={passwordConfirmation}
           onChange={(e) => {setPasswordConfirmation(e.target.value)}}
         />
+        {registerError && <div className="text-red-500">Registration Failed. Please Try Again.</div>}
         <button 
           className="border border-black p-2 my-2 bg-pagetxt text-3xl rounded-l hover:bg-amber-500 mt-6"
           type="submit"

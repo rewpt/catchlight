@@ -17,39 +17,43 @@ export default function FriendNotification(props) {
           return req.id !== props.id;
         })
       );
-      console.log(response);
     } catch (err) {
       console.log(err);
     }
   };
   return (
-    <div className="grid grid-cols-12 border-x-[1px] border-x-slate-100 border-t-slate-100 border-y-[1px] py-2 border-b-slate-300 even:bg-white odd:bg-slate-100">
+    <div className="grid grid-cols-12 border-x-[1px] border-x-searchmain border-t-searchmain border-y-[1px] py-2 border-b-pagetxt even:bg-searchmain odd:bg-pagebackground">
+      
       <img
-        className="inline-block h-10 w-10 rounded-full ring-2 ring-white z-20 self-center justify-self-center col-span-2"
+        className="inline-block h-10 w-10 rounded-full ring-2 ring-searchmain z-20 self-center justify-self-center col-span-2"
         src={props.profile_picture}
         alt=""
       />
-      <div className="w-full col-span-6 h-full">
+
+      <div className="w-full col-span-8 h-full text-pagetxt">
         <p>{props.name}</p>
         <p>{props.email}</p>
       </div>
+      
       <button
         onClick={() => {
           respondFriendReq(true);
         }}
-        className="btn-friend-accept self-center justify-self-center col-span-2 mr-2"
+        className="btn-friend-accept self-center justify-self-center col-span-1 mr-14"
       >
         <FontAwesomeIcon icon={faCheck} />
       </button>
+
       <button
         onClick={() => {
           console.log("Request rejected");
           respondFriendReq(false);
         }}
-        className=" btn-friend-decline self-center justify-self-center col-span-2 mr-2"
+        className=" btn-friend-decline self-center justify-self-center col-span-1 mr-6"
       >
         <FontAwesomeIcon icon={faX} />
       </button>
+
     </div>
   );
 }
