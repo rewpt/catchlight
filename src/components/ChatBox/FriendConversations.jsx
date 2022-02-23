@@ -25,7 +25,11 @@ export default function FriendConversations(props) {
         activeFriend={activeFriend}
         topicSelected={topicSelected}
       />
-      <InputContainer socket={socket} />
+      <InputContainer 
+        socket={socket} 
+        activeFriend={activeFriend}
+        topicSelected={topicSelected}
+      />
     </div>
   );
 }

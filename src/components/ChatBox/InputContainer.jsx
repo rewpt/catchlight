@@ -1,13 +1,50 @@
+import {useState, useEffect} from 'react'
 import useForm from "../../hooks/useForm";
+const axios = require('axios');
 
 function InputContainer(props) {
-  const { socket } = props;
+
+  const { activeFriend, topicSelected } = props;
+
+  const jwt = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+    }
+  };
+  // const { socket } = props;
+
   const [messageInput, updateMessageInput, resetMessage] = useForm("");
-  const sendMessage = (e) => {
+  const [conversationID, setConversationID] = useState('');
+
+  async function sendMessage (e) {
     e.preventDefault();
-    socket.emit("send-message", messageInput);
+
+    await axios.post('/api/conversations/messagesend', {
+      conversationID: conversationID,
+      content: messageInput
+    }, jwt);
+    // socket.emit("send-message", messageInput);
     resetMessage();
   };
+
+  useEffect(() => {
+    const getMessages = async () => {
+      try {
+        const response = await axios.post(
+          `/api/conversations/messages`,
+          { activeFriend: activeFriend, topicSelected: topicSelected },
+          jwt
+        );
+        console.log("RESPONSE DATA DATA ID", response.data[0].conversation_id);
+        setConversationID(response.data[0].conversation_id);
+        console.log("CONVERSATION ID === ", conversationID);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getMessages();
+  }, [activeFriend, topicSelected]);
+
   return (
     <form onSubmit={sendMessage} className="w-full mb-1 flex" action="">
       <input
