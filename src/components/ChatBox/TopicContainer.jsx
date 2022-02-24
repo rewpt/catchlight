@@ -27,7 +27,7 @@ function TopicContainer(props) {
   }, [activeFriend]);
 
   return (
-    <div className="grid grid-cols-3 mx-2">
+    <div className="flex justify-start my-2 text-xl">
       {topics.length > 0 &&
         topics.map((topic, index) => {
           return (

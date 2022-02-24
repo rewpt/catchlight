@@ -88,7 +88,7 @@
 }
 
 .media-avatar-chat {
-  @apply h-[80px] w-[85%] mx-auto max-w-none rounded-full border-black border-double ring-2 ring-white hover:scale-105 ease-in duration-100;
+  @apply h-[65px] w-[65px] mx-auto max-w-none rounded-full border-black border-double hover:scale-105 ease-in duration-100;
 }
 
 .media-avatar-popout {

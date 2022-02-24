@@ -52,7 +52,7 @@ export default function MessageContainer(props) {
   }, []);
 
   return (
-    <div className="h-full px-3 py-1 flex flex-col justify-end">
+    <div className="h-full px-3 py-1 flex flex-col justify-end overflow-auto">
       {messages.length > 0 &&
         messages.map((msg, index) => {
           return (

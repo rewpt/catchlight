@@ -6,7 +6,7 @@ export default function FriendConversations(props) {
   const { isOpen, topicSelected, topicOnClick, socket, activeFriend } = props;
 
   const hide = classNames(
-    "flex flex-col justify-between bg-gradient-to-r  from-chatbg1 via-chatbg2 to-chatbg3 w-full",
+    "flex flex-col justify-between bg-searchmain w-full rounded-lg border-2 border-black text-2xl break-all",
     {
       "": isOpen,
       hidden: !isOpen,

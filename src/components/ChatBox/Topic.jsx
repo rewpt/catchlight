@@ -4,9 +4,9 @@ import classNames from "classnames";
 function Topic(props) {
   const { topicOnClick, topicSelected, topicid } = props;
   const topicClass = classNames(
-    "px-3 background-rose-500 cursor-pointer h-[25px] truncate",
+    "px-3 cursor-pointer h-[32px] truncate text-pagetxt ",
     {
-      "bg-white font-bold text-rose-500 rounded-full":
+      "flex justify-center font-bold rounded-full border-2 border-pagetxt text-stone-800 bg-pagetxt":
         topicSelected === topicid,
       "text-chat-topic": topicSelected !== props.children,
     }

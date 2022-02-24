@@ -10,7 +10,7 @@ import App from "./App";
 const axios = require('axios');
 axios.defaults.baseURL = 'http://localhost:3001';
 
-document.body.style = 'background: rgb(25 27 30);';
+document.body.style = 'background: #121212;';
 
 ReactDOM.render(
   <BrowserRouter>

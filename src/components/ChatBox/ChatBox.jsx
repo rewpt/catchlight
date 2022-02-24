@@ -12,7 +12,7 @@ export default function ChatBox() {
   }
 
   const toggleWidth = classNames(
-    "flex drop-shadow-2xl border-black border-2 fixed bottom-2 right-0 max-h-[400px] shadow-md bg-white drop-shadow-md z-50",
+    "flex fixed bottom-2 right-0 max-h-[500px] min-h-[500px] shadow-md drop-shadow-md z-50",
     { "w-1/2": isOpen, "": !isOpen }
   );
 
@@ -26,7 +26,7 @@ export default function ChatBox() {
       <ChatContent isOpen={isOpen} />
       <button
         onClick={() => toggleChat()}
-        className="flex items-center bg-gray-200"
+        className="flex justify-center items-center bg-navbar rounded-lg mx-1 border-2 border-black min-w-[50px] hover:bg-amber-500"
       >
         <FontAwesomeIcon className={rotateArrow} icon={faArrowRight} />
       </button>
