@@ -1,33 +1,36 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from "react";
 import useForm from "../../hooks/useForm";
-const axios = require('axios');
+const axios = require("axios");
 
 function InputContainer(props) {
-
   const { activeFriend, topicSelected } = props;
 
   const jwt = {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("userToken")}`,
-    }
+    },
   };
 
   const [messageInput, updateMessageInput, resetMessage] = useForm("");
-  const [conversationID, setConversationID] = useState('');
+  const [conversationID, setConversationID] = useState("");
 
-  async function sendMessage (e) {
+  async function sendMessage(e) {
     e.preventDefault();
 
-    await axios.post('/api/conversations/messagesend', {
-      conversationID: conversationID,
-      content: messageInput
-    }, jwt);
+    await axios.post(
+      "/api/conversations/messagesend",
+      {
+        conversationID: conversationID,
+        content: messageInput,
+      },
+      jwt
+    );
 
     resetMessage();
-  };
+  }
 
   useEffect(() => {
-    const getMessages = async () => {
+    const getConversationID = async () => {
       try {
         const response = await axios.post(
           `/api/conversations/messages`,
@@ -39,7 +42,7 @@ function InputContainer(props) {
         console.log(err);
       }
     };
-    getMessages();
+    getConversationID();
   }, [activeFriend, topicSelected]);
 
   return (

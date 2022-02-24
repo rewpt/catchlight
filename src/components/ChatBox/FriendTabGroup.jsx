@@ -23,7 +23,13 @@ export default function FriendTabGroup(props) {
         console.log(err);
       }
     };
-    getChatFriends();
+    const reqInterval = setInterval(() => {
+      getChatFriends();
+    }, 1000);
+
+    return () => {
+      clearInterval(reqInterval);
+    };
   }, []);
 
   return (
