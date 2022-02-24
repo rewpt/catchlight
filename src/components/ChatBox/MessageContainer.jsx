@@ -3,7 +3,6 @@ import axios from "axios";
 import { useState, useEffect, React } from "react";
 
 export default function MessageContainer(props) {
-
   const [currentUserId, setCurrentUserId] = useState("");
   const [messages, setMessages] = useState([]);
   const { activeFriend, topicSelected } = props;
@@ -28,7 +27,6 @@ export default function MessageContainer(props) {
     };
     getMessages();
 
-
     const reqInterval = setInterval(() => {
       getMessages();
     }, 1000);
@@ -37,7 +35,6 @@ export default function MessageContainer(props) {
       clearInterval(reqInterval);
     };
   }, [activeFriend, topicSelected]);
-
 
   useEffect(() => {
     const getUserId = async () => {

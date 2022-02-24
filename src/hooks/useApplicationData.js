@@ -12,6 +12,7 @@ export function useApplicationData() {
   const [ streamingServices, setStreamingServices ] = useState([]);
   const [ buttonState, setButtonState ] = useState('');
   const [ isLoading, setIsLoading ] = useState(false)
+  const mediaTitle = mediaDetails.title
 
 
   const jwt = {
@@ -26,6 +27,11 @@ export function useApplicationData() {
     axios.post('/api/interactions', {rating, mediaID}, jwt)
     .catch((err) => console.log(err));
   };
+
+  const postNewConversation = (friendUserId, mediaID) => {
+    axios.post('api/conversations/', { mediaID, friendUserId, mediaTitle }, jwt)
+    .catch(err => console.log(err))
+  }
 
   //----------------- mediaDetails business logic--------------------
   // if current rating === interest, render remove from watch list
@@ -103,6 +109,7 @@ export function useApplicationData() {
             for (const interactionMedia of mediaFriend.interactions) {
               if (interactionMedia.media_id === parseInt(mediaID)) {
                 results.push({
+                  userId: friend.friend_id,
                   profile_picture: friend.profile_picture,
                   rating: interactionMedia.rating
                 });
@@ -132,6 +139,7 @@ export function useApplicationData() {
     setButtonState,
     postMediaButtonClick,
     handleRatingClick,
-    isLoading
+    isLoading,
+    postNewConversation
   }
 };

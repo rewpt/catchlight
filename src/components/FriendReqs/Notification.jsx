@@ -23,7 +23,6 @@ export default function FriendNotification(props) {
   };
   return (
     <div className="grid grid-cols-12 border-x-[1px] border-x-searchmain border-t-searchmain border-y-[1px] py-2 border-b-pagetxt even:bg-searchmain odd:bg-pagebackground">
-      
       <img
         className="inline-block h-10 w-10 rounded-full ring-2 ring-searchmain z-20 self-center justify-self-center col-span-2"
         src={props.profile_picture}
@@ -34,7 +33,7 @@ export default function FriendNotification(props) {
         <p>{props.name}</p>
         <p>{props.email}</p>
       </div>
-      
+
       <button
         onClick={() => {
           respondFriendReq(true);
@@ -46,14 +45,12 @@ export default function FriendNotification(props) {
 
       <button
         onClick={() => {
-          console.log("Request rejected");
           respondFriendReq(false);
         }}
         className=" btn-friend-decline self-center justify-self-center col-span-1 mr-6"
       >
         <FontAwesomeIcon icon={faX} />
       </button>
-
     </div>
   );
 }
