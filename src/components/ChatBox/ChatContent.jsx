@@ -9,10 +9,6 @@ export default function ChatContent(props) {
   const { isOpen } = props;
   const [topicSelected, setTopicSelected] = useState(1);
 
-  useEffect(() => {
-    setSocket(io("http://localhost:3001"));
-  }, []);
-
   const topicOnClick = (topicIndex) => {
     setTopicSelected(topicIndex);
   };
