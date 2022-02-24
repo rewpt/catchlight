@@ -12,8 +12,8 @@ export default function ChatBox() {
   }
 
   const toggleWidth = classNames(
-    "flex fixed bottom-2 right-0 max-h-[500px] min-h-[500px] shadow-md drop-shadow-md z-50",
-    { "w-1/2": isOpen, "": !isOpen }
+    "flex fixed bottom-2 right-0 max-h-[100px] min-h-[100px] shadow-md drop-shadow-md z-50 chatmd:max-h-[500px] chatmd:min-h-[500px]",
+    { "chatlg:w-1/2 chatmd:w-3/5 w-full max-h-[450px] min-h-[450px]": isOpen, "": !isOpen }
   );
 
   const rotateArrow = classNames("w-10 h-10 -left-3 text-black", {

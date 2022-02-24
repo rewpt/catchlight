@@ -4,6 +4,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        'chatlg': '1550px',
+        'chatmd': '1350px'
+      },
       borderWidth: {
         DEFAULT: '1px',
         '0': '0',
