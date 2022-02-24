@@ -9,16 +9,17 @@ import React from "react";
 import classNames from "classnames";
 
 export default function FriendInteractions(props) {
-  const { friendsAvatarArray } = props;
+  const { friendsAvatarArray, postNewConversation, mediaID } = props;
+
 
   return (
     <div
       className="flex flex-wrap
-     mt-20 content-end
-    sm:justify-around sm:mt-20
-    md:justify-start md:mt-0
-    lg:justify-start lg:mt-0
-    xl:justify-start lg:mt-0"
+      mt-20 content-end
+      sm:justify-around sm:mt-20
+      md:justify-start md:mt-0
+      lg:justify-start lg:mt-0
+      xl:justify-start lg:mt-0"
     >
       {friendsAvatarArray.map((image, index) => {
         let borderColor = classNames("media-avatar", {
@@ -29,7 +30,7 @@ export default function FriendInteractions(props) {
         });
 
         return (
-          <div key={index} className="media-avatar-outer">
+          <div key={index} userid={image.userId} onClick={() => postNewConversation(image.userId, mediaID)} className="media-avatar-outer">
             {image.rating === "like" && (
               <FontAwesomeIcon
                 className={

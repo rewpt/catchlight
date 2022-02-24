@@ -25,7 +25,8 @@ export default function MediaDetails() {
     postMediaButtonClick,
     handleRatingClick,
     isLoading,
-    setInteractionStats
+    setInteractionStats,
+    postNewConversation
   } = useApplicationData()
     
   useEffect(() => {
@@ -56,7 +57,7 @@ export default function MediaDetails() {
        <MediaPoster image={mediaDetails.image}/>
        <Title title={mediaDetails.title} description={mediaDetails.description}/>
        <RatingBar handleRatingClick={handleRatingClick} interactionStats={interactionStats} mediaInteraction={mediaInteraction} />
-       <FriendInteractions friendsAvatarArray={friendsAvatars}/>
+       <FriendInteractions friendsAvatarArray={friendsAvatars} mediaID={mediaID} postNewConversation={postNewConversation} />
        <StreamsOn streamingServices={streamingServices}/>
        <div className=' flex'>
         <MediaWatchedButton postMediaButtonClick={postMediaButtonClick} buttonState={buttonState} setButtonState={setButtonState} handleRatingClick={handleRatingClick}></MediaWatchedButton>
