@@ -9,7 +9,7 @@ export default function InviteBox() {
     try {
       const token = localStorage.getItem("userToken");
       const response = await axios.post(
-        "http://localhost:3001/api/friends",
+        "/api/friends",
         {
           email,
         },

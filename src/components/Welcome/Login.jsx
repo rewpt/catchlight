@@ -5,9 +5,9 @@ import { faLock } from "@fortawesome/free-solid-svg-icons";
 const axios = require("axios");
 
 export default function Login() {
-  const [ email, setEmail ] = useState("");
-  const [ password, setPassword ] = useState("");
-  const [ loginError, setLoginError ] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState(false);
 
   let navigate = useNavigate();
 
@@ -19,17 +19,14 @@ export default function Login() {
         setLoginError(true);
         return console.log("error");
       }
-      const response = await axios.post(
-        "http://localhost:3001/api/auth/login",
-        {
-          email,
-          password,
-        }
-      );
+      const response = await axios.post("/api/auth/login", {
+        email,
+        password,
+      });
       localStorage.setItem("userToken", response.data.jwtToken);
       navigate("/", { replace: true });
     } catch (err) {
-      setLoginError(true)
+      setLoginError(true);
       console.log(err);
     }
   };
@@ -64,7 +61,11 @@ export default function Login() {
                 setPassword(e.target.value);
               }}
             />
-            {loginError && <div className='text-red-500'>Authentication Failed. Please Try Again.</div>}
+            {loginError && (
+              <div className="text-red-500">
+                Authentication Failed. Please Try Again.
+              </div>
+            )}
             <button
               type="submit"
               className="border border-black p-2 my-2 bg-pagetxt text-3xl rounded-l hover:bg-amber-500 mt-6"
