@@ -9,7 +9,6 @@ import App from "./App";
 
 const axios = require('axios');
 axios.defaults.baseURL = 'https://catchlight-api.herokuapp.com/';
-axios.defaults.headers.post['Access-Control-Allow-Methods'] = 'PATCH, DELETE, POST, GET, OPTIONS';
 
 document.body.style = 'background: #121212;';
 
