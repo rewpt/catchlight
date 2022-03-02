@@ -8,7 +8,7 @@ import MediaDetails from "./components/ShowMedia/MediaDetails";
 import App from "./App";
 
 const axios = require('axios');
-axios.defaults.baseURL = 'http://localhost:3001';
+axios.defaults.baseURL = 'https://catchlight-api.herokuapp.com/';
 
 document.body.style = 'background: #121212;';
 
