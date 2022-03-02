@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import classNames from "classnames";
 
 export default function ChatContent(props) {
-  const [socket, setSocket] = useState();
   const [activeFriend, setActiveFriend] = useState(1);
   const { isOpen } = props;
   const [topicSelected, setTopicSelected] = useState(1);
@@ -16,23 +15,20 @@ export default function ChatContent(props) {
     setActiveFriend(friendId);
   };
 
-  const toggleChat = classNames(
-    "flex w-full",
-    { "": isOpen, "invisible chatlg:visible": !isOpen }
-  );
+  const toggleChat = classNames("flex w-full", {
+    "": isOpen,
+    "invisible chatlg:visible": !isOpen,
+  });
 
-  
   // set the state of activeFriend to the userId on click, if the activeFriend userId === the friend tab userId.  Pass activeFriend down to friend conversations, and that's the conversation you show
 
   return (
     <div className={toggleChat}>
       <FriendTabGroup
-        socket={socket}
         activeFriend={activeFriend}
         activeFriendClick={activeFriendClick}
       />
       <FriendConversations
-        socket={socket}
         activeFriend={activeFriend}
         isOpen={isOpen}
         topicOnClick={topicOnClick}
