@@ -1,5 +1,8 @@
 # Getting Started with Create React App
 
+psql -h ec2-52-207-74-100.compute-1.amazonaws.com -p 5432 -U
+vfphvbgfhlpcqs -d
+d48sjeol4m9abs
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
