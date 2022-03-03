@@ -6,7 +6,7 @@ import Register from "./components/Welcome/Register";
 import Home from './components/Home/Home'
 import MediaDetails from "./components/ShowMedia/MediaDetails";
 import App from "./App";
-import ProtectedRoutes from "../helpers/ProtectedRoutes";
+import ProtectedRoutes from "./helpers/ProtectedRoutes";
 
 const axios = require('axios');
 axios.defaults.baseURL = 'https://catchlight-api.herokuapp.com/';
