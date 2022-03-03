@@ -9,6 +9,7 @@ import App from "./App";
 
 const axios = require('axios');
 axios.defaults.baseURL = 'https://catchlight-api.herokuapp.com/';
+const token = localStorage.getItem("userToken");
 
 document.body.style = 'background: #121212;';
 
@@ -18,7 +19,7 @@ ReactDOM.render(
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
 
-      <Route path="/" element={<App />}>
+      <Route path="/" element={token ? <App /> : <Login />}>
         <Route index element={<Home />} />
         <Route path="media/:mediaID" element={<MediaDetails />} />
       </Route>

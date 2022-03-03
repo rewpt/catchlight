@@ -20,7 +20,6 @@ export default function Login() {
         return console.log("error");
       }
       const response = await axios.post("/api/auth/login", {
-        withCredentials: true,
         email,
         password,
       });
