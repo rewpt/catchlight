@@ -8,7 +8,8 @@ import Watched from "./Watched";
 import SearchBox from "../SearchBox";
 import { useOutletContext } from "react-router-dom";
 
-export default function Home(props) {
+export default function Home() {
+  const [refresh, setRefresh] = useState(false);
   const [friendRefresh] = useOutletContext();
 
   return (
