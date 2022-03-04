@@ -17,7 +17,7 @@ export default function Home() {
       <SearchBox refresh={refresh} setRefresh={setRefresh} />
 
       <FriendRecommendations
-        toggleFriendRefresh={friendRefresh}
+        friendRefresh={friendRefresh}
         refresh={refresh}
         setRefresh={setRefresh}
       >
