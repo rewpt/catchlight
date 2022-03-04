@@ -10,11 +10,11 @@ import classNames from "classnames";
 
 export default function FriendInteractions(props) {
   const {
+    topicRefresh,
+    setTopicRefresh,
     friendsAvatarArray,
     postNewConversation,
     mediaID,
-    topicRefresh,
-    setTopicRefresh,
   } = props;
 
   return (
@@ -40,6 +40,7 @@ export default function FriendInteractions(props) {
             userid={image.userId}
             onClick={() => {
               postNewConversation(image.userId, mediaID);
+              console.log("This is setTopicRefresh", setTopicRefresh);
               setTopicRefresh(!topicRefresh);
             }}
             className="media-avatar-outer"
