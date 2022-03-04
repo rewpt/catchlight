@@ -6,10 +6,10 @@ import FriendRecommendations from "./FriendRecommendations";
 import WatchList from "./WatchList";
 import Watched from "./Watched";
 import SearchBox from "../SearchBox";
+import { useOutletContext } from "react-router-dom";
 
 export default function Home(props) {
-  const [refresh, setRefresh] = useState(false);
-  const { friendRefresh } = props;
+  const [friendRefresh] = useOutletContext();
 
   return (
     <React.Fragment>
