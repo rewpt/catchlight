@@ -20,7 +20,7 @@ export default function SearchBar(props) {
             onSubmit={(event) => event.preventDefault()}
           >
             <input
-              autocomplete="off"
+              autoComplete="off"
               type="text"
               className="h-14 w-96 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none bg-inputbg text-inputtext"
               placeholder="Search Any Movie"

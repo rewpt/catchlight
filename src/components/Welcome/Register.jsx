@@ -38,7 +38,7 @@ export default function Register() {
         password,
         name,
         profilePic,
-        dogPhoto: dogPhoto.message,
+        dogPhoto: dogPhoto.data.message,
       });
       const response = await axios.post("/api/auth/login", {
         email,
