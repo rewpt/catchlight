@@ -20,7 +20,7 @@ export default function Nav(props) {
   const [showNotificationBox, setShowNotificationBox] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const [bellClicked, setBellClicked] = useState(false);
-  const { toggleFriendRefresh } = props;
+  const { friendRefresh, setFriendRefresh } = props;
 
   const toggleIcons = (clickedIcon) => {
     if (clickedIcon === "userProfile") {
@@ -120,7 +120,8 @@ export default function Nav(props) {
             )}
             {showNotificationBox && (
               <FriendNotificationBox
-                toggleFriendRefresh={toggleFriendRefresh}
+                friendRefresh={friendRefresh}
+                setFriendRefresh={setFriendRefresh}
                 hasNewNotification={hasNewNotification}
                 incomingFriendReqs={incomingFriendReqs}
                 setIncomingFriendReqs={setIncomingFriendReqs}
