@@ -39,9 +39,9 @@ export default function FriendInteractions(props) {
             key={index}
             userid={image.userId}
             onClick={() => {
-              postNewConversation(image.userId, mediaID);
-              console.log("This is setTopicRefresh", setTopicRefresh);
-              setTopicRefresh(!topicRefresh);
+              postNewConversation(image.userId, mediaID).then(() => {
+                setTopicRefresh(!topicRefresh);
+              });
             }}
             className="media-avatar-outer"
           >
