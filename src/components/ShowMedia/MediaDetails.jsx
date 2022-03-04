@@ -8,6 +8,7 @@ import MediaWatchedButton from "./MediaWatchedButton";
 import StreamsOn from "./StreamsOn";
 import SearchBox from "../SearchBox";
 const axios = require("axios");
+import { useOutletContext } from "react-router-dom";
 
 export default function MediaDetails() {
   const {
