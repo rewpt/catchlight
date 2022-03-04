@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import { axios } from "axios";
 
 const axios = require("axios");
 
@@ -10,6 +11,7 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [name, setName] = useState("");
+  const [profilePic, setProfilePic] = useState("");
   const [registerError, setRegisterError] = useState(false);
 
   let navigate = useNavigate();
@@ -28,10 +30,15 @@ export default function Register() {
         setRegisterError(true);
         return console.log("error");
       }
+      const dogPhoto = await axios.get(
+        "https://dog.ceo/api/breeds/image/random"
+      );
       await axios.post("/api/users/register", {
         email,
         password,
         name,
+        profilePic,
+        dogPhoto: dogPhoto.message,
       });
       const response = await axios.post("/api/auth/login", {
         email,
@@ -103,6 +110,20 @@ export default function Register() {
               value={passwordConfirmation}
               onChange={(e) => {
                 setPasswordConfirmation(e.target.value);
+              }}
+            />
+
+            <label className="text-2xl text-pagetxt my-3">
+              Profile Picture Link:
+            </label>
+            <input
+              className="h-14 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none bg-inputbg text-inputtext"
+              type="text"
+              placeholder="http://..."
+              name="password confirmation"
+              value={profilePic}
+              onChange={(e) => {
+                setProfilePic(e.target.value);
               }}
             />
             {registerError && (
