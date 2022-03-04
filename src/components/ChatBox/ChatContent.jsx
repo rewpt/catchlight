@@ -5,7 +5,7 @@ import classNames from "classnames";
 
 export default function ChatContent(props) {
   const [activeFriend, setActiveFriend] = useState(1);
-  const { isOpen } = props;
+  const { isOpen, topicRefresh } = props;
   const [topicSelected, setTopicSelected] = useState(1);
 
   const topicOnClick = (topicIndex) => {
@@ -29,6 +29,7 @@ export default function ChatContent(props) {
         activeFriendClick={activeFriendClick}
       />
       <FriendConversations
+        topicRefresh={topicRefresh}
         activeFriend={activeFriend}
         isOpen={isOpen}
         topicOnClick={topicOnClick}

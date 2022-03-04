@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 function TopicContainer(props) {
-  const { topicSelected, topicOnClick, activeFriend } = props;
+  const { topicSelected, topicOnClick, activeFriend, topicRefresh } = props;
   const [topics, setTopics] = useState({});
   const jwt = {
     headers: {
@@ -24,7 +24,7 @@ function TopicContainer(props) {
       }
     };
     getFriendTopics();
-  }, [activeFriend]);
+  }, [activeFriend, topicRefresh]);
 
   return (
     <div className="flex justify-start my-2 text-xl">

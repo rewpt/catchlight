@@ -9,8 +9,13 @@ import React from "react";
 import classNames from "classnames";
 
 export default function FriendInteractions(props) {
-  const { friendsAvatarArray, postNewConversation, mediaID } = props;
-
+  const {
+    friendsAvatarArray,
+    postNewConversation,
+    mediaID,
+    topicRefresh,
+    setTopicRefresh,
+  } = props;
 
   return (
     <div
@@ -30,7 +35,15 @@ export default function FriendInteractions(props) {
         });
 
         return (
-          <div key={index} userid={image.userId} onClick={() => postNewConversation(image.userId, mediaID)} className="media-avatar-outer">
+          <div
+            key={index}
+            userid={image.userId}
+            onClick={() => {
+              postNewConversation(image.userId, mediaID);
+              setTopicRefresh(!topicRefresh);
+            }}
+            className="media-avatar-outer"
+          >
             {image.rating === "like" && (
               <FontAwesomeIcon
                 className={
