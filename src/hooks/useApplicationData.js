@@ -28,9 +28,10 @@ export function useApplicationData() {
     .catch((err) => console.log(err));
   };
 
-  const postNewConversation = (friendUserId, mediaID) => {
-    axios.post('api/conversations/', { mediaID, friendUserId, mediaTitle }, jwt)
+  const postNewConversation = async (friendUserId, mediaID, setTopicRefresh, topicRefresh) => {
+    await axios.post('api/conversations/', { mediaID, friendUserId, mediaTitle }, jwt)
     .catch(err => console.log(err))
+    setTopicRefresh(!topicRefresh);
   }
 
   //----------------- mediaDetails business logic--------------------

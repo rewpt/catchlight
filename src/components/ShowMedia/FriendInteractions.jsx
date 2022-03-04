@@ -9,14 +9,13 @@ import React from "react";
 import classNames from "classnames";
 
 export default function FriendInteractions(props) {
-  const { topicRefresh, setTopicRefresh, friendsAvatarArray, mediaID } = props;
-
-  const postNewConversation = async (friendUserId, mediaID) => {
-    await axios
-      .post("api/conversations/", { mediaID, friendUserId, mediaTitle }, jwt)
-      .catch((err) => console.log(err));
-    setTopicRefresh(!topicRefresh);
-  };
+  const {
+    topicRefresh,
+    setTopicRefresh,
+    friendsAvatarArray,
+    postNewConversation,
+    mediaID,
+  } = props;
 
   return (
     <div
@@ -40,7 +39,12 @@ export default function FriendInteractions(props) {
             key={index}
             userid={image.userId}
             onClick={() => {
-              postNewConversation(image.userId, mediaID);
+              postNewConversation(
+                image.userId,
+                mediaID,
+                setTopicRefresh,
+                topicRefresh
+              );
             }}
             className="media-avatar-outer"
           >
