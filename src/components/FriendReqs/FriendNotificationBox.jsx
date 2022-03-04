@@ -3,7 +3,7 @@ import Notification from "./Notification";
 import EmptyNotification from "./EmptyNotification";
 
 export default function FriendNotification(props) {
-  const { incomingFriendReqs, setIncomingFriendReqs } =
+  const { incomingFriendReqs, setIncomingFriendReqs, toggleFriendRefresh } =
     props;
   return (
     <div>
@@ -17,6 +17,7 @@ export default function FriendNotification(props) {
               return (
                 <Notification
                   key={friendReq.id}
+                  toggleFriendRefresh={toggleFriendRefresh}
                   incomingFriendReqs={incomingFriendReqs}
                   setIncomingFriendReqs={setIncomingFriendReqs}
                   {...friendReq}

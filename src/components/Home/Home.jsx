@@ -7,30 +7,27 @@ import WatchList from "./WatchList";
 import Watched from "./Watched";
 import SearchBox from "../SearchBox";
 
-export default function Home() {
-
+export default function Home(props) {
   const [refresh, setRefresh] = useState(false);
+  const { friendRefresh } = props;
 
   return (
     <React.Fragment>
-        <SearchBox 
-          refresh={refresh}
-          setRefresh={setRefresh}
-        />
+      <SearchBox refresh={refresh} setRefresh={setRefresh} />
 
       <FriendRecommendations
+        toggleFriendRefresh={friendRefresh}
         refresh={refresh}
         setRefresh={setRefresh}
-
-      >Friend's Recommendation</FriendRecommendations>
-      <WatchList
-        refresh={refresh}
-        setRefresh={setRefresh}
-      >Watch List</WatchList>
-      <Watched
-        refresh={refresh}
-        setRefresh={setRefresh}
-      >Watched</Watched>
+      >
+        Friend's Recommendation
+      </FriendRecommendations>
+      <WatchList refresh={refresh} setRefresh={setRefresh}>
+        Watch List
+      </WatchList>
+      <Watched refresh={refresh} setRefresh={setRefresh}>
+        Watched
+      </Watched>
     </React.Fragment>
   );
 }

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faX } from "@fortawesome/free-solid-svg-icons";
 
 export default function FriendNotification(props) {
-  const { setIncomingFriendReqs } = props;
+  const { setIncomingFriendReqs, toggleFriendRefresh } = props;
   const respondFriendReq = async (friendResponse) => {
     try {
       const token = localStorage.getItem("userToken");
@@ -17,6 +17,7 @@ export default function FriendNotification(props) {
           return req.id !== props.id;
         })
       );
+      toggleFriendRefresh();
     } catch (err) {
       console.log(err);
     }

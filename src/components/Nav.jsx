@@ -13,13 +13,14 @@ import {
 import { Link } from "react-router-dom";
 import UserMenu from "./UserMenu/UserMenu";
 
-export default function Nav() {
+export default function Nav(props) {
   const [incomingFriendReqs, setIncomingFriendReqs] = useState([]);
   const [hasNewNotification, setHasNewNotification] = useState(false);
   const [showFriendRequestBox, setShowFriendRequestBox] = useState(false);
   const [showNotificationBox, setShowNotificationBox] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const [bellClicked, setBellClicked] = useState(false);
+  const { toggleFriendRefresh } = props;
 
   const toggleIcons = (clickedIcon) => {
     if (clickedIcon === "userProfile") {
@@ -119,6 +120,7 @@ export default function Nav() {
             )}
             {showNotificationBox && (
               <FriendNotificationBox
+                toggleFriendRefresh={toggleFriendRefresh}
                 hasNewNotification={hasNewNotification}
                 incomingFriendReqs={incomingFriendReqs}
                 setIncomingFriendReqs={setIncomingFriendReqs}
