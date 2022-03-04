@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useOutletContext } from "react-router-dom";
 import { useApplicationData } from "../../hooks/useApplicationData";
 import RatingBar from "./RatingBar";
 import Title from "./MediaTitle";
@@ -8,7 +9,6 @@ import MediaWatchedButton from "./MediaWatchedButton";
 import StreamsOn from "./StreamsOn";
 import SearchBox from "../SearchBox";
 const axios = require("axios");
-import { useOutletContext } from "react-router-dom";
 
 export default function MediaDetails() {
   const {
