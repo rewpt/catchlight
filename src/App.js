@@ -3,6 +3,7 @@ import ChatBox from './components/ChatBox/ChatBox'
 import { Outlet } from "react-router-dom";
 import React from 'react';
 import './index.css';
+import {useState} from "react";
 
 function App() {
   const [friendRefresh, setFriendRefresh] = useState(false);
