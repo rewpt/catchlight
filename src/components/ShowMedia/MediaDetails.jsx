@@ -27,7 +27,7 @@ export default function MediaDetails() {
     setInteractionStats,
     postNewConversation,
   } = useApplicationData();
-  const [topicRefresh, setTopicRefresh] = useOutletContext();
+  const [friendRefresh, topicRefresh, setTopicRefresh] = useOutletContext();
 
   useEffect(() => {
     const getTotalCount = async () => {
