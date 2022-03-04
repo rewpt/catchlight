@@ -32,7 +32,7 @@ export default function Register() {
       const dogPhoto = await axios.get(
         "https://dog.ceo/api/breeds/image/random"
       );
-      console.log(dogPhoto);
+      console.log("dogphoto.data", dogPhoto.data);
       await axios.post("/api/users/register", {
         email,
         password,
