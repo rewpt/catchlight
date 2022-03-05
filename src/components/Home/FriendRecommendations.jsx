@@ -27,9 +27,11 @@ export default function FriendRecommendations(props) {
         const mediaIDs = [];
 
         for (const friend of mediaFriendsInteractions.data) {
-          for (const interaction of friend.interactions) {
-            if (!mediaIDs.includes(interaction.media_id)) {
-              mediaIDs.push(interaction.media_id);
+          if (friend.interactions) {
+            for (const interaction of friend.interactions) {
+              if (!mediaIDs.includes(interaction.media_id)) {
+                mediaIDs.push(interaction.media_id);
+              }
             }
           }
         }

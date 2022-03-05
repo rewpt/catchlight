@@ -4,9 +4,9 @@ import { useState, useEffect } from "react";
 import classNames from "classnames";
 
 export default function ChatContent(props) {
-  const [activeFriend, setActiveFriend] = useState(1);
+  const [activeFriend, setActiveFriend] = useState(null);
   const { isOpen, topicRefresh } = props;
-  const [topicSelected, setTopicSelected] = useState(1);
+  const [topicSelected, setTopicSelected] = useState(null);
 
   const topicOnClick = (topicIndex) => {
     setTopicSelected(topicIndex);

@@ -28,9 +28,11 @@ export default function FriendPop(props) {
         for (const friend of friendsPictures.data) {
           for (const mediaFriend of mediaFriendsInteractions.data) {
             if (friend.friend_id === mediaFriend.id) {
-              for (const interactionMedia of mediaFriend.interactions) {
-                if (interactionMedia.media_id === props.mediaID) {
-                  results.push({ profile_picture: friend.profile_picture });
+              if (mediaFriend.interactions) {
+                for (const interactionMedia of mediaFriend.interactions) {
+                  if (interactionMedia.media_id === props.mediaID) {
+                    results.push({ profile_picture: friend.profile_picture });
+                  }
                 }
               }
             }
@@ -44,7 +46,9 @@ export default function FriendPop(props) {
     }
 
     getMediaFriends().then((res) => {
-      setFriends(res.slice(0, 3));
+      if (res) {
+        setFriends(res.slice(0, 3));
+      }
     });
   }, []);
 

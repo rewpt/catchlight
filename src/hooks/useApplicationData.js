@@ -106,7 +106,7 @@ export function useApplicationData() {
 
       for (const friend of friendsPictures.data) {
         for (const mediaFriend of mediaFriendsInteractions.data) {
-          if (friend.friend_id === mediaFriend.id) {
+          if (friend.friend_id === mediaFriend.id && mediaFriend.interactions !== null) {
             for (const interactionMedia of mediaFriend.interactions) {
               if (interactionMedia.media_id === parseInt(mediaID)) {
                 results.push({

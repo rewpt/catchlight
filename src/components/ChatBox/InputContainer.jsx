@@ -37,14 +37,14 @@ function InputContainer(props) {
           { activeFriend: activeFriend, topicSelected: topicSelected },
           jwt
         );
-        if (response.data[0].conversation_id) {
-          setConversationID(response.data[0].conversation_id);
-        }
+        setConversationID(response.data[0].conversation_id);
       } catch (err) {
         console.log(err);
       }
     };
-    getConversationID();
+    if (activeFriend && topicSelected) {
+      getConversationID();
+    }
   }, [activeFriend, topicSelected]);
 
   return (
