@@ -12,7 +12,7 @@ function InputContainer(props) {
   };
 
   const [messageInput, updateMessageInput, resetMessage] = useForm("");
-  const [conversationID, setConversationID] = useState(0);
+  const [conversationID, setConversationID] = useState("");
 
   async function sendMessage(e) {
     e.preventDefault();
@@ -37,7 +37,9 @@ function InputContainer(props) {
           { activeFriend: activeFriend, topicSelected: topicSelected },
           jwt
         );
-        setConversationID(response.data[0].conversation_id);
+        if (response.data[0].conversation_id) {
+          setConversationID(response.data[0].conversation_id);
+        }
       } catch (err) {
         console.log(err);
       }
