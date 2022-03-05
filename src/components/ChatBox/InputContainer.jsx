@@ -12,7 +12,7 @@ function InputContainer(props) {
   };
 
   const [messageInput, updateMessageInput, resetMessage] = useForm("");
-  const [conversationID, setConversationID] = useState("");
+  const [conversationID, setConversationID] = useState(0);
 
   async function sendMessage(e) {
     e.preventDefault();
@@ -52,7 +52,10 @@ function InputContainer(props) {
         value={messageInput}
         onChange={updateMessageInput}
       />
-      <button type="submit" className="mx-2 bg-emerald-500 rounded-xl py-2 px-3 hover:bg-emerald-600 break-normal">
+      <button
+        type="submit"
+        className="mx-2 bg-emerald-500 rounded-xl py-2 px-3 hover:bg-emerald-600 break-normal"
+      >
         Send
       </button>
     </form>
