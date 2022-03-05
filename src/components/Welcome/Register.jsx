@@ -32,7 +32,6 @@ export default function Register() {
       const dogPhoto = await axios.get(
         "https://dog.ceo/api/breeds/image/random"
       );
-      console.log("dogphoto.data", dogPhoto.data);
       await axios.post("/api/users/register", {
         email,
         password,
@@ -63,7 +62,7 @@ export default function Register() {
         </div>
         <div className="p-8 m-8">
           <form className="flex flex-col" onSubmit={handleSubmit}>
-            <label className="text-2xl text-pagetxt mb-3">Name:</label>
+            <label className="text-2xl text-pagetxt mb-3">Name:*</label>
             <input
               className="h-14 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none bg-inputbg text-inputtext"
               type="text"
@@ -75,7 +74,7 @@ export default function Register() {
               }}
             />
 
-            <label className="text-2xl text-pagetxt my-3">Email:</label>
+            <label className="text-2xl text-pagetxt my-3">Email:*</label>
             <input
               className="h-14 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none bg-inputbg text-inputtext"
               type="text"
@@ -87,7 +86,7 @@ export default function Register() {
               }}
             />
 
-            <label className="text-2xl text-pagetxt my-3">Password:</label>
+            <label className="text-2xl text-pagetxt my-3">Password:*</label>
             <input
               className="h-14 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none bg-inputbg text-inputtext"
               type="password"
@@ -100,7 +99,7 @@ export default function Register() {
             />
 
             <label className="text-2xl text-pagetxt my-3">
-              Confirm Password:
+              Confirm Password:*
             </label>
             <input
               className="h-14 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none bg-inputbg text-inputtext"
@@ -120,7 +119,7 @@ export default function Register() {
               className="h-14 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none bg-inputbg text-inputtext"
               type="text"
               placeholder="http://..."
-              name="password confirmation"
+              name="profilePic"
               value={profilePic}
               onChange={(e) => {
                 setProfilePic(e.target.value);
