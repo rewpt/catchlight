@@ -60,7 +60,7 @@ export default function Nav(props) {
     };
   });
   const navItemR =
-    "md:my-0 my-7 md:ml-8 cursor-pointer text-2xl hover:text-gray-400 duration-300";
+    "md:my-0 my-2 md:ml-8 cursor-pointer text-2xl hover:text-gray-400 duration-300";
   const hamburger =
     "text-2xl absolute text-black right-8 top-4 z-20 cursor-pointer md:hidden";
   let [open, setOpen] = React.useState(false);
