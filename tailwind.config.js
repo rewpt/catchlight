@@ -6,7 +6,8 @@ module.exports = {
     extend: {
       screens: {
         'chatlg': '1550px',
-        'chatmd': '1350px'
+        'chatmd': '1350px',
+        'sml-only': {'min': '500px', 'max': '767px'}
       },
       borderWidth: {
         DEFAULT: '1px',

@@ -116,7 +116,7 @@ export default function Nav(props) {
               }}
             />
             {incomingFriendReqs.length > 0 && !bellClicked && (
-              <div className="absolute rounded full top-[20px] right-[160px] z-50 w-[10px] h-[10px] bg-notificationcolor"></div>
+              <div className="absolute rounded full sml-only:left-[45px] sml-only:top-1 md:top-[20px] md:right-[160px] z-50 w-[10px] h-[10px] bg-notificationcolor"></div>
             )}
             {showNotificationBox && (
               <FriendNotificationBox
