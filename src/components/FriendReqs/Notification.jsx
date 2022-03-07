@@ -7,7 +7,7 @@ export default function FriendNotification(props) {
   const respondFriendReq = async (friendResponse) => {
     try {
       const token = localStorage.getItem("userToken");
-      const response = await axios.put(
+      await axios.put(
         "/api/friends/requests",
         { id: props.id, friendResponse: friendResponse },
         { headers: { Authorization: `Bearer ${token}` } }

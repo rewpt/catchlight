@@ -5,15 +5,13 @@ const axios = require("axios");
 function InputContainer(props) {
   const { activeFriend, topicSelected } = props;
 
+  const [messageInput, updateMessageInput, resetMessage] = useForm("");
+  const [conversationID, setConversationID] = useState("");
   const jwt = {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("userToken")}`,
     },
   };
-
-  const [messageInput, updateMessageInput, resetMessage] = useForm("");
-  const [conversationID, setConversationID] = useState("");
-
   async function sendMessage(e) {
     e.preventDefault();
 
@@ -30,6 +28,11 @@ function InputContainer(props) {
   }
 
   useEffect(() => {
+    const jwt = {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+      },
+    };
     const getConversationID = async () => {
       try {
         const response = await axios.post(

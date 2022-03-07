@@ -13,6 +13,11 @@ import classNames from "classnames";
 const axios = require("axios");
 
 export default function BottomPop(props) {
+  const jwt = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+    },
+  };
   const { mediaID } = props;
   const [watchListButton, setWatchListButton] = useState(2);
   const [interactionButton, setInteractionButton] = useState("");
@@ -30,12 +35,6 @@ export default function BottomPop(props) {
       interactionButton === "dislike",
     "dislike-btn-sml": interactionButton !== "dislike",
   });
-
-  const jwt = {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("userToken")}`,
-    },
-  };
 
   // Rating button
   const postMediaButtonClick = (rating) => {
@@ -71,6 +70,11 @@ export default function BottomPop(props) {
 
   // isInWatchList
   useEffect(() => {
+    const jwt = {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+      },
+    };
     async function isInWatchList() {
       try {
         const isInWatchListData = await axios.get(

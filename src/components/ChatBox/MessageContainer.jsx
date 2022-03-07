@@ -6,13 +6,13 @@ export default function MessageContainer(props) {
   const [currentUserId, setCurrentUserId] = useState("");
   const [messages, setMessages] = useState([]);
   const { activeFriend, topicSelected } = props;
-  const jwt = {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("userToken")}`,
-    },
-  };
 
   useEffect(() => {
+    const jwt = {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+      },
+    };
     const getMessages = async () => {
       try {
         const response = await axios.post(
@@ -37,6 +37,11 @@ export default function MessageContainer(props) {
   }, [activeFriend, topicSelected]);
 
   useEffect(() => {
+    const jwt = {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+      },
+    };
     const getUserId = async () => {
       try {
         const response = await axios.get(`/api/users/user/id`, jwt);
