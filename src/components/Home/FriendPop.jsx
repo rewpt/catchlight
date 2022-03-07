@@ -44,12 +44,16 @@ export default function FriendPop(props) {
         console.log(e);
       }
     }
-
+    let cancel = false;
     getMediaFriends().then((res) => {
+      if (cancel) return;
       if (res) {
         setFriends(res.slice(0, 3));
       }
     });
+    return () => {
+      cancel = true;
+    };
   }, []);
 
   return (

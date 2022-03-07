@@ -1,61 +1,62 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import CardContainer from "./CardContainer";
 
-const axios = require('axios');
+const axios = require("axios");
 
-export default function Watched (props) {
-
+export default function Watched(props) {
   const [mediaData, setMediaData] = useState([]);
-  
-  useEffect(() => {
 
+  useEffect(() => {
     async function getMedia() {
       try {
-        const mediaWatched = await axios.get('/api/watched', {
+        const mediaWatched = await axios.get("/api/watched", {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem('userToken')}`
-          }
+            Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+          },
         });
 
-        const media = await axios.get('/api/media', {
+        const media = await axios.get("/api/media", {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem('userToken')}`
-          }
+            Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+          },
         });
-        
+
         const mediaIDs = [];
 
         for (const media of mediaWatched.data) {
-          mediaIDs.push(media.media_id)
+          mediaIDs.push(media.media_id);
         }
         const mediaArray = [];
 
         for (const mediaData of media.data) {
           if (mediaIDs.includes(mediaData.id)) {
-            mediaArray.push(mediaData)
+            mediaArray.push(mediaData);
           }
         }
 
-        return mediaArray
+        return mediaArray;
       } catch (err) {
         console.log(err);
       }
-    };
+    }
 
-
-
+    let cancel = false;
     getMedia().then((res) => {
+      if (cancel) return;
       setMediaData(res);
     });
+    return () => {
+      cancel = true;
+    };
   }, [props.refresh]);
-  
+
   return (
-      <CardContainer
-        mediaData={mediaData}
-        refresh={props.refresh}
-        setRefresh={props.setRefresh}
-      >
-        {props.children}
-      </CardContainer>
+    <CardContainer
+      mediaData={mediaData}
+      refresh={props.refresh}
+      setRefresh={props.setRefresh}
+    >
+      {props.children}
+    </CardContainer>
   );
-};
+}

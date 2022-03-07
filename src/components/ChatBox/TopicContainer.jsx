@@ -18,8 +18,10 @@ function TopicContainer(props) {
           { activeFriend: activeFriend },
           jwt
         );
-        setTopics(response.data);
-        topicOnClick(response.data[0].id);
+        if (response.data[0]) {
+          setTopics(response.data);
+          topicOnClick(response.data[0].id);
+        }
       } catch (err) {
         console.log(err);
       }

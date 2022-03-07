@@ -49,10 +49,14 @@ export default function FriendRecommendations(props) {
         console.log(err);
       }
     }
-
+    let cancel = false;
     getMedia().then((res) => {
+      if (cancel) return;
       setMediaData(res);
     });
+    return () => {
+      cancel = true;
+    };
   }, [props.refresh, friendRefresh]);
 
   return (

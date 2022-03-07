@@ -37,7 +37,9 @@ function InputContainer(props) {
           { activeFriend: activeFriend, topicSelected: topicSelected },
           jwt
         );
-        setConversationID(response.data[0].conversation_id);
+        if (response.data[0]) {
+          setConversationID(response.data[0].conversation_id);
+        }
       } catch (err) {
         console.log(err);
       }
