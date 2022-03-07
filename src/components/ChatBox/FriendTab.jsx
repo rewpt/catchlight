@@ -1,7 +1,7 @@
 import classNames from "classnames";
 
 export default function FriendTab(props) {
-  const { avatarUrl, activeFriendClick, activeFriend, id } = props;
+  const { avatarUrl, activeFriendClick, activeFriend, id, friendName } = props;
   const friendImgClass = classNames(
     "h-full max-w-none  hover:brightness-135 hover:opacity-100",
     {
@@ -18,6 +18,7 @@ export default function FriendTab(props) {
       }}
     >
       <img
+        title={friendName}
         className={friendImgClass}
         src={avatarUrl}
         alt="Your Profile Avatar"

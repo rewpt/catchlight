@@ -19,6 +19,7 @@ function TopicContainer(props) {
           jwt
         );
         setTopics(response.data);
+        topicOnClick(response.data[0].id);
       } catch (err) {
         console.log(err);
       }

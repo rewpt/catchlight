@@ -41,6 +41,7 @@ export default function FriendTabGroup(props) {
               <FriendTab
                 key={friend.id}
                 id={friend.id}
+                friendName={friend.name}
                 avatarUrl={friend.profile_picture}
                 activeFriend={activeFriend}
                 activeFriendClick={activeFriendClick}
