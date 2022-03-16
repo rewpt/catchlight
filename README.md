@@ -1,5 +1,6 @@
 <h1>Catchlight</h1>
 
+<h2>Check out the app deployed</h2>
 
 - Open [Catchlight](https://catchlight-media.herokuapp.com/register)
 
@@ -22,3 +23,9 @@
 
 - Click on a movie and then on a friend's interaction circle to start a live chat about a specific movie with them in the sidebar.
 
+## Run it on your own localhost
+
+- In your catchlight folder, run `npm start` to launch the front end
+- Check out and clone the back-end code at [here](https://www.github.com/rewpt/catchlight-api)
+- In your catchlight-api folder run `npm start`
+- Use `npm run db:reset` to reset the database
