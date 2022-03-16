@@ -26,6 +26,8 @@
 - Click on a movie and then on a friend's interaction circle to start a live chat about a specific movie with them in the sidebar.
   ![chat](https://github.com/rewpt/catchlight/blob/master/src/images/chat.png?raw=true)
 
+---
+
 ## Run it on your own localhost
 
 - In your 'catchlight' folder, run `npm install`, then `npm start` to launch the front end
