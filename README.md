@@ -3,6 +3,7 @@
 <h2>Check out the app deployed</h2>
 
 - Open [Catchlight](https://catchlight-media.herokuapp.com/register)
+- Update: App is currently Offline due to Heroku server use changes
 
 <h2>Register</h2>
 
